@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healing from Trauma — A Biblical Journey | Christ's Climate Changers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0a0f1e;--navy-mid:#111827;--navy-light:#1a2540;
+  --g:#c9a84c;--gl:#e8c87a;--gs:#f5da82;--gd:#7a5c1e;
+  --cr:#f6f0e5;--tm:#8a9ab5;
+  --tl:rgba(255,255,255,.72);
+  --nh:70px;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'EB Garamond', Georgia, serif;
+    font-size:18px;
+    line-height:1.6; 
+    background:var(--navy);
+    color:var(--cr);
+    overflow-x:hidden;
+    padding-top: var(--nh); 
+}
+
+p {
+    text-align: justify;
+}
+
+/* HEADER NAV STYLES FROM MAIN PAGE */
+#nav{position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nh);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,60px);background:rgba(10,15,30,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:.5px solid rgba(201,168,76,.15)}
+.nav-logo{display:flex;align-items:center;gap:13px;flex-shrink:0}
+.logo-name{font-family:'Cinzel',serif;font-size:13px;font-weight:500;color:var(--g);letter-spacing:.18em;text-transform:uppercase}
+.logo-tag{font-family:'EB Garamond',serif;font-size:11px;font-style:italic;color:rgba(255,255,255,.5);letter-spacing:.06em}
+.nav-links{display:flex;list-style:none}
+.nav-links>li>a{display:block;padding:0 12px;line-height:var(--nh);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.65);position:relative;transition:color .2s}
+.nav-links>li>a:hover{color:var(--gl)}
+.nav-cta{background:var(--g);color:var(--navy);border:none;padding:9px 20px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none}
+.nav-cta:hover{background:var(--gl)}
+
+/* COURSE PAGE SPECIFIC LAYOUT */
+.hero{
+    max-width:1100px;
+    margin:auto;
+    padding:40px 30px 20px 30px; 
+}
+
+.hero h1{
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 10px; 
+    color: #fff;
+    letter-spacing: .04em;
+}
+
+.subtitle{
+    font-size:1.2rem;
+    color:#b7bfd3;
+    max-width:800px;
+    margin-bottom: 15px;
+}
+
+.price{
+    font-family: 'Cinzel', serif;
+    font-size:2.5rem;
+    color:var(--gl);
+    margin:15px 0; 
+}
+
+.meta{
+    font-family: 'Cinzel', serif;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:var(--tm);
+    font-size: 11px;
+}
+
+.section{
+    max-width:1100px;
+    margin:auto;
+    padding:30px 30px; 
+}
+
+.section h2{
+    font-family: 'Cinzel', serif;
+    color:var(--g);
+    margin-bottom:15px;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+}
+
+ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+li {
+    margin-bottom: 5px; 
+}
+
+.module{
+    background:var(--navy-mid);
+    padding:20px; 
+    border:0.5px solid rgba(201,168,76,.25);
+    margin-bottom:15px; 
+}
+
+.module h3{
+    font-family: 'Cinzel', serif;
+    color: var(--gl);
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:15px; 
+}
+
+.feature{
+    background:var(--navy-light);
+    padding:20px;
+    border: 0.5px solid rgba(201,168,76,.12);
+}
+
+.feature h3{
+    font-family: 'Cinzel', serif;
+    color: var(--gl);
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.cta{
+    text-align:center;
+    padding:60px 30px 80px; 
+}
+
+.cta h2{
+    font-family: 'Cinzel', serif;
+    font-size:2rem;
+    margin-bottom: 10px;
+}
+
+.enrol-button{
+    display:inline-block;
+    margin-top:20px;
+    padding:16px 44px;
+    border:.5px solid var(--g);
+    background: rgba(201,168,76,.06);
+    color:var(--g);
+    text-decoration:none;
+    font-family: 'Cinzel', serif;
+    font-size:11px;
+    letter-spacing:2px;
+    transition:.25s ease;
+}
+
+.enrol-button:hover{
+    background:var(--g);
+    color:var(--navy);
+    box-shadow: 0 4px 20px rgba(201,168,76,.2);
+}
+
+/* FOOTER SECTION STYLE */
+#footer {
+    background: rgba(10,15,30,.95);
+    border-top: .5px solid rgba(201,168,76,.15);
+    padding: 40px 30px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--tm);
+}
+.footer-logo {
+    font-family: 'Cinzel', serif;
+    color: var(--g);
+    letter-spacing: .15em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+</style>
+</head>
+
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">
+    <div class="logo-wm">
+      <span class="logo-name">Christ's Climate Changers</span>
+      <span class="logo-tag">Transforming Lives. Impacting Nations.</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#courses">Courses</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+  </div>
+</nav>
+
+<section class="hero">
+    <h1>Healing from Trauma — A Biblical Journey</h1>
+    <p class="subtitle">
+    A gentle, powerful course walking through pain, loss, and trauma through the lens of Scripture, prayer, and the healing presence of Christ.
+    </p>
+    <div class="price">£147</div>
+    <div class="meta">
+    8 Modules • Certificate Included
+    </div>
+</section>
+
+<section class="section">
+    <h2>Course Overview</h2>
+    <p>
+    Trauma can leave wounds that affect the heart, mind, body,
+    relationships, and spiritual life. This course helps you understand
+    trauma through biblical wisdom, prayer, reflection, and practical
+    healing principles rooted in Christ.
+    </p>
+</section>
+
+<section class="section">
+    <h2>What You'll Learn</h2>
+    <ul>
+        <li>Understand trauma and its effects</li>
+        <li>Recognise emotional triggers</li>
+        <li>Process grief and loss biblically</li>
+        <li>Renew your mind through Scripture</li>
+        <li>Develop healing prayer practices</li>
+        <li>Build resilience and hope</li>
+        <li>Restore relationships</li>
+        <li>Create a long-term healing plan</li>
+    </ul>
+</section>
+
+<section class="section">
+    <h2>Course Modules</h2>
+
+    <div class="module">
+        <h3>Module 1 – Understanding Trauma Through a Biblical Lens</h3>
+        <p>Learn how trauma affects the mind, body, and spirit.</p>
+    </div>
+
+    <div class="module">
+        <h3>Module 2 – The Wounds We Carry</h3>
+        <p>Explore hidden pain, shame, and emotional wounds.</p>
+    </div>
+
+    <div class="module">
+        <h3>Module 3 – Grief, Loss, and Lament</h3>
+        <p>Process grief through biblical legacy and prayer.</p>
+    </div>
+
+    <div class="module">
+        <h3>Module 4 – Renewing the Mind</h3>
+        <p>Replace fear and negative beliefs with biblical truth.</p>
+    </div>
+
+    <div class="module">
+        <h3>Module 5 – Healing Through Prayer</h3>
+        <p>Discover prayer practices that support recovery.</p>
+    </div>
+
+    <div class="module">
+        <h3>Module 6 – Forgiveness and Freedom</h3>
+        <p>Learn biblical forgiveness and emotional release.</p>
+    </div>
+
+    <div class="module">
+        <h3>Module 7 – Restoring Relationships</h3>
+        <p>Rebuild trust and healthy connections.</p>
+    </div>
+
+    <div class="module">
+        <h3>Module 8 – Walking Forward in Hope</h3>
+        <p>Create a sustainable healing journey with Christ.</p>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Included With Enrollment</h2>
+    <div class="features">
+        <div class="feature">
+            <h3>8 Learning Modules</h3>
+            <p>Comprehensive teaching and reflection.</p>
+        </div>
+        <div class="feature">
+            <h3>Workbook PDF</h3>
+            <p>Guided journaling and exercises.</p>
+        </div>
+        <div class="feature">
+            <h3>Prayer Resources</h3>
+            <p>Downloadable prayer guides.</p>
+        </div>
+        <div class="feature">
+            <h3>Certificate Included</h3>
+            <p>Receive a certificate upon completion.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Begin Your Healing Journey Today</h2>
+    <p>Experience biblical healing, hope, and restoration through Christ.</p>
+    <a href="https://buy.stripe.com/your-payment-link" class="enrol-button">
+       ENROL NOW →
+    </a>
+</section>
+
+<footer id="footer">
+    <div class="footer-logo">Christ's Climate Changers</div>
+    <p style="text-align: center; color: rgba(255,255,255,0.4); font-size: 13px;">
+        &copy; 2026 Christ's Climate Changers. Advancing His Kingdom. All Rights Reserved.
+    </p>
+</footer>
+
+</body>
+</html>

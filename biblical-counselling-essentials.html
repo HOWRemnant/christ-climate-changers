@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblical Counselling Essentials — Christ's Climate Changers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* ROOT DESIGN VARIABLES */
+:root{
+  --navy:#0a0f1e;
+  --navy-mid:#0d152b;
+  --navy-light:#0f1c38;
+  --g:#c9a84c;
+  --gl:#e8d18a;
+  --tm:rgba(255,255,255,.65);
+  --tl:rgba(255,255,255,.75);
+  --tf:rgba(255,255,255,.55);
+  --m-nav-height:70px;
+}
+
+/* GLOBAL RESET & STYLES */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background:var(--navy);
+  font-family:'EB Garamond',serif;
+  color:#fff;
+  padding-top: var(--m-nav-height);
+  overflow-x: hidden;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.sec{
+  padding:6rem clamp(1.5rem,5vw,60px);
+  position:relative;
+  z-index:1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.label{
+  font-family:'Cinzel',serif;
+  font-size:10px;
+  letter-spacing:.25em;
+  color:var(--g);
+  text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.h2{
+  font-family:'Cinzel',serif;
+  font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:500;
+  line-height:1.2;
+  margin-bottom:1.2rem;
+}
+.h2 em{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  color:var(--gl);
+}
+.body-t{
+  font-size:18px;
+  color:var(--tm);
+  line-height:1.8;
+  max-width:640px;
+  text-align: justify;
+}
+.rule{
+  width:80px;
+  height:2px;
+  background:var(--g);
+  margin-top:2rem;
+}
+
+/* STRUCTURAL LAYOUT GRID BLOCK */
+.g2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3rem;
+}
+.g3{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:2rem;
+}
+@media(max-width:900px){
+  .g2{grid-template-columns:1fr;}
+}
+
+/* ISOLATED NAVIGATION BAR HEADER LAYOUT */
+#m-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  height: var(--m-nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1rem, 4vw, 60px);
+  background: rgba(10, 15, 30, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: .5px solid rgba(201, 168, 76, 0.15);
+}
+
+.m-logo-group {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.m-logo-group img {
+  height: 55px;
+  width: auto;
+  object-fit: contain;
+}
+
+.m-logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.m-logo-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--g);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.m-logo-tagline {
+  font-family: 'EB Garamond', serif;
+  font-size: 11px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: .06em;
+}
+
+.m-nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.m-nav-links a {
+  display: block;
+  padding: 0 12px;
+  line-height: var(--m-nav-height);
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.m-nav-links a:hover, .m-nav-links a.active {
+  color: var(--g);
+}
+
+.m-nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 15px;
+  left: 12px;
+  right: 12px;
+  height: .5px;
+  background: var(--g);
+}
+
+.m-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.m-nav-btn {
+  background: var(--g);
+  color: var(--navy);
+  padding: 9px 18px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.m-nav-btn:hover {
+  background: var(--gl);
+}
+
+/* HERO SECTION FRAME */
+.hero{
+  min-height:75vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding: 60px 1.5rem 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg-img{
+  position:absolute;
+  inset:0;
+  background-image:url('https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?w=1800&q=80');
+  background-size:cover;
+  background-position:center;
+  filter:brightness(.22) saturate(1.3);
+}
+.hero-over{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(160deg,rgba(10,15,30,.9) 0%,rgba(10,32,64,.8) 50%,rgba(10,15,30,.85) 100%);
+}
+.hero-content{
+  position:relative;
+  z-index:5;
+  max-width:900px;
+}
+.hero-ornament{
+  font-family:'Cinzel',serif;
+  font-size:10px;
+  letter-spacing:.4em;
+  color:var(--g);
+  text-transform:uppercase;
+  margin-bottom:32px;
+}
+.hero-title{
+  font-family:'Cinzel',serif;
+  font-size:clamp(2.5rem,6vw,4.5rem);
+  font-weight:500;
+  line-height:1.1;
+  color:#fff;
+  margin-bottom:12px;
+}
+.hero-title span{
+  color:var(--g);
+  font-style:italic;
+  font-family:'Cormorant Garamond',serif;
+}
+.hero-sub-cin{
+  font-family:'Cinzel',serif;
+  font-size:clamp(11px,2vw,14px);
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--gl);
+  margin-bottom:36px;
+}
+.hero-scripture{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:clamp(15px,1.8vw,20px);
+  color:rgba(255,255,255,.65);
+  max-width:640px;
+  margin:0 auto;
+  line-height:1.8;
+  border-top: 0.5px solid rgba(201,168,76,0.15);
+  border-bottom: 0.5px solid rgba(201,168,76,0.15);
+  padding: 20px 0;
+}
+.hero-scripture cite{
+  display:block;
+  font-style:normal;
+  font-family:'Cinzel',serif;
+  font-size:10px;
+  letter-spacing:.2em;
+  color:var(--g);
+  margin-top:12px;
+  text-transform:uppercase;
+}
+
+/* COURSE DATA CARDS layout */
+.ccard{
+  border:.5px solid rgba(201,168,76,.15);
+  padding:36px 28px;
+  background:var(--navy-mid);
+  transition:transform .25s,border-color .25s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ccard:hover{
+  transform:translateY(-4px);
+  border-color:rgba(201,168,76,.5);
+}
+.ccard-title{
+  font-family:'Cinzel',serif;
+  font-size:13px;
+  font-weight:500;
+  color:#fff;
+  margin-bottom:10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.ccard-desc{
+  font-family:'EB Garamond',serif;
+  font-size:15px;
+  color:var(--tm);
+  line-height:1.7;
+  margin-bottom:18px;
+  text-align: justify;
+}
+.ccard-price {
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  color: var(--g);
+  margin-top: auto;
+  font-weight: 500;
+}
+.ccard-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content: center;
+  gap:6px;
+  margin-top:18px;
+  font-family:'Cinzel',serif;
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--g);
+  border:.5px solid rgba(201,168,76,.35);
+  padding:10px 18px;
+  background:rgba(201,168,76,.06);
+  text-decoration: none;
+  transition: all 0.2s;
+  width: 100%;
+}
+.ccard-cta:hover{
+  background:var(--g);
+  color:var(--navy);
+}
+
+/* LEVEL HEADINGS ACTION CTA */
+.level-price-wrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+.level-cta {
+  display: inline-block;
+  background: transparent;
+  border: 0.5px solid var(--g);
+  color: var(--g);
+  padding: 12px 28px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+.level-cta:hover {
+  background: var(--g);
+  color: var(--navy);
+}
+
+/* INDEPENDENT FOOTER STRUCTURE */
+#m-footer{
+  background: #060a14;
+  border-top:.5px solid rgba(201,168,76,.15);
+  padding:80px clamp(1.5rem,5vw,60px) 0;
+  margin-top: 60px;
+}
+.m-fgrid{
+  display:grid;
+  grid-template-columns:2fr repeat(4, 1fr);
+  gap:40px;
+  margin-bottom:60px;
+  padding-bottom:60px;
+  border-bottom:.5px solid rgba(255,255,255,.07);
+}
+@media(max-width: 950px) {
+  .m-fgrid { grid-template-columns: 1fr; gap: 35px; }
+}
+.m-f-brand{
+  font-family:'Cinzel',serif;
+  font-size:16px;
+  letter-spacing:.14em;
+  color:var(--g);
+  margin-bottom:12px;
+  text-transform: uppercase;
+}
+.m-f-tag{
+  font-family:'EB Garamond',serif;
+  font-size:15px;
+  color:var(--tm);
+  line-height:1.75;
+  max-width:300px;
+  margin-bottom:1.5rem;
+}
+.m-soc-row{
+  display:flex;
+  gap:10px;
+}
+.m-socbtn{
+  width:36px;
+  height:36px;
+  border:.5px solid rgba(255,255,255,.14);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  color:rgba(255,255,255,.5);
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+}
+.m-socbtn:hover{
+  border-color:var(--g);
+  color:var(--g);
+}
+.m-fcol h4{
+  font-family:'Cinzel',serif;
+  font-size:10px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--g);
+  margin-bottom:1.4rem;
+}
+.m-fcol ul{
+  list-style:none;
+  padding:0;
+}
+.m-fcol ul li{
+  margin-bottom:.65rem;
+}
+.m-fcol ul li a{
+  font-family:'EB Garamond',serif;
+  font-size:16px;
+  color:var(--tm);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.m-fcol ul li a:hover{
+  color:var(--gl);
+}
+.m-f-scr{
+  text-align:center;
+  padding:2rem 0;
+}
+.m-f-scr p{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:17px;
+  color:var(--gl);
+  text-align: center;
+}
+.m-f-bottom{
+  padding:24px 0;
+  border-top: .5px solid rgba(255,255,255,.05);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap: 15px;
+}
+.m-f-copy{
+  font-family:'Cinzel',serif;
+  font-size:11px;
+  letter-spacing:.1em;
+  color:rgba(255,255,255,.35);
+}
+.m-f-legal{
+  display:flex;
+  gap:24px;
+}
+.m-f-legal a{
+  font-family:'Cinzel',serif;
+  font-size:11px;
+  letter-spacing:.08em;
+  color:rgba(255,255,255,.35);
+  text-decoration: none;
+}
+.m-f-legal a:hover{
+  color:var(--g);
+}
+
+@media(max-width: 768px) {
+  .m-nav-links { display: none; }
+}
+</style>
+</head>
+
+<body>
+
+<nav id="m-nav">
+  <div class="m-logo-group">
+    <img src="images/ccc-logo.png" alt="Christ's Climate Changers Logo">
+    <div class="m-logo-text">
+      <span class="m-logo-title">Christ's Climate Changers</span>
+      <span class="m-logo-tagline">Transforming Lives · Impacting Nations</span>
+    </div>
+  </div>
+
+  <ul class="m-nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#courses" class="active">Courses</a></li>
+    <li><a href="index.html#coaching">Coaching</a></li>
+    <li><a href="index.html#retreats">Retreats</a></li>
+    <li><a href="index.html#prayer">Prayer</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+
+  <div class="m-nav-actions">
+    <a href="index.html#appointment" class="m-nav-btn">Book Appointment</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-over"></div>
+
+  <div class="hero-content">
+    <div class="hero-ornament">Equipping the Saints · Edifying the Body</div>
+    <h1 class="hero-title">Biblical <span>Counselling</span> Essentials</h1>
+    <p class="hero-sub-cin">Equipping You to Counsel with Wisdom & Compassion</p>
+    <div class="hero-scripture">
+      <p>“Bear one another’s burdens, and so fulfill the law of Christ.”</p>
+      <cite>Galatians 6:2</cite>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="label">Level 1</div>
+  <h2 class="h2">Foundations of Biblical Counselling</h2>
+
+  <p class="body-t">
+    Level 1 lays the groundwork for biblical counselling.  
+    Here you learn the essential principles of soul care, Christlike compassion,  
+    and the wisdom needed to walk with others through their struggles.
+  </p>
+
+  <div class="level-price-wrap">
+    <div style="font-size:22px; font-weight:500; font-family:'Cinzel', serif; color: var(--g);">£147 — Full Level Access</div>
+    <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="level-cta">Enrol in Level 1 →</a>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="g3" style="margin-top:50px;">
+
+    <div class="ccard">
+      <div>
+        <div class="ccard-title">Module 1: Foundations of Biblical Counselling</div>
+        <p class="ccard-desc">Understanding the biblical basis for counselling and soul care.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£27</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 1 →</a>
+      </div>
+    </div>
+
+    <div class="ccard">
+      <div>
+        <div class="ccard-title">Module 2: Listening & Discernment</div>
+        <p class="ccard-desc">Learn to listen with spiritual sensitivity and discern root issues.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£27</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 2 →</a>
+      </div>
+    </div>
+
+    <div class="ccard">
+      <div>
+        <div class="ccard-title">Module 3: Christ-Centred Conversations</div>
+        <p class="ccard-desc">Guide conversations toward hope, truth, and transformation.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£27</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 3 →</a>
+      </div>
+    </div>
+
+    <div class="ccard">
+      <div>
+        <div class="ccard-title">Module 4: Emotional & Spiritual Healing</div>
+        <p class="ccard-desc">Address wounds, trauma, and spiritual strongholds biblically.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£27</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 4 →</a>
+      </div>
+    </div>
+
+    <div class="ccard">
+      <div>
+        <div class="ccard-title">Module 5: Boundaries & Ethics</div>
+        <p class="ccard-desc">Learn healthy boundaries, confidentiality, and ethical practice.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£27</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 5 →</a>
+      </div>
+    </div>
+
+    <div class="ccard">
+      <div>
+        <div class="ccard-title">Module 6: Practical Tools & Case Studies</div>
+        <p class="ccard-desc">Real-world examples and practical tools for effective counselling.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£27</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 6 →</a>
+      </div>
+    </div>
+
+    <div class="ccard">
+      <div>
+        <div class="ccard-title">Module 7: Walking with the Holy Spirit</div>
+        <p class="ccard-desc">Partner with the Spirit in wisdom, compassion, and discernment.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£27</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 7 →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="sec" style="background: var(--navy-mid);">
+  <div class="label">Level 2</div>
+  <h2 class="h2">Practice & Applied Counselling</h2>
+
+  <p class="body-t">
+    Level 2 gently guides you deeper into the heart of biblical counselling.  
+    Here you begin to practise what you’ve learned — listening with compassion,  
+    discerning with wisdom, and applying Scripture with care.  
+    These modules help you grow in confidence as you walk alongside those who are hurting.
+  </p>
+
+  <div class="level-price-wrap">
+    <div style="font-size:22px; font-weight:500; font-family:'Cinzel', serif; color: var(--g);">£197 — Full Level Access</div>
+    <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="level-cta">Enrol in Level 2 →</a>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="g3" style="margin-top:50px;">
+
+    <div class="ccard" style="background: var(--navy-light);">
+      <div>
+        <div class="ccard-title">Module 1: Guided Counselling Practice</div>
+        <p class="ccard-desc">Develop confidence through structured, guided counselling sessions.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£37</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 1 →</a>
+      </div>
+    </div>
+
+    <div class="ccard" style="background: var(--navy-light);">
+      <div>
+        <div class="ccard-title">Module 2: Case Study Analysis</div>
+        <p class="ccard-desc">Learn from real-world scenarios and biblical responses.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£37</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 2 →</a>
+      </div>
+    </div>
+
+    <div class="ccard" style="background: var(--navy-light);">
+      <div>
+        <div class="ccard-title">Module 3: Emotional Mapping & Root Issues</div>
+        <p class="ccard-desc">Identify emotional patterns and spiritual roots with clarity.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£37</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 3 →</a>
+      </div>
+    </div>
+
+    <div class="ccard" style="background: var(--navy-light);">
+      <div>
+        <div class="ccard-title">Module 4: Conflict Resolution</div>
+        <p class="ccard-desc">Help individuals navigate conflict with grace and truth.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£37</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 4 →</a>
+      </div>
+    </div>
+
+    <div class="ccard" style="background: var(--navy-light);">
+      <div>
+        <div class="ccard-title">Module 5: Trauma-Informed Ministry</div>
+        <p class="ccard-desc">Support those carrying deep wounds with sensitivity and care.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£37</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 5 →</a>
+      </div>
+    </div>
+
+    <div class="ccard" style="background: var(--navy-light);">
+      <div>
+        <div class="ccard-title">Module 6: Deliverance & Discernment</div>
+        <p class="ccard-desc">Recognise spiritual strongholds and minister freedom biblically.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£37</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 6 →</a>
+      </div>
+    </div>
+
+    <div class="ccard" style="background: var(--navy-light);">
+      <div>
+        <div class="ccard-title">Module 7: Counselling Ethics in Ministry</div>
+        <p class="ccard-desc">Serve with integrity, humility, and Christlike character.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£37</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 7 →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="sec">
+  <div class="label">Level 3</div>
+  <h2 class="h2">Advanced Ministry & Leadership</h2>
+
+  <p class="body-t">
+    Level 3 prepares you for deeper ministry.  
+    Here you learn to support individuals and families through complex situations  
+    with grace, humility, and spiritual maturity.  
+    This level equips you to counsel from a place of strength, prayer,  
+    and Christlike leadership.
+  </p>
+
+  <div class="level-price-wrap">
+    <div style="font-size:22px; font-weight:500; font-family:'Cinzel', serif; color: var(--g);">£247 — Full Level Access</div>
+    <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="level-cta">Enrol in Level 3 →</a>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="g3" style="margin-top:50px;">
+
+    <div class="ccard">
+      <div>
+        <div class="ccard-title">Module 1: Pastoral Counselling for Leaders</div>
+        <p class="ccard-desc">Equip yourself to counsel within leadership and ministry roles.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£47</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 1 →</a>
+      </div>
+    </div>
+
+    <div class="ccard">
+      <div>
+        <div class="ccard-title">Module 2: Crisis & Emergency Counselling</div>
+        <p class="ccard-desc">Respond biblically and compassionately in urgent situations.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£47</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 2 →</a>
+      </div>
+    </div>
+
+    <div class="ccard">
+      <div>
+        <div class="ccard-title">Module 3: Marriage & Family Counselling</div>
+        <p class="ccard-desc">Support couples and families through biblical guidance.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£47</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 3 →</a>
+      </div>
+    </div>
+
+    <div class="ccard">
+      <div>
+        <div class="ccard-title">Module 4: Addiction & Recovery Support</div>
+        <p class="ccard-desc">Walk with individuals seeking freedom and restoration.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£47</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 4 →</a>
+      </div>
+    </div>
+
+    <div class="ccard">
+      <div>
+        <div class="ccard-title">Module 5: Mental Health & Spiritual Integration</div>
+        <p class="ccard-desc">Understand the intersection of emotional and spiritual wellbeing.</p>
+      </div>
+      <div>
+        <div class="ccard-price">£47</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="ccard-cta">Enrol in Module 5 →</a>
+      </div>
+    </div>
+
+    <div class="ccard">
