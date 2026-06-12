@@ -577,6 +577,8 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media(max-width:780px){.about-grid{grid-template-columns:1fr;gap:3rem}}
 
 /* PILLARS */
+/* --- SCOPED PILLARS CSS (Safe for other sections) --- */
+
 .pillars-bg {
     background: #ffffff !important;
     padding: 40px 0 !important;
@@ -591,33 +593,21 @@ img{display:block;width:100%;height:100%;object-fit:cover}
     padding: 0 20px;
 }
 
-.pillar {
+/* Specific to the Pillar boxes */
+.pillars-bg .pillar {
     background: #ffffff !important;
     border: 1px solid #000080 !important;
     padding: 30px !important;
-    display: flex;
-    flex-direction: column;
 }
 
-/* FORCED COLOR OVERRIDES FOR READABILITY */
-.pillar-num { 
-    color: #d4af37 !important; /* Gold */
-    font-weight: bold;
-}
+/* Only affects text INSIDE the pillars section */
+.pillars-bg .pillar-num { color: #d4af37 !important; }
+.pillars-bg .pillar-title { color: #000080 !important; }
+.pillars-bg .pillar-text { color: #222222 !important; }
 
-.pillar-title { 
-    color: #000080 !important; /* Dark Blue */
-    font-weight: 700;
-}
-
-.pillar-text { 
-    color: #222222 !important; /* Dark Grey/Black for contrast */
-    line-height: 1.6;
-}
-
-/* Fix for the "Six Pillars" Header text visibility */
-.h2 { color: #333333 !important; }
-.h2 em { color: #d4af37 !important; }
+/* Only affects the specific "Six Pillars" header */
+.pillars-bg .h2 { color: #333333 !important; }
+.pillars-bg .h2 em { color: #d4af37 !important; }
   
 /* COURSES */
 .skool-banner{border:.5px solid rgba(201,168,76,.25);background:rgba(201,168,76,.05);padding:1.5rem 2rem;margin-bottom:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
