@@ -141,7 +141,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* NAV */
-/* NAV (UPDATED: LEFT-ALIGNED LAYOUT, BOLD TEXT, METALLIC POP STRIPES) */
+/* NAV (FORCED LEFT ALIGNMENT, MAXIMUM FONT BOLDNESS & SHINY STRIPES) */
 #nav {
   position: fixed;
   top: 0;
@@ -149,182 +149,168 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   right: 0;
   z-index: 999;
   height: var(--nh);
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* Shifts everything dynamically toward the left */
-  gap: 2.5rem; /* Creates comfortable spacing between logo/text and your menu items */
-  padding: 0 clamp(1rem,4vw,60px);
-  background: #ffffff; 
-  box-sizing: border-box;
-  transition: box-shadow .4s;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important; /* Forces layout to pull left */
+  gap: 24px !important; /* Balanced gap between logo, text, and your links */
+  padding: 0 clamp(1rem, 3vw, 40px) !important;
+  background: #ffffff !important; 
+  box-sizing: border-box !important;
   
-  /* Ultra-thick, shiny metallic top stripe (Gold -> Deep Navy) */
-  border-top: 12px solid transparent;
+  /* Thick Shiny Top Stripe (Metallic Gold transitioning to Deep Navy) */
+  border-top: 12px solid transparent !important;
   border-image: linear-gradient(
     to right, 
-    #b38f32 0%, #ffd700 25%, #f5da82 50%, #ffd700 75%, #b38f32 100%
-  ) 1;
+    #b38f32 0%, #ffd700 15%, #fff5cc 30%, #ffd700 45%, #b38f32 60%,
+    #050a14 60%, #1a2c4e 80%, #0a1530 100%
+  ) 1 !important;
 }
 
-/* Ultra-thick, shiny metallic bottom stripe (Deep Navy -> Gold) */
+/* Thick Shiny Bottom Stripe (Deep Navy transitioning to Metallic Gold) */
 #nav::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 12px;
-  /* Shimmer gradient overlay to make the solid colors intensely pop and shine */
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 12px !important;
   background: linear-gradient(
     to right, 
-    #050a14 0%, #1a2c4e 25%, #0a1530 45%, 
-    #b38f32 55%, #ffd700 75%, #f5da82 100%
-  );
-  pointer-events: none;
-  box-shadow: inset 0 1px 2px rgba(255,255,255,0.4), 0 1px 3px rgba(0,0,0,0.2);
+    #050a14 0%, #1a2c4e 20%, #0a1530 40%, 
+    #b38f32 40%, #ffd700 55%, #fff5cc 70%, #ffd700 85%, #b38f32 100%
+  ) !important;
+  pointer-events: none !important;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.6) !important;
 }
 
 #nav.scrolled {
-  box-shadow: 0 10px 35px rgba(10, 15, 30, 0.12);
+  box-shadow: 0 10px 35px rgba(10, 15, 30, 0.12) !important;
 }
 
 .nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  flex-shrink: 0;
-}
-
-.logo-crest {
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-}
-
-.logo-crest svg {
-  width: 100%;
-  height: 100%;
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
 }
 
 .logo-wm {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  text-align: left !important;
 }
 
 .logo-name {
-  font-family: 'Cinzel', serif;
-  font-size: 14px;
-  font-weight: 700; /* Bolder logo presence */
-  color: #c9a84c;
-  letter-spacing: .18em;
-  text-transform: uppercase;
+  font-family: 'Cinzel', serif !important;
+  font-size: 14px !important;
+  font-weight: 900 !important; /* Boldest treatment for company name */
+  color: #0a1530 !important; /* Crisp dark navy readability */
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
 }
 
 .logo-tag {
-  font-family: 'EB Garamond', serif;
-  font-size: 12px;
-  font-style: italic;
-  font-weight: 600; /* Makes "Transforming Lives . Impacting Nations" easier to read */
-  color: #334155; 
-  letter-spacing: .06em;
+  font-family: 'Lato', sans-serif !important; 
+  font-size: 10px !important;
+  font-weight: 700 !important; /* Bold layout subtext */
+  color: #c9a84c !important; /* Gold contrasting accent color */
+  letter-spacing: .03em !important;
+  line-height: 1.2 !important;
+  display: block !important;
 }
 
-/* Shifts navigation bar lists over seamlessly to follow the brand text */
+/* Packs the tool-links next to each other snugly to prevent right-edge clipping */
 .nav-links {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  margin-right: auto; /* Magic helper: pushes subsequent action/cta icons cleanly to the right boundary */
+  display: flex !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 2px !important; 
 }
 
 .nav-links>li>a {
-  display: block;
-  padding: 0 18px;
-  line-height: calc(var(--nh) - 12px); 
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  font-weight: 800; /* FORCE TEXT (HOME, ABOUT, COURSES) TO BE HIGHLY BOLD */
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: #0a1530; 
+  display: block !important;
+  padding: 0 10px !important;
+  line-height: calc(var(--nh) - 12px) !important; 
+  font-family: 'Cinzel', serif !important;
+  font-size: 12px !important;
+  font-weight: 900 !important; /* FORCES ALL CAPS TOOL LINKS TO BE COMPLETELY BOLD */
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  color: #0a1530 !important; 
   position: relative;
-  transition: all .2s ease;
+  transition: color .2s ease !important;
+}
+
+/* Hover highlights menu items to clean Navy or Gold underline spikes */
+.nav-links>li>a:hover,
+.nav-links>li>a.active {
+  color: #c9a84c !important;
 }
 
 .nav-links>li>a::after {
-  content: '';
-  position: absolute;
-  bottom: 12px;
-  left: 18px;
-  right: 18px;
-  height: 3px; /* Slightly thicker link bar to stand up to the bold text weight */
-  background: #0a1530; 
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .3s ease;
-}
-
-.nav-links>li>a:hover {
-  color: #0a1530;
-  text-shadow: 0 0 1px rgba(10,21,48,0.3); /* Gives a soft pop depth effect on hover */
+  content: '' !important;
+  position: absolute !important;
+  bottom: 8px !important;
+  left: 10px !important;
+  right: 10px !important;
+  height: 3px !important;
+  background: #c9a84c !important; 
+  transform: scaleX(0) !important;
+  transform-origin: left !important;
+  transition: transform .3s ease !important;
 }
 
 .nav-links>li>a:hover::after,
 .nav-links>li>a.active::after {
-  transform: scaleX(1);
-}
-
-.nav-links>li>a.active {
-  color: #c9a84c; 
+  transform: scaleX(1) !important;
 }
 
 .nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-shrink: 0;
-  margin-left: auto; /* Guarantees layout blocks won't bunch up over tool buttons */
+  margin-left: auto !important; /* Pushes action block / buttons completely over to the right margin */
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-shrink: 0 !important;
 }
 
 .nav-icon {
-  width: 34px;
-  height: 34px;
-  border: 1px solid rgba(10, 21, 48, 0.2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  color: #0a1530; 
-  transition: all .2s;
-  cursor: pointer;
+  width: 36px !important;
+  height: 36px !important;
+  border: 1px solid rgba(10, 21, 48, 0.2) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #0a1530 !important;
+  text-decoration: none !important;
+  transition: all 0.2s !important;
 }
 
 .nav-icon:hover {
-  border-color: #0a1530;
-  color: #0a1530;
-  background: rgba(10, 21, 48, 0.05);
+  border-color: #0a1530 !important;
+  background: rgba(10, 21, 48, 0.05) !important;
 }
 
 .nav-cta {
-  background: #0a1530; 
-  color: #ffffff;
-  border: none;
-  padding: 10px 22px;
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all .2s;
+  background: #0a1530 !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  font-family: 'Cinzel', serif !important;
+  font-size: 10px !important;
+  font-weight: 900 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  transition: all .2s !important;
 }
 
 .nav-cta:hover {
-  background: #c9a84c; 
-  color: #0a1530;
+  background: #c9a84c !important;
+  color: #0a1530 !important;
 }
 
 .hamburger {
@@ -335,7 +321,6 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   padding: 4px;
   background: none;
   border: none;
-  margin-left: auto; /* Forces mobile drawer triggers safely to the right wall */
 }
 
 .hamburger span {
@@ -346,57 +331,10 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   transition: all .3s;
 }
 
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-.mob-menu {
-  position: fixed;
-  inset: 0;
-  z-index: 998;
-  background: #ffffff;
-  padding: calc(var(--nh) + 2rem) 2.5rem 3rem;
-  transform: translateX(100%);
-  transition: transform .4s cubic-bezier(.4,0,.2,1);
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.mob-menu.open {
-  transform: translateX(0);
-}
-
-.mob-links {
-  list-style: none;
-  margin-bottom: 2rem;
-}
-
-.mob-links li a {
-  display: block;
-  padding: 15px 0;
-  font-family: 'Cinzel', serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: #0a1530;
-  border-bottom: .5px solid rgba(10, 21, 48, 0.08);
-  transition: all .2s;
-}
-
-.mob-links li a:hover {
-  color: #c9a84c;
-  padding-left: 10px;
-}
-
-@media(max-width: 1100px) {
-  .nav-links, .nav-cta, .nav-actions { display: none; }
-  .hamburger { display: flex; }
-}
-
-@media(min-width: 1101px) {
-  .mob-menu { display: none!important; }
+/* Mobile responsive breakpoints safely collapses the line layout */
+@media(max-width: 1330px) {
+  .nav-links, .nav-icon, .nav-cta { display: none !important; }
+  .hamburger { display: flex !important; margin-left: auto !important; }
 }
   
 /* HERO */
@@ -635,8 +573,6 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media(max-width:768px){.ret-gallery{grid-template-columns:1fr 1fr;grid-template-rows:auto}.rg-main{grid-row:auto}}
 @media(max-width:500px){.rtypes{grid-template-columns:repeat(2,1fr)}}
 
-                                       PART 4
-
 /* SUDDENLY */
 .suddenly-sec{position:relative;overflow:hidden;padding:7rem clamp(1.5rem,5vw,60px);text-align:center}
 .suddenly-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1800&q=80');background-size:cover;background-position:center;filter:brightness(.16) saturate(1.3)}
@@ -743,8 +679,6 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 </head>
 <body>
 
-                                        PART 5
-
 <!-- MOBILE MENU -->
 <nav class="mob-menu" id="mobMenu">
   <ul class="mob-links">
@@ -769,10 +703,15 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 
 <!-- NAV -->
 <nav id="nav">
-<a href="#home" class="nav-logo">
-  <img src="images/ccc-logo.png" class="logo-img" alt="Christ's Climate Changers Logo">
-  <span class="logo-tag">Transforming Lives · Impacting Nations</span>
-  </a>
+  <div class="nav-logo">
+    <a href="#home" style="display: flex; align-items: center; gap: 13px;">
+      <img src="images/ccc-logo.png" class="logo-img" alt="Christ's Climate Changers Logo">
+      <div class="logo-wm">
+        <span class="logo-name">Christ's Climate Changers</span>
+        <span class="logo-tag">Transforming Lives · Impacting Nations</span>
+      </div>
+    </a>
+  </div>
 
   <ul class="nav-links">
     <li><a href="#home" class="active">Home</a></li>
