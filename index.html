@@ -418,6 +418,24 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   25% { opacity: 0; }
   100% { opacity: 0; }
 }
+
+.globe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden; /* Keeps the text inside the circle */
+}
+
+.globe-text {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  pointer-events: none;
+}  
   
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nh)+60px) clamp(1.5rem,5vw,60px) 80px;position:relative;overflow:hidden}
@@ -847,9 +865,11 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
       </div>
     </div>
 
-    <div class="hero-globe"><div class="globe"></div></div>
-    <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
-  </div>
+<div class="hero-globe">
+  <div class="globe">
+    <span class="globe-text">CCC</span>
+</div>
+</div>
 </section>
 
 <!-- SLOGAN BAND -->
