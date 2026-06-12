@@ -375,6 +375,12 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media(max-width: 1160px) {
   .nav-links, .nav-icon, .nav-cta { display: none !important; }
 }
+
+.logo-img {
+  width: 50px !important;  /* Set a fixed size to stop it from breaking layout */
+  height: auto !important;
+  display: block;
+}  
   
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nh)+60px) clamp(1.5rem,5vw,60px) 80px;position:relative;overflow:hidden}
@@ -742,15 +748,13 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo">
-    <a href="#home" style="display: flex; align-items: center; gap: 13px;">
-      <img src="images/ccc-logo-new.png" class="logo-img" alt="Christ's Climate Changers Logo">
-      <div class="logo-wm">
-        <span class="logo-name">Christ's Climate Changers</span>
-        <span class="logo-tag">Transforming Lives · Impacting Nations</span>
-      </div>
-    </a>
+<div class="nav-logo">
+  <img src="images/ccc-logo.png" class="logo-img" alt="Christ's Climate Changers Logo">
+  <div class="logo-wm">
+    <span class="logo-name">Christ's Climate Changers</span>
+    <span class="logo-tag">Transforming Lives · Impacting Nations</span>
   </div>
+</div>
 
   <ul class="nav-links">
     <li><a href="#home" class="active">Home</a></li>
