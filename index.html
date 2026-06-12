@@ -577,14 +577,61 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media(max-width:780px){.about-grid{grid-template-columns:1fr;gap:3rem}}
 
 /* PILLARS */
-.pillars-bg{background:var(--navy-light);border-top:.5px solid rgba(201,168,76,.12);border-bottom:.5px solid rgba(201,168,76,.12);position:relative;z-index:1}
-.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
-.pillar{background:var(--navy-light);border:.5px solid rgba(201,168,76,.12);padding:48px 36px;position:relative;transition:background .3s,border-color .3s;cursor:default}
-.pillar:hover{background:rgba(201,168,76,.06);border-color:rgba(201,168,76,.35);box-shadow:0 4px 20px rgba(0,0,0,.2)}
-.pillar-num{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;color:var(--gd);margin-bottom:20px}
-.pillar-title{font-family:'Cinzel',serif;font-size:14px;font-weight:500;color:var(--gl);margin-bottom:14px;letter-spacing:.06em}
-.pillar-text{font-family:'EB Garamond',serif;font-size:16px;color:var(--tm);line-height:1.8}
-@media(max-width:900px){.pillars-grid{grid-template-columns:1fr}}
+.pillars-bg {
+    background: #ffffff;
+    /* This creates the blue/gold border effect using a gradient */
+    border-top: 4px solid;
+    border-image: linear-gradient(to right, #000080, #d4af37) 1; /* Blue to Gold gradient */
+    position: relative;
+    z-index: 1;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px; /* Added a small gap so you can see the borders between pillars */
+    margin-top: 30px;
+}
+
+.pillar {
+    background: #ffffff;
+    /* Applying the same blue/gold border to each pillar */
+    border: 2px solid transparent;
+    border-image: linear-gradient(to bottom right, #000080, #d4af37) 1;
+    padding: 24px 36px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.pillar:hover {
+    background: rgba(212, 175, 55, 0.1); /* Very subtle gold tint on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Text adjustments for white background */
+.pillar-num {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: .3em;
+    color: #d4af37; /* Gold */
+    margin-bottom: 10px;
+}
+
+.pillar-title {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000080; /* Blue to match the theme */
+    margin-bottom: 10px;
+    letter-spacing: .06em;
+}
+
+.pillar-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    color: #333333;
+    line-height: 1.8;
+}
 
 /* COURSES */
 .skool-banner{border:.5px solid rgba(201,168,76,.25);background:rgba(201,168,76,.05);padding:1.5rem 2rem;margin-bottom:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
