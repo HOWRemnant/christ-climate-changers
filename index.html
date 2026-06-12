@@ -577,54 +577,45 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media(max-width:780px){.about-grid{grid-template-columns:1fr;gap:3rem}}
 
 /* PILLARS */
-.pillars-bg {
-    background: #ffffff;
-    border-top: 1px solid #d4af37; /* Clean gold border */
-    border-bottom: 1px solid #d4af37;
-    padding: 30px 0; /* Added padding to control top/bottom height */
-    position: relative;
-    z-index: 1;
-}
-
-.pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 20px; /* Reduced margin */
-}
-
-.pillar {
-    background: #ffffff;
-    border: 1px solid #000080; /* Blue border */
-    padding: 20px 20px; /* Reduced inner padding to shrink height */
-    position: relative;
+.pillars-header {
+    color: #000080; /* Dark Blue for high contrast on white */
+    font-size: 28px; /* Slightly larger to be more prominent */
+    font-weight: bold;
+    margin-top: 0px; /* Forces it to the top */
+    padding-top: 10px; /* Minimal padding */
     text-align: center;
 }
 
-.pillar-num {
-    font-family: 'Cinzel', serif;
-    font-size: 12px;
-    letter-spacing: .2em;
-    color: #d4af37; /* Gold */
-    margin-bottom: 8px;
+/* Ensure the wrapper container has minimal space at the top */
+.pillars-bg {
+    padding-top: 20px; /* Adjust this to move the content closer to the top */
+    padding-bottom: 20px;
+}
+
+/* Ensure the text is dark for the white background */
+.label {
+    color: #000080; /* Dark Blue for high visibility */
+    font-weight: bold;
+}
+
+.h2 {
+    color: #333333; /* Dark Grey/Black for readability */
+}
+
+.h2 em {
+    color: #d4af37; /* Gold accent for "Kingdom transformation" */
+    font-style: italic;
+}
+
+/* Ensure the pillar text is also dark */
+.pillar-text {
+    color: #444444; /* Dark grey for readability */
 }
 
 .pillar-title {
-    font-family: 'Cinzel', serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #000080; /* Dark Blue for high readability */
-    margin-bottom: 10px;
-    letter-spacing: .05em;
+    color: #000080; /* Blue titles */
 }
-
-.pillar-text {
-    font-family: 'EB Garamond', serif;
-    font-size: 16px;
-    color: #222222; /* Dark Grey/Black for best readability on white */
-    line-height: 1.5; /* Slightly tighter line height to reduce vertical footprint */
-}
-
+  
 /* COURSES */
 .skool-banner{border:.5px solid rgba(201,168,76,.25);background:rgba(201,168,76,.05);padding:1.5rem 2rem;margin-bottom:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .skool-banner .sup{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:4px}
@@ -1030,7 +1021,7 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 
 <!-- PILLARS -->
 <div class="pillars-bg">
-  <div class="sec" style="padding-top:80px;padding-bottom:80px">
+  <div class="sec" style="padding-top:20px;padding-bottom:40px">
     <div style="text-align:center" class="reveal">
       <div class="label" style="justify-content:center">What We Offer</div>
       <h2 class="h2" style="max-width:600px;margin:0 auto 12px">Six pillars of <em>Kingdom transformation</em></h2>
