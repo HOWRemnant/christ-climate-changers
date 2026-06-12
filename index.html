@@ -141,6 +141,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* NAV */
+/* NAV (FIXED WHITE THEME WITH DEEP NAVY ACCENTS) */
 #nav {
   position: fixed;
   top: 0;
@@ -152,16 +153,16 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   align-items: center;
   justify-content: space-between;
   padding: 0 clamp(1rem,4vw,60px);
-  background: #ffffff; /* White background */
+  background: #ffffff; /* Clean white toolbar background */
+  box-sizing: border-box;
+  transition: box-shadow .4s;
   
-  /* Thick Top streak: split 50/50 between Gold and Royal Blue */
+  /* Thick Top streak: Split 50/50 between Gold and Deep Navy */
   border-top: 8px solid transparent;
-  border-image: linear-gradient(to right, var(--g) 50%, #4169e1 50%) 1;
-  
-  transition: box-shadow .4s, border-color .4s;
+  border-image: linear-gradient(to right, var(--g) 50%, #0a1530 50%) 1;
 }
 
-/* Thick Bottom streak: split 50/50 between Royal Blue and Gold */
+/* Thick Bottom streak: Split 50/50 between Deep Navy and Gold */
 #nav::after {
   content: '';
   position: absolute;
@@ -169,13 +170,218 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   left: 0;
   right: 0;
   height: 8px;
-  background: linear-gradient(to right, #4169e1 50%, var(--g) 50%);
+  background: linear-gradient(to right, #0a1530 50%, var(--g) 50%);
   pointer-events: none;
 }
 
 #nav.scrolled {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow to match the bolder design */
+  box-shadow: 0 8px 32px rgba(10, 15, 30, 0.08);
 }
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  flex-shrink: 0;
+}
+
+.logo-crest {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.logo-crest svg {
+  width: 100%;
+  height: 100%;
+}
+
+.logo-wm {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.logo-name {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--g);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.logo-tag {
+  font-family: 'EB Garamond', serif;
+  font-size: 11px;
+  font-style: italic;
+  color: #4a5568; /* Dark charcoal text so "Transforming Lives" is visible */
+  letter-spacing: .06em;
+}
+
+/* Fixes alignment and layout grouping for items */
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links>li>a {
+  display: block;
+  padding: 0 16px;
+  line-height: calc(var(--nh) - 8px); /* Keeps text centered despite the top border */
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #0a1530; /* Dark Navy text color */
+  position: relative;
+  transition: color .2s;
+}
+
+.nav-links>li>a::after {
+  content: '';
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background: #0a1530; /* Navy underline accent on hover */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s ease;
+}
+
+/* Hover over tool items highlights them in Deep Navy */
+.nav-links>li>a:hover {
+  color: #0a1530; 
+}
+
+.nav-links>li>a:hover::after,
+.nav-links>li>a.active::after {
+  transform: scaleX(1);
+}
+
+.nav-links>li>a.active {
+  color: var(--g); /* Active items stay gold for contrast */
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.nav-icon {
+  width: 34px;
+  height: 34px;
+  border: .5px solid rgba(10, 21, 48, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #0a1530; /* Dark icons */
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.nav-icon:hover {
+  border-color: #0a1530;
+  color: #0a1530;
+  background: rgba(10, 21, 48, 0.05);
+}
+
+.nav-cta {
+  background: #0a1530; /* Deep Navy button */
+  color: #ffffff;
+  border: none;
+  padding: 10px 22px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.nav-cta:hover {
+  background: var(--g); /* Flips to gold on hover */
+  color: #0a1530;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: #0a1530; /* Dark lines for visibility */
+  transition: all .3s;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mob-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  background: #ffffff;
+  padding: calc(var(--nh) + 2rem) 2.5rem 3rem;
+  transform: translateX(100%);
+  transition: transform .4s cubic-bezier(.4,0,.2,1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.mob-menu.open {
+  transform: translateX(0);
+}
+
+.mob-links {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.mob-links li a {
+  display: block;
+  padding: 15px 0;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #0a1530;
+  border-bottom: .5px solid rgba(10, 21, 48, 0.08);
+  transition: all .2s;
+}
+
+.mob-links li a:hover {
+  color: var(--g);
+  padding-left: 10px;
+}
+
+@media(max-width: 1100px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+}
+
+@media(min-width: 1101px) {
+  .mob-menu { display: none!important; }
+}
+  
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nh)+60px) clamp(1.5rem,5vw,60px) 80px;position:relative;overflow:hidden}
 .hero-bg-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1800&q=80');background-size:cover;background-position:center 40%;filter:brightness(.22) saturate(1.3)}
