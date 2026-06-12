@@ -152,8 +152,8 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   display: flex !important;
   align-items: center !important;
   justify-content: flex-start !important; 
-  gap: 15px !important; /* Reduced gap to keep everything on one line */
-  padding: 0 20px !important; /* Snug edge padding */
+  gap: 15px !important; 
+  padding: 0 20px !important; 
   background: #ffffff !important; 
   box-sizing: border-box !important;
   
@@ -202,7 +202,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 
 .logo-name {
   font-family: 'Cinzel', serif !important;
-  font-size: 13px !important; /* Trimmed slightly to save horizontal space */
+  font-size: 13px !important; 
   font-weight: 900 !important; 
   color: #0a1530 !important; 
   letter-spacing: .04em !important;
@@ -220,7 +220,6 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   display: block !important;
 }
 
-/* Fits all 9 items side-by-side cleanly across your deskbar width */
 .nav-links {
   display: flex !important;
   list-style: none !important;
@@ -231,23 +230,26 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 
 .nav-links>li>a {
   display: block !important;
-  padding: 0 8px !important; /* Narrower inner-padding so text strings sit tight */
+  padding: 0 8px !important; 
   line-height: calc(var(--nh) - 12px) !important; 
   font-family: 'Cinzel', serif !important;
-  font-size: 11px !important; /* Balanced legible scale */
-  font-weight: 900 !important; /* FORCES LINKS TO REMAIN COMPLETELY BOLD */
+  font-size: 11px !important; 
+  font-weight: 900 !important; 
   letter-spacing: .04em !important;
   text-transform: uppercase !important;
   color: #0a1530 !important; 
   position: relative;
   transition: color .2s ease !important;
-  white-space: nowrap !important; /* Absolute guard against stacking onto 2 lines */
+  white-space: nowrap !important; 
 }
 
-/* Hover highlights */
-.nav-links>li>a:hover,
-.nav-links>li>a.active {
+.nav-links>li>a:hover {
   color: #c9a84c !important;
+}
+
+/* Changed active menu color to match the text highlights on hover */
+.nav-links>li>a.active {
+  color: #0a1530 !important;
 }
 
 .nav-links>li>a::after {
@@ -269,7 +271,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 .nav-actions {
-  margin-left: auto !important; /* Clean positioning shift to far right boundary */
+  margin-left: auto !important; 
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
@@ -316,7 +318,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 .hamburger {
-  display: none;
+  display: none !important;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
@@ -333,12 +335,45 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   transition: all .3s;
 }
 
-/* Mobile Responsive Breakpoint Fallback */
-/* Only triggers mobile menu now on small laptop screens or tablets */
-@media(max-width: 1080px) {
-  .nav-links, .nav-icon, .nav-cta { display: none !important; }
-  .hamburger { display: flex !important; margin-left: auto !important; }
+/* MOBILE PANEL OVERRIDES */
+.mob-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  background: rgba(10,15,30,.97);
+  backdrop-filter: blur(24px);
+  padding: calc(var(--nh) + 2rem) 2.5rem 3rem;
+  transform: translateX(100%);
+  transition: transform .4s cubic-bezier(.4,0,.2,1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
+
+.mob-menu.open {
+  transform: translateX(0);
+}
+
+.mob-links {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.mob-links li a {
+  display: block;
+  padding: 15px 0;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+  border-bottom: .5px solid rgba(255,255,255,.07);
+  transition: all .2s;
+}
+
+/* RESPONSIVE FALLBACKS */
+@media(max-width: 1160px) {
+  .nav-links, .nav-icon, .nav-cta { display: none !important; }
   
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nh)+60px) clamp(1.5rem,5vw,60px) 80px;position:relative;overflow:hidden}
