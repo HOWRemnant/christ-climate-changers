@@ -13,22 +13,32 @@
   --g:#c9a84c;--gl:#e8c87a;--gs:#f5da82;--gd:#7a5c1e;--gp:#f5e6c0;
   --cr:#f6f0e5;--cd:#ede3ce;--tm:#8a9ab5;
   --tl:rgba(255,255,255,.72);--tf:rgba(255,255,255,.42);
-  --nh:70px;
+  --nh:75px; /* Unified with navigation wrapper bounds */
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.75;background:var(--navy);color:var(--cr);overflow-x:hidden}
+
+/* FIX: Blocks the body noise overlay pattern from clouding up the clean ivory navigation bar background */
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
+body:has(#nav) { position: relative; }
+
 a{text-decoration:none;color:inherit}
 img{display:block;width:100%;height:100%;object-fit:cover}
 
-/*CSS*/
+/* FIX: Removes the problematic burned-in navy circular background ring on image crest types */
+.nav-logo .logo-crest, 
 .nav-logo img.logo-img {
-  height: 65px !important;
+  height: 52px !important;
   width: auto !important;
-  max-height: 70px !important;
+  max-height: 52px !important;
   object-fit: contain !important;
   display: block !important;
+  border-radius: 50%;
+  
+  /* Blends out the legacy dark circle canvas seamlessly on cream backdrops */
+  mix-blend-mode: multiply; 
+  filter: contrast(1.05) brightness(1.02);
 }
 
 .ccc-hero-title {
@@ -47,7 +57,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 400;
-  color: var(--g); /* gold */
+  color: var(--g);
   text-transform: none;
   letter-spacing: .03em;
 }
@@ -60,41 +70,28 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   margin-top: 0.8rem;
 }
 
-.hero-content {
-  margin-top: -2rem;
-}
+.hero-content { margin-top: -2rem; }
+.ccc-hero-title { margin-top: -1rem; }
+.hero-bg-img { background-color: #1a2644 !important; }
+.hero-over { background: rgba(0, 0, 0, 0.18) !important; }
 
-.ccc-hero-title {
-  margin-top: -1rem;
-}
-
-.hero-bg-img {
-  background-color: #1a2644 !important;
-}
-
-.hero-over {
-  background: rgba(0, 0, 0, 0.18) !important;
-}
-
-/* Ensure the grid wrapper handles the scaling beautifully */
 .coaching-visual {
     position: relative;
     width: 100%;
     height: auto;
-    min-height: 300px; /* Prevents collapsing on small screens */
+    min-height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--navy-mid); /* Fills any extra gaps nicely */
+    background: var(--navy-mid);
     overflow: hidden;
 }
 
-/* Force the image to reveal its full width and height without cropping */
 .coaching-visual img {
     width: 100%;
     height: 100%;
-    max-height: 550px; /* Prevents it from getting too tall on massive screens */
-    object-fit: contain; /* Tells the browser: do not crop, fit everything inside */
+    max-height: 550px;
+    object-fit: contain;
     display: block;
 }
 
@@ -140,88 +137,66 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* NAV */
+/* FIXED NAVIGATION SYSTEM RULES */
 #nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 999;
-  height: 75px; /* Fixed elegant height */
+  height: var(--nh);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 4%;
-  background: #fdfbf7; /* Solid ultra-premium light ivory cream background */
+  background: #fdfbf7 !important; /* Premium light ivory cream color block */
   box-shadow: 0 4px 25px rgba(10, 21, 48, 0.04);
   transition: all .3s ease;
   border-bottom: none;
 }
 
-/* HIGH-END ROYAL BLUE AND GOLD STREAK */
+/* THE ACCURATE FULL-WIDTH ROYAL BLUE AND GOLD ACCENT STREAK */
 #nav::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 3px; /* Precise, high-end profile line thickness */
+  height: 3px; /* True premium profile measurement */
   background: linear-gradient(
     to right, 
-    #002060 0%,    /* Rich Deep Royal Blue */
-    #1e40af 35%,   /* Radiant Vibrant Blue */
-    #c9a84c 70%,   /* Heritage Kingdom Gold */
-    #f2d27d 100%   /* Shimmering Top Gold Accent */
-  );
+    #0a1d37 0%,    /* True Heritage Royal Deep Blue */
+    #1d4ed8 35%,   /* Brilliant Royal Blue Core */
+    #c9a84c 72%,   /* Classic Premium Gold */
+    #f0d180 100%   /* Shimmer Highlight Gold */
+  ) !important;
   z-index: 10;
 }
 
 #nav.scrolled {
-  background: #fdfbf7;
-  box-shadow: 0 6px 30px rgba(10, 25, 64, 0.08);
+  background: #fdfbf7 !important;
+  box-shadow: 0 6px 30px rgba(10, 25, 64, 0.07);
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex-shrink: 0;
-}
-
-/* FIXING THE LOGO BACKGROUND COLOR ANOMALY */
-.logo-crest {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.logo-crest svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* Forces any internal dark background circles inside the logo SVG to become transparent */
-.logo-crest svg circle[fill="#0a0f1e"], 
-.logo-crest svg circle[fill*="0a0f"],
-.logo-crest svg path[fill="#0a0f1e"] {
-  fill: none !important;
 }
 
 .logo-wm {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
 }
 
 .logo-name {
   font-family: 'Cinzel', serif;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 600;
-  color: #0b1a30; /* Refined soft deep sapphire navy */
-  letter-spacing: .14em;
+  color: #0b1a30 !important; /* Deep royal charcoal color instead of solid flat black */
+  letter-spacing: .15em;
   text-transform: uppercase;
 }
 
@@ -229,26 +204,26 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   font-family: 'EB Garamond', serif;
   font-size: 11px;
   font-style: italic;
-  color: #555e6d; /* Muted corporate slate subtext */
-  letter-spacing: .02em;
+  color: #555e6d !important; /* Muted corporate slate typography weight */
+  letter-spacing: .03em;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 6px;
+  gap: 8px;
 }
 
 .nav-links>li>a {
   display: block;
   padding: 0 14px;
-  line-height: 75px;
+  line-height: var(--nh);
   font-family: 'Cinzel', serif;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: .16em; /* Elegant breathing room for menu links */
+  letter-spacing: .15em;
   text-transform: uppercase;
-  color: #1e293b; /* Readable charcoal navy text */
+  color: #212936 !important; /* Accessible dark denim navy link presentation */
   position: relative;
   transition: color .2s ease;
 }
@@ -267,7 +242,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 .nav-links>li>a:hover {
-  color: #7a5c1e; /* Classic gold hover effect */
+  color: #7a5c1e !important;
 }
 
 .nav-links>li>a:hover::after,
@@ -276,7 +251,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 .nav-links>li>a.active {
-  color: #7a5c1e;
+  color: #7a5c1e !important;
 }
 
 .nav-actions {
@@ -287,10 +262,10 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 .nav-cta {
-  background: #002060; /* Sleek royal navy color profile */
-  color: #fdfbf7;      /* Cream font inside button */
+  background: #0a1d37 !important; /* Royal navy solid theme configuration button */
+  color: #fdfbf7 !important;      /* Cream text inside the registration block */
   border: none;
-  padding: 9px 20px;
+  padding: 10px 22px;
   font-family: 'Cinzel', serif;
   font-size: 10px;
   font-weight: 600;
@@ -301,8 +276,8 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 .nav-cta:hover {
-  background: #7a5c1e;
-  color: #ffffff;
+  background: #7a5c1e !important;
+  color: #ffffff !important;
 }
 
 .hamburger {
@@ -319,28 +294,19 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   display: block;
   width: 22px;
   height: 2px;
-  background: #0b1a30;
+  background: #0b1a30 !important;
   transition: all .3s ease;
 }
 
-.hamburger.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-
-.hamburger.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .mob-menu {
   position: fixed;
   inset: 0;
   z-index: 998;
-  background: #fdfbf7;
+  background: #fdfbf7 !important;
   padding: 100px 2.5rem 3rem;
   transform: translateX(100%);
   transition: transform .4s cubic-bezier(.4, 0, .2, 1);
@@ -349,14 +315,8 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   flex-direction: column;
 }
 
-.mob-menu.open {
-  transform: translateX(0);
-}
-
-.mob-links {
-  list-style: none;
-  margin-bottom: 2rem;
-}
+.mob-menu.open { transform: translateX(0); }
+.mob-links { list-style: none; margin-bottom: 2rem; }
 
 .mob-links li a {
   display: block;
@@ -365,19 +325,20 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   font-size: 1.1rem;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: #0b1a30;
+  color: #0b1a30 !important;
   border-bottom: 1px solid rgba(11, 26, 48, 0.05);
   transition: all .2s ease;
 }
 
 @media(max-width: 1100px) {
-  .nav-links, .nav-cta { display: none; }
-  .hamburger { display: flex; }
+  .nav-links, .nav-cta { display: none !important; }
+  .hamburger { display: flex !important; }
 }
 
 @media(min-width: 1101px) {
   .mob-menu { display: none !important; }
 }
+</style>
   
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nh)+60px) clamp(1.5rem,5vw,60px) 80px;position:relative;overflow:hidden}
