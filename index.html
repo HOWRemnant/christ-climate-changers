@@ -13,33 +13,17 @@
   --g:#c9a84c;--gl:#e8c87a;--gs:#f5da82;--gd:#7a5c1e;--gp:#f5e6c0;
   --cr:#f6f0e5;--cd:#ede3ce;--tm:#8a9ab5;
   --tl:rgba(255,255,255,.72);--tf:rgba(255,255,255,.42);
-  --nh:75px; /* Unified with navigation wrapper bounds */
+  --nh:75px; 
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.75;background:var(--navy);color:var(--cr);overflow-x:hidden}
 
-/* FIX: Blocks the body noise overlay pattern from clouding up the clean ivory navigation bar background */
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
 body:has(#nav) { position: relative; }
 
 a{text-decoration:none;color:inherit}
 img{display:block;width:100%;height:100%;object-fit:cover}
-
-/* FIX: Removes the problematic burned-in navy circular background ring on image crest types */
-.nav-logo .logo-crest, 
-.nav-logo img.logo-img {
-  height: 52px !important;
-  width: auto !important;
-  max-height: 52px !important;
-  object-fit: contain !important;
-  display: block !important;
-  border-radius: 50%;
-  
-  /* Blends out the legacy dark circle canvas seamlessly on cream backdrops */
-  mix-blend-mode: multiply; 
-  filter: contrast(1.05) brightness(1.02);
-}
 
 .ccc-hero-title {
   text-align: center;
@@ -137,135 +121,133 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* FIXED NAVIGATION SYSTEM RULES */
-/* NAV */
+/* MAIN NAVIGATION RULES */
 #nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999; /* Higher z-index to stay above everything cleanly */
-  height: 75px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 clamp(1rem, 4vw, 60px);
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 99999 !important;
+  height: var(--nh) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 clamp(1rem, 4vw, 60px) !important;
   
-  /* CRITICAL FIX: A 100% solid premium ivory cream background with no transparency */
-  background-color: #fcf9f2 !important; 
-  background-image: none !important;
-  box-shadow: 0 4px 30px rgba(10, 21, 48, 0.06);
-  transition: all .3s ease;
-  border-bottom: none;
+  /* Solid, pure ivory cream bar with no dark bleed-through */
+  background: #fcf9f2 !important;
+  background-color: #fcf9f2 !important;
+  box-shadow: 0 4px 30px rgba(10, 21, 48, 0.06) !important;
+  border-bottom: none !important;
+  transition: all .3s ease !important;
 }
 
-/* THE PERFECT LUXURY ROYAL BLUE AND GOLD ACCENT STREAK */
+/* THE HORIZONTAL ROYAL BLUE & GOLD STREAK */
 #nav::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px; /* Slightly thicker for premium visibility */
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 4px !important;
   background: linear-gradient(
     to right, 
-    #0a2240 0%,    /* Royal Deep Blue start */
-    #1d4ed8 35%,   /* Vibrant Royal Blue core */
-    #c9a84c 70%,   /* Heritage Metallic Gold transition */
-    #f3d280 100%   /* Shimmering Highlight Gold end */
+    #0a2240 0%,    /* Deep Royal Blue Edge */
+    #1d4ed8 35%,   /* Vibrant Core Royal Blue */
+    #c9a84c 70%,   /* Rich Kingdom Gold */
+    #f3d280 100%   /* Bright Highlight Gold Accent */
   ) !important;
-  z-index: 99999;
+  z-index: 999999 !important;
 }
 
 #nav.scrolled {
+  background: #fcf9f2 !important;
   background-color: #fcf9f2 !important;
-  box-shadow: 0 8px 32px rgba(10, 25, 64, 0.1);
+  box-shadow: 0 8px 32px rgba(10, 25, 64, 0.1) !important;
 }
 
 .nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  flex-shrink: 0;
+  display: flex !important;
+  align-items: center !important;
+  gap: 13px !important;
+  flex-shrink: 0 !important;
 }
 
-/* CRITICAL LOGO FIX: Elegant filter turns your dark background crest golden-bronze */
+/* BLENDS THE DARK CIRCLE CANVAS IN YOUR LOGO IMAGE OUT ENTIRELY */
 .nav-logo img.logo-img {
-  height: 55px !important;
+  height: 54px !important;
   width: auto !important;
-  max-height: 55px !important;
+  max-height: 54px !important;
   object-fit: contain !important;
   display: block !important;
-  border-radius: 50%;
-  
-  /* Magically flips the dark circle background into a luxury light metallic styling */
-  filter: invert(0.1) sepia(0.6) saturate(1.8) hue-rotate(5deg) brightness(1.05);
-  mix-blend-mode: darken;
+  border-radius: 50% !important;
+  filter: invert(0.08) sepia(0.5) saturate(1.7) hue-rotate(4deg) brightness(1.06) !important;
+  mix-blend-mode: darken !important;
 }
 
 .logo-wm {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
 }
 
 .logo-name {
-  font-family: 'Cinzel', serif;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: #0c1b33 !important; /* Premium dark navy typography (readable on cream) */
-  letter-spacing: .15em;
-  text-transform: uppercase;
+  font-family: 'Cinzel', serif !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  color: #0c1b33 !important; /* Elegant deep readable charcoal blue text */
+  letter-spacing: .15em !important;
+  text-transform: uppercase !important;
 }
 
 .logo-tag {
-  font-family: 'EB Garamond', serif;
-  font-size: 11px;
-  font-style: italic;
-  color: #555e6d !important; /* Elegant slate secondary text */
-  letter-spacing: .04em;
+  font-family: 'EB Garamond', serif !important;
+  font-size: 11px !important;
+  font-style: italic !important;
+  color: #555e6d !important;
+  letter-spacing: .04em !important;
 }
 
 .nav-links {
-  display: flex;
-  list-style: none;
-  gap: 6px;
+  display: flex !important;
+  list-style: none !important;
+  gap: 6px !important;
 }
 
 .nav-links>li>a {
-  display: block;
-  padding: 0 14px;
-  line-height: 75px;
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: #1e293b !important; /* Soft deep navy links for accessibility */
-  position: relative;
-  transition: color .2s ease;
+  display: block !important;
+  padding: 0 14px !important;
+  line-height: var(--nh) !important;
+  font-family: 'Cinzel', serif !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+  color: #1e293b !important;
+  position: relative !important;
+  transition: color .2s ease !important;
 }
 
 .nav-links>li>a::after {
-  content: '';
-  position: absolute;
-  bottom: 16px;
-  left: 14px;
-  right: 14px;
-  height: 2px;
-  background: #c9a84c;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .25s ease;
+  content: '' !important;
+  position: absolute !important;
+  bottom: 16px !important;
+  left: 14px !important;
+  right: 14px !important;
+  height: 2px !important;
+  background: #c9a84c !important;
+  transform: scaleX(0) !important;
+  transform-origin: left !important;
+  transition: transform .25s ease !important;
 }
 
 .nav-links>li>a:hover {
-  color: #7a5c1e !important; /* Gold hue on hover */
+  color: #7a5c1e !important;
 }
 
 .nav-links>li>a:hover::after,
 .nav-links>li>a.active::after {
-  transform: scaleX(1);
+  transform: scaleX(1) !important;
 }
 
 .nav-links>li>a.active {
@@ -273,44 +255,44 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 .nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-shrink: 0 !important;
 }
 
 .nav-icon {
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(12, 27, 51, 0.15);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
+  width: 36px !important;
+  height: 36px !important;
+  border: 1px solid rgba(12, 27, 51, 0.15) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 14px !important;
   color: #1e293b !important;
-  transition: all .2s ease;
-  cursor: pointer;
+  transition: all .2s ease !important;
+  cursor: pointer !important;
 }
 
 .nav-icon:hover {
-  border-color: #c9a84c;
+  border-color: #c9a84c !important;
   color: #7a5c1e !important;
-  background: rgba(201, 168, 76, 0.08);
+  background: rgba(201, 168, 76, 0.08) !important;
 }
 
 .nav-cta {
-  background: #0a2240 !important; /* Deep royal navy button canvas anchor */
-  color: #fcf9f2 !important;      /* Cream text font inside button */
-  border: none;
-  padding: 10px 22px;
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all .2s ease;
+  background: #0a2240 !important;
+  color: #fcf9f2 !important;
+  border: none !important;
+  padding: 10px 22px !important;
+  font-family: 'Cinzel', serif !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: all .2s ease !important;
 }
 
 .nav-cta:hover {
@@ -319,53 +301,53 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 .hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 4px;
-  background: none;
-  border: none;
+  display: none !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+  cursor: pointer !important;
+  padding: 4px !important;
+  background: none !important;
+  border: none !important;
 }
 
 .hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: #0c1b33 !important; /* Dark responsive lines for mobile display screen */
-  transition: all .3s ease;
+  display: block !important;
+  width: 22px !important;
+  height: 2px !important;
+  background: #0c1b33 !important;
+  transition: all .3s ease !important;
 }
 
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg) !important; }
+.hamburger.open span:nth-child(2) { opacity: 0 !important; transform: scaleX(0) !important; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) !important; }
 
 .mob-menu {
-  position: fixed;
-  inset: 0;
-  z-index: 998;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 998 !important;
   background: #fcf9f2 !important;
-  padding: 100px 2.5rem 3rem;
-  transform: translateX(100%);
-  transition: transform .4s cubic-bezier(.4, 0, .2, 1);
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
+  padding: 100px 2.5rem 3rem !important;
+  transform: translateX(100%) !important;
+  transition: transform .4s cubic-bezier(.4, 0, .2, 1) !important;
+  overflow-y: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
-.mob-menu.open { transform: translateX(0); }
-.mob-links { list-style: none; margin-bottom: 2rem; }
+.mob-menu.open { transform: translateX(0) !important; }
+.mob-links { list-style: none !important; margin-bottom: 2rem !important; }
 
 .mob-links li a {
-  display: block;
-  padding: 16px 0;
-  font-family: 'Cinzel', serif;
-  font-size: 1.1rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
+  display: block !important;
+  padding: 16px 0 !important;
+  font-family: 'Cinzel', serif !important;
+  font-size: 1.1rem !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
   color: #0c1b33 !important;
-  border-bottom: 1px solid rgba(12, 27, 51, 0.06);
-  transition: all .2s ease;
+  border-bottom: 1px solid rgba(12, 27, 51, 0.06) !important;
+  transition: all .2s ease !important;
 }
 
 @media(max-width: 1100px) {
