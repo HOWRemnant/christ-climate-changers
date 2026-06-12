@@ -577,25 +577,20 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 @media(max-width:780px){.about-grid{grid-template-columns:1fr;gap:3rem}}
 
 /* PILLARS */
-/* --- FIXED PILLAR LAYOUT --- */
-
-/* 1. Container: Limits the overall width and centers everything */
 .pillars-bg {
     background: #ffffff !important;
     padding: 40px 0 !important;
 }
 
-/* 2. Grid: Forces 3 columns with a maximum width so they aren't stretched */
 .pillars-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    max-width: 1200px; /* Constraints the width */
-    margin: 30px auto; /* Centers the grid on the page */
+    max-width: 1200px;
+    margin: 30px auto;
     padding: 0 20px;
 }
 
-/* 3. Pillar Box: Fixed sizing */
 .pillar {
     background: #ffffff !important;
     border: 1px solid #000080 !important;
@@ -604,12 +599,26 @@ img{display:block;width:100%;height:100%;object-fit:cover}
     flex-direction: column;
 }
 
-/* 4. Responsive: Stacks them on smaller screens */
-@media(max-width: 900px) {
-    .pillars-grid {
-        grid-template-columns: 1fr;}
+/* FORCED COLOR OVERRIDES FOR READABILITY */
+.pillar-num { 
+    color: #d4af37 !important; /* Gold */
+    font-weight: bold;
 }
 
+.pillar-title { 
+    color: #000080 !important; /* Dark Blue */
+    font-weight: 700;
+}
+
+.pillar-text { 
+    color: #222222 !important; /* Dark Grey/Black for contrast */
+    line-height: 1.6;
+}
+
+/* Fix for the "Six Pillars" Header text visibility */
+.h2 { color: #333333 !important; }
+.h2 em { color: #d4af37 !important; }
+  
 /* COURSES */
 .skool-banner{border:.5px solid rgba(201,168,76,.25);background:rgba(201,168,76,.05);padding:1.5rem 2rem;margin-bottom:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .skool-banner .sup{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:4px}
