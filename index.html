@@ -151,48 +151,43 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 clamp(1rem, 4vw, 60px);
+  padding: 0 clamp(1.2rem, 4vw, 60px);
   
-  /* Background flipped to premium cream with high opacity blur */
-  background: rgba(246, 240, 229, 0.95); 
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transition: box-shadow .4s, background .4s;
-}
-
-/* THE ACCURATE ROYAL BLUE AND GOLD STREAK */
-#nav::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px; /* Slightly thicker to make the colors pop crisp against the cream */
-  background: linear-gradient(
+  /* Upgraded to a pristine, solid luxury eggshell cream background */
+  background: #fdfbf7; 
+  
+  /* Precision gradient border acting directly as the structure line */
+  border-bottom: 3.5px solid transparent;
+  border-image: linear-gradient(
     to right, 
-    #0a2558 0%,    /* True Deep Royal Navy Blue */
-    #1e40af 40%,   /* Rich Vibrant Royal Blue */
-    #c9a84c 75%,   /* Core Luxury Gold */
-    #e8c87a 100%   /* Shimmering Highlight Gold */
-  );
-  z-index: 10;
+    #0a2540 0%,    /* Rich Midnight Royal Blue */
+    #1d4ed8 35%,   /* Vibrant Electric Royal Blue */
+    #c9a84c 70%,   /* True Metallic Gold */
+    #f3d993 100%   /* Refined Shimmer Gold Accent */
+  ) 1;
+  
+  box-shadow: 0 4px 20px rgba(122, 92, 30, 0.05);
+  transition: all .3s ease;
 }
 
 #nav.scrolled {
-  box-shadow: 0 4px 30px rgba(122, 92, 30, 0.12);
-  background: #f6f0e5; /* Flat solid cream on scroll for a premium anchor */
+  background: #fdfbf7;
+  box-shadow: 0 8px 30px rgba(10, 37, 64, 0.08);
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 14px;
   flex-shrink: 0;
 }
 
 .logo-crest {
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 
@@ -204,60 +199,63 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .logo-wm {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .logo-name {
   font-family: 'Cinzel', serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
-  color: #0a1530; /* Flipped from white to deep navy for crystal clear reading */
-  letter-spacing: .18em;
+  color: #0c1b33; /* High-contrast elegant dark sapphire blue */
+  letter-spacing: .16em;
   text-transform: uppercase;
+  text-shadow: 0px 1px 1px rgba(255,255,255,0.5);
 }
 
 .logo-tag {
   font-family: 'EB Garamond', serif;
   font-size: 11px;
   font-style: italic;
-  color: #5c6475; /* Slate tone for the subtitle text */
-  letter-spacing: .06em;
+  color: #525c6e; /* Slate grey secondary subtitle text */
+  letter-spacing: .04em;
+  line-height: 1.2;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
+  gap: 4px;
 }
 
 .nav-links>li>a {
   display: block;
-  padding: 0 12px;
+  padding: 0 14px;
   line-height: var(--nh);
   font-family: 'Cinzel', serif;
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 600;
-  letter-spacing: .18em;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  color: #2c354a; /* Dark denim charcoal for accessible menu text reading */
+  color: #1e293b; /* Deep slate navy for high contrast visibility */
   position: relative;
-  transition: color .2s;
+  transition: color .2s ease;
 }
 
 .nav-links>li>a::after {
   content: '';
   position: absolute;
-  bottom: 15px;
-  left: 12px;
-  right: 12px;
+  bottom: 12px;
+  left: 14px;
+  right: 14px;
   height: 2px;
-  background: var(--g);
+  background: #c9a84c;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform .3s ease;
+  transition: transform .25s ease;
 }
 
 .nav-links>li>a:hover {
-  color: var(--gd); /* Darker golden glow on hover */
+  color: #7a5c1e; /* Deep heritage gold hue */
 }
 
 .nav-links>li>a:hover::after,
@@ -266,53 +264,55 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 .nav-links>li>a.active {
-  color: var(--gd);
+  color: #7a5c1e;
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-shrink: 0;
 }
 
 .nav-icon {
-  width: 34px;
-  height: 34px;
-  border: .5px solid rgba(10, 21, 48, 0.2);
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(12, 27, 51, 0.12);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  color: #2c354a;
-  transition: all .2s;
+  color: #1e293b;
+  transition: all .2s ease;
   cursor: pointer;
 }
 
 .nav-icon:hover {
-  border-color: var(--gd);
-  color: var(--gd);
-  background: rgba(201, 168, 76, 0.1);
+  border-color: #c9a84c;
+  color: #7a5c1e;
+  background: rgba(201, 168, 76, 0.06);
 }
 
 .nav-cta {
-  background: #0a2558; /* Premium dark navy button block */
-  color: #f6f0e5;      /* Cream text inside the button */
+  background: #0a2540; /* Solid majestic navy button profile anchor */
+  color: #fdfbf7;      /* Clean cream button font */
   border: none;
-  padding: 9px 20px;
+  padding: 10px 22px;
   font-family: 'Cinzel', serif;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: .16em;
+  letter-spacing: .14em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all .2s;
+  transition: all .2s ease;
+  box-shadow: 0 2px 10px rgba(10, 37, 64, 0.1);
 }
 
 .nav-cta:hover {
-  background: var(--gd);
-  color: #fff;
+  background: #7a5c1e;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(122, 92, 30, 0.2);
 }
 
 .hamburger {
@@ -329,8 +329,8 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   display: block;
   width: 22px;
   height: 2px;
-  background: #0a1530; /* Dark hamburger bars for mobile visibility */
-  transition: all .3s;
+  background: #0c1b33; /* Dark clean hamburger handles */
+  transition: all .3s ease;
 }
 
 .hamburger.open span:nth-child(1) {
@@ -350,11 +350,10 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   position: fixed;
   inset: 0;
   z-index: 998;
-  background: rgba(246, 240, 229, 0.98); /* Cream mobile overlay window */
-  backdrop-filter: blur(24px);
+  background: #fdfbf7; /* Consistent solid elite mobile treatment drawer */
   padding: calc(var(--nh) + 2rem) 2.5rem 3rem;
   transform: translateX(100%);
-  transition: transform .4s cubic-bezier(.4,0,.2,1);
+  transition: transform .4s cubic-bezier(.4, 0, .2, 1);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -371,19 +370,19 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 
 .mob-links li a {
   display: block;
-  padding: 15px 0;
+  padding: 16px 0;
   font-family: 'Cinzel', serif;
   font-size: 1.1rem;
-  letter-spacing: .08em;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  color: #0a1530;
-  border-bottom: .5px solid rgba(10, 21, 48, 0.1);
-  transition: all .2s;
+  color: #0c1b33;
+  border-bottom: 1px solid rgba(12, 27, 51, 0.06);
+  transition: all .2s ease;
 }
 
 .mob-links li a:hover {
-  color: var(--gd);
-  padding-left: 10px;
+  color: #7a5c1e;
+  padding-left: 8px;
 }
 
 @media(max-width: 1100px) {
