@@ -141,7 +141,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* NAV */
-/* NAV (FORCED LEFT ALIGNMENT, MAXIMUM FONT BOLDNESS & SHINY STRIPES) */
+/* NAV (FORCED DESKTOP INLINE LAYOUT, BOLD TEXT & SHINY STRIPES) */
 #nav {
   position: fixed;
   top: 0;
@@ -151,13 +151,13 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   height: var(--nh);
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start !important; /* Forces layout to pull left */
-  gap: 24px !important; /* Balanced gap between logo, text, and your links */
-  padding: 0 clamp(1rem, 3vw, 40px) !important;
+  justify-content: flex-start !important; 
+  gap: 15px !important; /* Reduced gap to keep everything on one line */
+  padding: 0 20px !important; /* Snug edge padding */
   background: #ffffff !important; 
   box-sizing: border-box !important;
   
-  /* Thick Shiny Top Stripe (Metallic Gold transitioning to Deep Navy) */
+  /* Thick Shiny Top Stripe */
   border-top: 12px solid transparent !important;
   border-image: linear-gradient(
     to right, 
@@ -166,7 +166,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   ) 1 !important;
 }
 
-/* Thick Shiny Bottom Stripe (Deep Navy transitioning to Metallic Gold) */
+/* Thick Shiny Bottom Stripe */
 #nav::after {
   content: '' !important;
   position: absolute !important;
@@ -202,48 +202,49 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 
 .logo-name {
   font-family: 'Cinzel', serif !important;
-  font-size: 14px !important;
-  font-weight: 900 !important; /* Boldest treatment for company name */
-  color: #0a1530 !important; /* Crisp dark navy readability */
-  letter-spacing: .06em !important;
+  font-size: 13px !important; /* Trimmed slightly to save horizontal space */
+  font-weight: 900 !important; 
+  color: #0a1530 !important; 
+  letter-spacing: .04em !important;
   text-transform: uppercase !important;
   line-height: 1.2 !important;
 }
 
 .logo-tag {
   font-family: 'Lato', sans-serif !important; 
-  font-size: 10px !important;
-  font-weight: 700 !important; /* Bold layout subtext */
-  color: #c9a84c !important; /* Gold contrasting accent color */
-  letter-spacing: .03em !important;
+  font-size: 9px !important;
+  font-weight: 700 !important; 
+  color: #c9a84c !important; 
+  letter-spacing: .02em !important;
   line-height: 1.2 !important;
   display: block !important;
 }
 
-/* Packs the tool-links next to each other snugly to prevent right-edge clipping */
+/* Fits all 9 items side-by-side cleanly across your deskbar width */
 .nav-links {
   display: flex !important;
   list-style: none !important;
   margin: 0 !important;
   padding: 0 !important;
-  gap: 2px !important; 
+  gap: 0px !important; 
 }
 
 .nav-links>li>a {
   display: block !important;
-  padding: 0 10px !important;
+  padding: 0 8px !important; /* Narrower inner-padding so text strings sit tight */
   line-height: calc(var(--nh) - 12px) !important; 
   font-family: 'Cinzel', serif !important;
-  font-size: 12px !important;
-  font-weight: 900 !important; /* FORCES ALL CAPS TOOL LINKS TO BE COMPLETELY BOLD */
-  letter-spacing: .08em !important;
+  font-size: 11px !important; /* Balanced legible scale */
+  font-weight: 900 !important; /* FORCES LINKS TO REMAIN COMPLETELY BOLD */
+  letter-spacing: .04em !important;
   text-transform: uppercase !important;
   color: #0a1530 !important; 
   position: relative;
   transition: color .2s ease !important;
+  white-space: nowrap !important; /* Absolute guard against stacking onto 2 lines */
 }
 
-/* Hover highlights menu items to clean Navy or Gold underline spikes */
+/* Hover highlights */
 .nav-links>li>a:hover,
 .nav-links>li>a.active {
   color: #c9a84c !important;
@@ -253,8 +254,8 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   content: '' !important;
   position: absolute !important;
   bottom: 8px !important;
-  left: 10px !important;
-  right: 10px !important;
+  left: 8px !important;
+  right: 8px !important;
   height: 3px !important;
   background: #c9a84c !important; 
   transform: scaleX(0) !important;
@@ -268,16 +269,16 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 .nav-actions {
-  margin-left: auto !important; /* Pushes action block / buttons completely over to the right margin */
+  margin-left: auto !important; /* Clean positioning shift to far right boundary */
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;
+  gap: 8px !important;
   flex-shrink: 0 !important;
 }
 
 .nav-icon {
-  width: 36px !important;
-  height: 36px !important;
+  width: 32px !important;
+  height: 32px !important;
   border: 1px solid rgba(10, 21, 48, 0.2) !important;
   border-radius: 50% !important;
   display: flex !important;
@@ -297,15 +298,16 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   background: #0a1530 !important;
   color: #ffffff !important;
   border: none !important;
-  padding: 10px 20px !important;
+  padding: 8px 14px !important;
   font-family: 'Cinzel', serif !important;
   font-size: 10px !important;
   font-weight: 900 !important;
-  letter-spacing: .12em !important;
+  letter-spacing: .08em !important;
   text-transform: uppercase !important;
   cursor: pointer !important;
   text-decoration: none !important;
   transition: all .2s !important;
+  white-space: nowrap !important;
 }
 
 .nav-cta:hover {
@@ -331,8 +333,9 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   transition: all .3s;
 }
 
-/* Mobile responsive breakpoints safely collapses the line layout */
-@media(max-width: 1330px) {
+/* Mobile Responsive Breakpoint Fallback */
+/* Only triggers mobile menu now on small laptop screens or tablets */
+@media(max-width: 1080px) {
   .nav-links, .nav-icon, .nav-cta { display: none !important; }
   .hamburger { display: flex !important; margin-left: auto !important; }
 }
