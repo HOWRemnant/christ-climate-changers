@@ -381,6 +381,25 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   height: auto !important;
   display: block;
 }  
+
+/* Define the animation sequence */
+@keyframes climateCycle {
+  0%, 20% { filter: brightness(.3) saturate(1.2) hue-rotate(0deg); }   /* Base Space/Earth */
+  30%, 50% { filter: brightness(.5) saturate(2.5) hue-rotate(90deg); } /* Green/Sunny */
+  60%, 80% { filter: brightness(.4) saturate(0.8) hue-rotate(200deg); } /* Rainy/Blue */
+  90%, 100% { filter: brightness(.6) saturate(0.5) hue-rotate(300deg); } /* Snowy/White */
+}
+
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1800&q=80');
+  background-size: cover;
+  background-position: center 40%;
+  
+  /* Apply the animation here */
+  animation: climateCycle 20s infinite ease-in-out;
+}  
   
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nh)+60px) clamp(1.5rem,5vw,60px) 80px;position:relative;overflow:hidden}
