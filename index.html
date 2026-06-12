@@ -378,22 +378,36 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   display: block;
 }  
 
-.hero-bg {
-  position: absolute; inset: 0; background-size: cover; background-position: center 40%;
-  opacity: 0; filter: brightness(.25) saturate(1.2); animation: fadeSlide 30s infinite;
+.hero-bg-wrapper { 
+  position: absolute; 
+  inset: 0; 
+  z-index: -1; 
+  overflow: hidden; 
 }
 
-/* Your 5 image URLs */
-.hero-1 { background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1800&q=80'); animation-delay: 0s; } /* Space */
-.hero-2 { background-image: url('URL_FOR_CITY'); animation-delay: 6s; }
-.hero-3 { background-image: url('URL_FOR_GREEN'); animation-delay: 12s; }
-.hero-4 { background-image: url('URL_FOR_RAINY'); animation-delay: 18s; }
-.hero-5 { background-image: url('URL_FOR_SNOWY'); animation-delay: 24s; }
+.hero-bg {
+  position: absolute; 
+  inset: 0; 
+  background-size: cover; 
+  background-position: center 40%;
+  opacity: 0; 
+  filter: brightness(.25) saturate(1.2); 
+  animation: fadeSlide 30s infinite;
+}
 
-/* The updated 5-image timing */
+/* Force the stacking order so they don't block each other */
+.hero-1 { animation-delay: 0s; z-index: 5; }
+.hero-2 { animation-delay: 6s; z-index: 4; }
+.hero-3 { animation-delay: 12s; z-index: 3; }
+.hero-4 { animation-delay: 18s; z-index: 2; }
+.hero-5 { animation-delay: 24s; z-index: 1; }
+
 @keyframes fadeSlide {
-  0%, 18% { opacity: 1; }
-  20%, 100% { opacity: 0; }
+  0% { opacity: 0; }
+  5% { opacity: 1; }     /* Fade in quick */
+  20% { opacity: 1; }    /* Stay visible */
+  25% { opacity: 0; }    /* Fade out */
+  100% { opacity: 0; }   /* Stay hidden */
 }
   
 /* HERO */
@@ -791,7 +805,6 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
     </button>
   </div>
 </nav>
-
 
 <!-- HERO -->
 <section id="home" style="position:relative;z-index:1;max-width:100%;padding:0">
