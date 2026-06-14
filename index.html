@@ -261,6 +261,22 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   transition: transform .3s ease !important;
 }
 
+/* KEEP TOOLBAR VISIBLE AND STABLE */
+#nav {
+  display: flex !important;
+  flex-wrap: nowrap !important; /* Forces items to stay in one line */
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+.nav-links {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  flex-shrink: 0 !important; /* Prevents links from squashing/hiding */
+  margin-left: 30px !important; /* Adjust this to move toolbar left/right */
+}
+  
 .nav-links>li>a:hover::after,
 .nav-links>li>a.active::after {
   transform: scaleX(1) !important;
@@ -367,11 +383,6 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   transition: all .2s;
 }
 
-/* RESPONSIVE FALLBACKS */
-@media(max-width: 1160px) {
-  .nav-links, .nav-icon, .nav-cta { display: none !important; }
-}
-
 .logo-img {
   width: 50px !important;  /* Set a fixed size to stop it from breaking layout */
   height: auto !important;
@@ -445,7 +456,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }  
-  
+
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nh)+60px) clamp(1.5rem,5vw,60px) 80px;position:relative;overflow:hidden}
 .hero-bg-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1800&q=80');background-size:cover;background-position:center 40%;filter:brightness(.22) saturate(1.3)}
