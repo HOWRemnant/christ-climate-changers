@@ -23,12 +23,21 @@ a{text-decoration:none;color:inherit}
 img{display:block;width:100%;height:100%;object-fit:cover}
 
 /*CSS*/
-.nav-logo img.logo-img {
-  height: 65px !important;
-  width: auto !important;
-  max-height: 70px !important;
-  object-fit: contain !important;
+/* 1. Force the logo container to hold space */
+.nav-logo {
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important; /* This is crucial: keeps the logo from disappearing */
+  margin-right: 30px !important;
+}
+
+/* 2. Force the image to render */
+.logo-img {
   display: block !important;
+  height: 50px !important; /* Set a specific height */
+  width: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .ccc-hero-title {
@@ -178,21 +187,6 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   pointer-events: none !important;
 }
 
-.nav-logo {
-  display: flex !important;
-  align-items: center !important;
-  flex-shrink: 0 !important;
-  margin-right: 20px; /* Space between logo and links */
-}
-
-.logo-img {
-  height: 50px !important; 
-  width: auto !important;
-  display: block !important;
-  visibility: visible !important; /* Force visibility */
-  opacity: 1 !important;         /* Force opacity */
-}
-  
 /* Add or update this block in your CSS */
 .logo-wm {
   display: flex !important;
