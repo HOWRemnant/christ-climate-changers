@@ -189,12 +189,14 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   flex-shrink: 0 !important;
 }
 
+/* Add or update this block in your CSS */
 .logo-wm {
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
   text-align: left !important;
-  min-width: 250px !important; /* Prevents the text from disappearing or overlapping */
+  min-width: 250px !important; /* Forces the browser to keep space for your text */
+  margin-left: 10px;           /* Adds space between logo and text */
 }
 
 .logo-name {
@@ -369,8 +371,9 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 /* RESPONSIVE FALLBACKS */
-@media(max-width: 1160px) {
+@media(max-width: 900px) {
   .nav-links, .nav-icon, .nav-cta { display: none !important; }
+  /* You may need to set .hamburger to display: flex !important; here to show the mobile menu */
 }
 
 .logo-img {
