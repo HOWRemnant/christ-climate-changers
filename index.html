@@ -347,9 +347,24 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 /* RESPONSIVE FALLBACKS */
+/* 1. This keeps your menu visible on laptops/tablets */
+@media(min-width: 901px) {
+  .nav-links, .nav-icon, .nav-cta { 
+    display: flex !important; 
+  }
+  .hamburger { 
+    display: none !important; 
+  }
+}
+
+/* 2. This triggers the mobile menu only for phones */
 @media(max-width: 900px) {
-  .nav-links, .nav-icon, .nav-cta { display: none !important; }
-  /* You may need to set .hamburger to display: flex !important; here to show the mobile menu */
+  .nav-links, .nav-icon, .nav-cta { 
+    display: none !important; 
+  }
+  .hamburger { 
+    display: flex !important; 
+  }
 }
 
 .logo-img {
