@@ -143,15 +143,13 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   left: 0;
   right: 0;
   z-index: 9999 !important;
-  height: auto; /* Changed to auto so it can grow if needed */
-  min-height: 90px;
+  height: 90px;
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
-  padding: 10px 40px !important; /* Added vertical padding for breathing room */
+  justify-content: space-between !important; 
+  padding: 0 20px !important;
   background: #ffffff !important;
   box-sizing: border-box !important;
-  flex-wrap: wrap !important; /* Allows links to wrap instead of cutting off */
   
   /* Shiny Top Border */
   border-top: 12px solid transparent !important;
@@ -162,6 +160,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   ) 1 !important;
 }
 
+/* Ensure the bottom stripe is present */
 #nav::after {
   content: '' !important;
   position: absolute !important;
@@ -175,7 +174,6 @@ img{display:block;width:100%;height:100%;object-fit:cover}
     #b38f32 40%, #ffd700 55%, #fff5cc 70%, #ffd700 85%, #b38f32 100%
   ) !important;
   pointer-events: none !important;
-  box-shadow: inset 0 1px 2px rgba(255,255,255,0.6) !important;
 }
 
 .nav-logo {
@@ -915,29 +913,28 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo">
-    <img src="images/ccc-logo.png" class="logo-img" alt="Christ's Climate Changers Logo">
+  <div class="nav-logo" style="display:flex; align-items:center;">
+    <img src="your-logo-path.png" class="logo-img" alt="Logo">
     <div class="logo-wm">
       <span class="logo-name">CHRIST'S CLIMATE CHANGERS</span>
       <span class="logo-tag">Transforming Lives · Impacting Nations · Advancing His Kingdom</span>
     </div>
   </div>
 
-  <ul class="nav-links">
+  <ul class="nav-links" style="display:flex; gap:20px; list-style:none;">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="courses.html">Courses</a></li>
     <li><a href="coaching.html">Coaching</a></li>
     <li><a href="retreats.html">Retreats</a></li>
     <li><a href="prayer.html">Prayer</a></li>
-    <li><a href="#community">Community</a></li>
-    <li><a href="#seminars">Seminars</a></li>
+    <li><a href="prayer.html">Community</a></li>
     <li><a href="contact.html">Contact</a></li>
-  </ul>
-  
-  <div class="nav-actions">
-     <a href="#" class="nav-icon">🛒</a>
-     <a href="#" class="nav-cta">Donate</a>
+    </ul>
+
+  <div class="nav-actions" style="display:flex; align-items:center; gap:10px;">
+    <a href="#" class="nav-icon">🛒</a>
+    <a href="#" class="nav-cta">Book Now</a>
   </div>
 </nav>
 
