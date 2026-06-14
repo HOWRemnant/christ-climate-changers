@@ -142,14 +142,18 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9999 !important; /* Increased z-index */
-  height: 90px;
+  z-index: 9999 !important;
+  height: auto; /* Changed to auto so it can grow if needed */
+  min-height: 90px;
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important; /* ADD THIS LINE */
-  padding: 0 40px !important;
+  justify-content: space-between !important;
+  padding: 10px 40px !important; /* Added vertical padding for breathing room */
   background: #ffffff !important;
   box-sizing: border-box !important;
+  flex-wrap: wrap !important; /* Allows links to wrap instead of cutting off */
+  
+  /* Shiny Top Border */
   border-top: 12px solid transparent !important;
   border-image: linear-gradient(
     to right, 
@@ -158,12 +162,28 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   ) 1 !important;
 }
 
-.nav-logo {
-  display: flex !important;
-  align-items: center !important;
-  flex-shrink: 0 !important;
+#nav::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 12px !important;
+  background: linear-gradient(
+    to right, 
+    #050a14 0%, #1a2c4e 20%, #0a1530 40%, 
+    #b38f32 40%, #ffd700 55%, #fff5cc 70%, #ffd700 85%, #b38f32 100%
+  ) !important;
+  pointer-events: none !important;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.6) !important;
 }
 
+.nav-logo {
+display: flex !important;
+align-items: center !important;
+flex-shrink: 0 !important; /* Ensures the logo/title area never shrinks */
+}  
+  
 /* Add or update this block in your CSS */
 .logo-wm {
   display: flex !important;
