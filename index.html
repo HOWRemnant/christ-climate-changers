@@ -146,18 +146,20 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   height: 90px;
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important; 
-  padding: 0 20px !important;
+  justify-content: flex-start !important; /* Forces everything to the left */
+  padding: 0 40px !important;
   background: #ffffff !important;
   box-sizing: border-box !important;
-  
-  /* Shiny Top Border */
   border-top: 12px solid transparent !important;
-  border-image: linear-gradient(
-    to right, 
-    #b38f32 0%, #ffd700 15%, #fff5cc 30%, #ffd700 45%, #b38f32 60%,
-    #050a14 60%, #1a2c4e 80%, #0a1530 100%
-  ) 1 !important;
+  border-image: linear-gradient(to right, #b38f32, #ffd700, #0a1530) 1 !important;
+}
+
+/* Add this to push the links away from the logo exactly how much you want */
+.nav-links {
+  margin-left: 50px !important; /* Increase this number to move links further right, decrease to move them left */
+  display: flex !important;
+  list-style: none !important;
+  gap: 20px !important;
 }
 
 /* Ensure the bottom stripe is present */
@@ -184,10 +186,12 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 .logo-img {
-  height: 50px !important; /* Adjust to your preferred logo height */
+  height: 50px !important; 
   width: auto !important;
   display: block !important;
-}  
+  visibility: visible !important; /* Force visibility */
+  opacity: 1 !important;         /* Force opacity */
+}
   
 /* Add or update this block in your CSS */
 .logo-wm {
