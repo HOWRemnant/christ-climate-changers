@@ -142,15 +142,14 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   top: 0;
   left: 0;
   right: 0;
-  z-index: 999;
+  z-index: 9999 !important; /* Increased z-index */
   height: 90px;
   display: flex !important;
   align-items: center !important;
-  padding: 0 20px !important;
+  justify-content: space-between !important; /* ADD THIS LINE */
+  padding: 0 40px !important;
   background: #ffffff !important;
   box-sizing: border-box !important;
-  
-  /* THIS IS THE SHINY BORDER THAT DISAPPEARED */
   border-top: 12px solid transparent !important;
   border-image: linear-gradient(
     to right, 
@@ -200,7 +199,8 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   list-style: none !important;
   margin: 0 !important;
   padding: 0 !important;
-  gap: 0px !important; 
+  gap: 15px !important; 
+  flex-shrink: 0 !important; /* ADD THIS LINE */
 }
 
 .nav-links>li>a {
@@ -347,23 +347,16 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 /* RESPONSIVE FALLBACKS */
-/* 1. This keeps your menu visible on laptops/tablets */
+/* RESPONSIVE FALLBACKS */
 @media(min-width: 901px) {
   .nav-links, .nav-icon, .nav-cta { 
     display: flex !important; 
   }
-  .hamburger { 
-    display: none !important; 
-  }
 }
 
-/* 2. This triggers the mobile menu only for phones */
 @media(max-width: 900px) {
   .nav-links, .nav-icon, .nav-cta { 
     display: none !important; 
-  }
-  .hamburger { 
-    display: flex !important; 
   }
 }
 
