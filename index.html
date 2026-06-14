@@ -13,7 +13,7 @@
   --g:#c9a84c;--gl:#e8c87a;--gs:#f5da82;--gd:#7a5c1e;--gp:#f5e6c0;
   --cr:#f6f0e5;--cd:#ede3ce;--tm:#8a9ab5;
   --tl:rgba(255,255,255,.72);--tf:rgba(255,255,255,.42);
-  --nh:70px;
+  --nh:90px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -347,16 +347,21 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 /* RESPONSIVE FALLBACKS */
-/* RESPONSIVE FALLBACKS */
 @media(min-width: 901px) {
-  .nav-links, .nav-icon, .nav-cta { 
+  .nav-links, .nav-actions { 
     display: flex !important; 
+  }
+  .hamburger { 
+    display: none !important; 
   }
 }
 
 @media(max-width: 900px) {
-  .nav-links, .nav-icon, .nav-cta { 
+  .nav-links, .nav-actions { 
     display: none !important; 
+  }
+  .hamburger { 
+    display: flex !important; 
   }
 }
 
@@ -897,22 +902,26 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
       <span class="logo-tag">Transforming Lives · Impacting Nations · Advancing His Kingdom</span>
     </div>
   </div>
-  ...
-</nav>
 
   <ul class="nav-links">
-    <li><a href="#home" class="active">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#courses">Courses</a></li>
-    <li><a href="#coaching">Coaching</a></li>
-    <li><a href="#retreats">Retreats</a></li>
-    <li><a href="#prayer">Prayer</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="coaching.html">Coaching</a></li>
+    <li><a href="retreats.html">Retreats</a></li>
+    <li><a href="prayer.html">Prayer</a></li>
     <li><a href="#community">Community</a></li>
     <li><a href="#seminars">Seminars</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
-
+  
   <div class="nav-actions">
+     <a href="#" class="nav-icon">🛒</a>
+     <a href="#" class="nav-cta">Donate</a>
+  </div>
+</nav>
+
+ <div class="nav-actions">
     <a href="#store" class="nav-icon" title="Store">&#128722;</a>
     <a href="#library" class="nav-icon" title="Library">&#128218;</a>
     <a href="#appointment" class="nav-cta">Book Appointment</a>
