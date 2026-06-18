@@ -1,0 +1,909 @@
+bash
+
+cat > /mnt/user-data/outputs/discipleship-leadership-course.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discipleship for Leadership — Masters' Training Course | Christ's Climate Changers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════ */
+:root{
+  --navy:    #0a0f1e;
+  --nm:      #111827;
+  --nl:      #1a2540;
+  --dr:      #123c73;
+  --g:       #c9a84c;
+  --gl:      #e8c87a;
+  --gs:      #f5da82;
+  --gd:      #7a5c1e;
+  --cr:      #f6f0e5;
+  --cd:      #ede3ce;
+  --tm:      #8a9ab5;
+  --tl:      rgba(255,255,255,.72);
+  --tf:      rgba(255,255,255,.42);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond',serif;font-size:18px;line-height:1.75;background:var(--navy);color:var(--cr);overflow-x:hidden}
+
+/* Noise texture */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
+
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+@keyframes gpulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:.9;transform:scale(1.1)}}
+@keyframes floatLine{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.03)}}
+@keyframes pdot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.5}}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+
+/* ═══════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════ */
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(1.2rem,4vw,60px);position:relative;z-index:1}
+.sec{padding:90px clamp(1.2rem,4vw,60px)}
+.sec-sm{padding:60px clamp(1.2rem,4vw,60px)}
+
+/* ═══════════════════════════════════════════
+   TYPE HELPERS
+═══════════════════════════════════════════ */
+.eyebrow{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--g);display:inline-flex;align-items:center;gap:14px;margin-bottom:1.2rem}
+.eyebrow::before{content:'';width:28px;height:.5px;background:var(--g);opacity:.7;flex-shrink:0}
+
+.display-xl{font-family:'Cinzel',serif;font-size:clamp(2.4rem,6vw,5.5rem);font-weight:500;line-height:1.06;letter-spacing:.02em;color:#fff}
+.display-xl em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gl);font-size:1.12em;font-weight:300}
+
+.display-lg{font-family:'Cinzel',serif;font-size:clamp(1.7rem,3.5vw,3rem);font-weight:500;line-height:1.15;letter-spacing:.03em;color:#fff}
+.display-lg em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gl);font-size:1.1em;font-weight:300}
+
+.display-md{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.2vw,1.7rem);font-weight:500;letter-spacing:.04em;color:#fff}
+
+.body-lg{font-family:'EB Garamond',serif;font-size:19px;line-height:1.85;color:var(--tm)}
+.body-md{font-family:'EB Garamond',serif;font-size:17px;line-height:1.8;color:var(--tm)}
+
+.gold-rule{width:56px;height:.5px;background:var(--g);margin:1.8rem 0;opacity:.7}
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════ */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Cinzel',serif;font-size:10.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;border:none;transition:all .25s ease;white-space:nowrap}
+.btn-g{background:var(--g);color:var(--navy);padding:15px 36px}
+.btn-g:hover{background:var(--gl);transform:translateY(-1px);box-shadow:0 8px 28px rgba(201,168,76,.35)}
+.btn-w{background:transparent;color:var(--g);border:.5px solid var(--g);padding:14px 32px}
+.btn-w:hover{background:rgba(201,168,76,.08)}
+.btn-s{background:linear-gradient(120deg,var(--gd),var(--g),var(--gs),var(--g),var(--gd));background-size:300% 300%;animation:shimmer 4s ease infinite;color:var(--navy);padding:15px 36px;box-shadow:0 0 22px rgba(201,168,76,.38)}
+.btn-s:hover{box-shadow:0 0 44px rgba(201,168,76,.7);transform:translateY(-2px)}
+.pdot{width:7px;height:7px;border-radius:50%;background:var(--navy);animation:pdot 2s ease-in-out infinite;flex-shrink:0}
+.br{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.br-c{justify-content:center}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+#nav{position:fixed;top:0;left:0;right:0;z-index:999;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,60px);background:rgba(10,15,30,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:.5px solid rgba(201,168,76,.14);transition:box-shadow .4s}
+#nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.55);border-bottom-color:rgba(201,168,76,.26)}
+
+.nav-logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.nav-crest{width:38px;height:38px;flex-shrink:0}
+.nav-crest svg{width:100%;height:100%}
+.nav-brand{font-family:'Cinzel',serif;font-size:12px;font-weight:500;color:var(--g);letter-spacing:.15em;text-transform:uppercase}
+
+.nav-links{display:flex;list-style:none}
+.nav-links li a{display:block;padding:0 11px;line-height:68px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.62);transition:color .2s}
+.nav-links li a:hover{color:var(--gl)}
+
+.nav-actions{display:flex;gap:10px;flex-shrink:0}
+.nav-cta{background:var(--g);color:var(--navy);border:none;padding:8px 18px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.nav-cta:hover{background:var(--gl)}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:20px;height:1.5px;background:#fff;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+.mob-menu{position:fixed;inset:0;z-index:998;background:rgba(10,15,30,.97);backdrop-filter:blur(24px);padding:calc(68px + 2rem) 2rem 3rem;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);overflow-y:auto;display:flex;flex-direction:column}
+.mob-menu.open{transform:translateX(0)}
+.mob-links{list-style:none;margin-bottom:2rem}
+.mob-links li a{display:block;padding:14px 0;font-family:'Cinzel',serif;font-size:1rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75);border-bottom:.5px solid rgba(255,255,255,.07);transition:all .2s}
+.mob-links li a:hover{color:var(--g);padding-left:8px}
+
+@media(max-width:1000px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}}
+@media(min-width:1001px){.mob-menu{display:none!important}}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero{min-height:100vh;display:flex;align-items:center;padding:calc(68px + 80px) clamp(1.2rem,4vw,60px) 80px;position:relative;overflow:hidden}
+
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1800&q=80');background-size:cover;background-position:center 20%;filter:brightness(.2) saturate(1.1)}
+.hero-over{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 30% 50%,rgba(10,32,64,.88) 0%,transparent 70%),linear-gradient(120deg,rgba(10,15,30,.95) 0%,rgba(10,32,64,.7) 50%,rgba(10,15,30,.6) 100%)}
+.hero-glow{position:absolute;right:10%;top:30%;width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,.09) 0%,transparent 65%);animation:gpulse 8s ease-in-out infinite;pointer-events:none;z-index:1}
+
+.hero-content{position:relative;z-index:5;max-width:720px}
+
+/* CPD badge */
+.cpd-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(201,168,76,.1);border:.5px solid rgba(201,168,76,.35);padding:8px 18px;margin-bottom:1.8rem;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--g)}
+.cpd-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--g);animation:pdot 3s ease-in-out infinite}
+
+.hero-title{margin-bottom:.6rem}
+.hero-title .masters{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.4rem,3vw,2.5rem);color:var(--gl);font-weight:300;display:block;margin-bottom:.4rem}
+
+.hero-scripture{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,1.8vw,19px);color:rgba(255,255,255,.52);max-width:520px;margin:1.6rem 0 2.4rem;line-height:1.8}
+.hero-scripture cite{display:block;font-style:normal;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.2em;color:var(--g);margin-top:8px;text-transform:uppercase}
+
+/* Hero stats strip */
+.hero-stats{display:flex;gap:0;margin-top:3rem;border:.5px solid rgba(201,168,76,.2)}
+.hero-stat{padding:1.2rem 1.6rem;border-right:.5px solid rgba(201,168,76,.15);flex:1}
+.hero-stat:last-child{border-right:none}
+.hero-stat-val{font-family:'Cinzel',serif;font-size:1.4rem;font-weight:500;color:var(--gl);line-height:1}
+.hero-stat-lbl{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tm);margin-top:4px}
+
+@media(max-width:680px){.hero-stats{display:grid;grid-template-columns:1fr 1fr}.hero-stat:nth-child(2){border-right:none}.hero-stat:nth-child(1),.hero-stat:nth-child(2){border-bottom:.5px solid rgba(201,168,76,.15)}}
+
+/* ═══════════════════════════════════════════
+   INTRO BAND
+═══════════════════════════════════════════ */
+.intro-band{background:rgba(201,168,76,.05);border-top:.5px solid rgba(201,168,76,.18);border-bottom:.5px solid rgba(201,168,76,.18);position:relative;z-index:1}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1180px;margin:0 auto;padding:60px clamp(1.2rem,4vw,60px)}
+@media(max-width:780px){.intro-grid{grid-template-columns:1fr;gap:3rem}}
+
+/* ═══════════════════════════════════════════
+   CPD COMPLIANCE SECTION
+═══════════════════════════════════════════ */
+.cpd-section{background:var(--nm);border-top:.5px solid rgba(201,168,76,.12);border-bottom:.5px solid rgba(201,168,76,.12);position:relative;z-index:1}
+.cpd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.cpd-card{background:var(--navy);border:.5px solid rgba(201,168,76,.15);padding:2rem 1.8rem;position:relative;overflow:hidden;transition:border-color .3s}
+.cpd-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--g);transition:height .4s ease}
+.cpd-card:hover{border-color:rgba(201,168,76,.35)}.cpd-card:hover::before{height:100%}
+.cpd-card-icon{font-size:1.6rem;margin-bottom:.8rem}
+.cpd-card-title{font-family:'Cinzel',serif;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gl);margin-bottom:.5rem}
+.cpd-card-desc{font-family:'EB Garamond',serif;font-size:15px;color:var(--tm);line-height:1.7}
+@media(max-width:780px){.cpd-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.cpd-grid{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════════════
+   WHO THIS IS FOR
+═══════════════════════════════════════════ */
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.who-card{background:var(--nl);border:.5px solid rgba(201,168,76,.1);padding:1.8rem;display:flex;align-items:flex-start;gap:16px;transition:all .25s}
+.who-card:hover{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.04)}
+.who-icon{width:38px;height:38px;border:.5px solid rgba(201,168,76,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;background:rgba(201,168,76,.07)}
+.who-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gl);margin-bottom:4px}
+.who-desc{font-family:'EB Garamond',serif;font-size:15px;color:var(--tm);line-height:1.65}
+@media(max-width:900px){.who-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.who-grid{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════════════
+   OUTCOMES — WHAT YOU WILL LEARN
+═══════════════════════════════════════════ */
+.outcomes-bg{background:var(--nl);border-top:.5px solid rgba(201,168,76,.12);position:relative;z-index:1}
+.outcomes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.outcome-item{display:flex;align-items:flex-start;gap:14px;padding:1.4rem 1.6rem;background:var(--navy);border:.5px solid rgba(201,168,76,.12);transition:border-color .25s}
+.outcome-item:hover{border-color:rgba(201,168,76,.3)}
+.outcome-tick{width:28px;height:28px;border-radius:50%;background:rgba(201,168,76,.1);border:.5px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:2px;color:var(--g)}
+.outcome-text{font-family:'EB Garamond',serif;font-size:16.5px;color:rgba(255,255,255,.78);line-height:1.65}
+@media(max-width:680px){.outcomes-grid{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════════════
+   COURSE STRUCTURE — YEAR TABS
+═══════════════════════════════════════════ */
+.course-bg{background:var(--navy);border-top:.5px solid rgba(201,168,76,.12);position:relative;z-index:1}
+
+.year-tabs{display:flex;gap:0;border-bottom:.5px solid rgba(201,168,76,.18);margin-bottom:3rem}
+.year-tab{background:none;border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--tm);padding:14px 28px;position:relative;transition:color .2s}
+.year-tab::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1.5px;background:var(--g);transform:scaleX(0);transition:transform .3s ease}
+.year-tab.active{color:var(--g)}.year-tab.active::after{transform:scaleX(1)}
+.year-tab:hover{color:var(--gl)}
+
+.year-panel{display:none}.year-panel.active{display:block}
+
+.modules-grid{display:grid;grid-template-columns:1fr;gap:2px}
+.module-card{background:var(--nl);border:.5px solid rgba(201,168,76,.1);overflow:hidden;cursor:pointer;transition:border-color .3s}
+.module-card:hover{border-color:rgba(201,168,76,.32)}
+.module-header{display:flex;align-items:center;gap:20px;padding:1.6rem 2rem;position:relative}
+.module-header::after{content:'+';position:absolute;right:2rem;font-family:'Cinzel',serif;font-size:1.2rem;color:var(--g);transition:transform .3s}
+.module-card.open .module-header::after{transform:rotate(45deg)}
+.module-num{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gd);min-width:70px}
+.module-title-wrap .mod-title{font-family:'Cinzel',serif;font-size:13.5px;font-weight:500;color:var(--gl);margin-bottom:4px;letter-spacing:.03em}
+.module-title-wrap .mod-sub{font-family:'EB Garamond',serif;font-size:14px;color:var(--tm);font-style:italic}
+.module-body{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease}
+.module-card.open .module-body{max-height:1000px}
+.module-body-inner{padding:0 2rem 2rem}
+
+.topic-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+.topic-list li{display:flex;align-items:flex-start;gap:10px;font-family:'EB Garamond',serif;font-size:16px;color:rgba(255,255,255,.72);line-height:1.6}
+.topic-list li::before{content:'\2014';color:var(--g);flex-shrink:0;font-size:14px;margin-top:2px}
+
+.includes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-top:1.2rem}
+.include-pill{display:flex;align-items:center;gap:8px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--g);background:rgba(201,168,76,.07);border:.5px solid rgba(201,168,76,.2);padding:7px 12px}
+.include-pill svg{width:11px;height:11px;flex-shrink:0}
+
+.scrip-tag{display:inline-block;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;color:var(--gd);background:rgba(201,168,76,.1);border:.5px solid rgba(201,168,76,.18);padding:3px 10px;margin-left:6px;vertical-align:middle}
+
+@media(max-width:580px){.includes-grid{grid-template-columns:1fr}.module-header{flex-direction:column;align-items:flex-start;gap:8px}}
+
+/* ═══════════════════════════════════════════
+   BIBLICAL EXAMPLES
+═══════════════════════════════════════════ */
+.examples-bg{background:var(--nm);border-top:.5px solid rgba(201,168,76,.12);position:relative;z-index:1}
+.examples-tabs{display:flex;flex-wrap:wrap;gap:0;border-bottom:.5px solid rgba(201,168,76,.18);margin-bottom:3rem}
+.ex-tab{background:none;border:none;cursor:pointer;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tm);padding:12px 18px;position:relative;transition:color .2s}
+.ex-tab::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1.5px;background:var(--g);transform:scaleX(0);transition:transform .3s ease}
+.ex-tab.active{color:var(--g)}.ex-tab.active::after{transform:scaleX(1)}
+.ex-panel{display:none}.ex-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.ex-card{background:var(--navy);border:.5px solid rgba(201,168,76,.12);padding:2rem;transition:border-color .25s}
+.ex-card:hover{border-color:rgba(201,168,76,.3)}
+.ex-type{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gd);margin-bottom:.5rem}
+.ex-name{font-family:'Cinzel',serif;font-size:14px;font-weight:500;color:var(--gl);margin-bottom:.3rem;letter-spacing:.04em}
+.ex-context{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--tm);margin-bottom:.8rem}
+.ex-desc{font-family:'EB Garamond',serif;font-size:15.5px;color:rgba(255,255,255,.68);line-height:1.7}
+@media(max-width:680px){.ex-panel.active{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════════════
+   SCRIPTURAL FOUNDATIONS
+═══════════════════════════════════════════ */
+.scrip-bg{background:var(--nl);border-top:.5px solid rgba(201,168,76,.12);position:relative;z-index:1}
+.scrip-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.scrip-card{background:var(--navy);border-left:2px solid var(--g);padding:1.6rem 1.8rem;transition:background .25s}
+.scrip-card:hover{background:rgba(201,168,76,.04)}
+.scrip-theme{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:.5rem}
+.scrip-verse{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16.5px;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:.4rem}
+.scrip-ref{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.16em;color:var(--gd)}
+@media(max-width:680px){.scrip-grid{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════════════
+   ENROL CTA
+═══════════════════════════════════════════ */
+.enrol-sec{position:relative;overflow:hidden;text-align:center}
+.enrol-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=1800&q=80');background-size:cover;background-position:center;filter:brightness(.16) saturate(1.2)}
+.enrol-over{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(10,32,64,.87) 0%,rgba(10,15,30,.97) 100%)}
+.enrol-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(201,168,76,.1) 0%,transparent 65%);animation:gpulse 7s ease-in-out infinite;pointer-events:none}
+.enrol-content{position:relative;z-index:2;max-width:720px;margin:0 auto}
+.enrol-scrip{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,1.8vw,18px);color:rgba(255,255,255,.42);margin-top:3rem}
+
+/* ═══════════════════════════════════════════
+   SCRIPTURE QUOTE
+═══════════════════════════════════════════ */
+.quote-band{background:linear-gradient(135deg,var(--dr),var(--nm));border-top:.5px solid rgba(201,168,76,.16);padding:2.8rem clamp(1.2rem,4vw,60px);display:flex;align-items:center;justify-content:flex-end;position:relative;z-index:1}
+.quote-in{max-width:540px;text-align:right}
+.quote-mark{font-family:'Cormorant Garamond',serif;font-size:4.5rem;color:var(--g);line-height:.5;margin-bottom:.9rem;opacity:.4}
+.quote-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:rgba(255,255,255,.78);line-height:1.75;margin-bottom:.5rem}
+.quote-ref{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--g)}
+
+/* ═══════════════════════════════════════════
+   FOOTER MINI
+═══════════════════════════════════════════ */
+.footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.12);padding:2.5rem clamp(1.2rem,4vw,60px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:relative;z-index:1}
+.footer-brand{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.14em;color:var(--g);text-transform:uppercase}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);transition:color .2s}
+.footer-links a:hover{color:var(--g)}
+.footer-copy{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.08em;color:rgba(255,255,255,.22)}
+
+/* Progress bar */
+.progress{position:fixed;top:0;left:0;height:1.5px;background:var(--g);z-index:1001;box-shadow:0 0 6px rgba(201,168,76,.5);transition:width .1s linear}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progressBar"></div>
+
+<!-- MOBILE MENU -->
+<nav class="mob-menu" id="mobMenu">
+  <ul class="mob-links">
+    <li><a href="#overview" onclick="closeMenu()">Overview</a></li>
+    <li><a href="#cpd" onclick="closeMenu()">CPD Compliance</a></li>
+    <li><a href="#outcomes" onclick="closeMenu()">What You'll Learn</a></li>
+    <li><a href="#curriculum" onclick="closeMenu()">Curriculum</a></li>
+    <li><a href="#examples" onclick="closeMenu()">Biblical Examples</a></li>
+    <li><a href="#scriptures" onclick="closeMenu()">Foundations</a></li>
+    <li><a href="#enrol" onclick="closeMenu()">Enrol</a></li>
+  </ul>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-top:1.5rem">
+    <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="btn btn-g" style="justify-content:center">Apply Now</a>
+    <a href="https://www.patreon.com/ChristsClimateChangers" target="_blank" class="btn btn-s" style="justify-content:center"><span class="pdot"></span> Suddenly — Members</a>
+  </div>
+</nav>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="christs-climate-changers.html" class="nav-logo">
+    <div class="nav-crest">
+      <svg viewBox="0 0 52 52" fill="none">
+        <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#f5da82"/><stop offset="50%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#8a6a1f"/>
+        </linearGradient></defs>
+        <path d="M26 4.5L6.5 12.5V27C6.5 37.8 15.5 45.3 26 48.5C36.5 45.3 45.5 37.8 45.5 27V12.5L26 4.5Z" stroke="url(#gg)" stroke-width="1.3" fill="none"/>
+        <path d="M17 21.5L20.5 17L24 20.5L26 14L28 20.5L31.5 17L35 21.5H17Z" fill="url(#gg)"/>
+        <rect x="17" y="21.5" width="18" height="2.5" fill="url(#gg)" rx=".5"/>
+        <rect x="25" y="26" width="2.2" height="12" fill="url(#gg)" rx=".5"/>
+        <rect x="20" y="30" width="12" height="2.2" fill="url(#gg)" rx=".5"/>
+      </svg>
+    </div>
+    <span class="nav-brand">Christ's Climate Changers</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#cpd">CPD</a></li>
+    <li><a href="#outcomes">Outcomes</a></li>
+    <li><a href="#curriculum">Curriculum</a></li>
+    <li><a href="#examples">Examples</a></li>
+    <li><a href="#scriptures">Foundations</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="nav-cta">Apply Now</a>
+    <button class="hamburger" id="hamBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero" id="overview">
+  <div class="hero-bg"></div>
+  <div class="hero-over"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="cpd-badge"><span class="cpd-badge-dot"></span> CPD Accredited Programme &nbsp;·&nbsp; 2 Years &nbsp;·&nbsp; 6 Modules</div>
+    <div class="eyebrow">Masters' Training Course</div>
+    <h1 class="display-xl hero-title">
+      <span class="masters">Discipleship for Leadership</span>
+      Raising Kingdom Leaders <em>for Every Sphere</em>
+    </h1>
+    <div class="gold-rule"></div>
+    <p class="hero-scripture">
+      "And the things that you have heard from me among many witnesses, commit these to faithful men who will be able to teach others also."
+      <cite>2 Timothy 2:2</cite>
+    </p>
+    <div class="br">
+      <a href="#curriculum" class="btn btn-g">Explore the Curriculum</a>
+      <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="btn btn-w">Apply Now</a>
+      <a href="https://www.patreon.com/ChristsClimateChangers" target="_blank" class="btn btn-s"><span class="pdot"></span> Suddenly</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="hero-stat"><div class="hero-stat-val">2 yrs</div><div class="hero-stat-lbl">Programme Length</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">6</div><div class="hero-stat-lbl">Core Modules</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">CPD</div><div class="hero-stat-lbl">Accredited Learning</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">Masters</div><div class="hero-stat-lbl">Level Training</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     INTRO BAND
+══════════════════════════════════════ -->
+<div class="intro-band">
+  <div class="intro-grid">
+    <div class="reveal">
+      <div class="eyebrow">Programme Vision</div>
+      <h2 class="display-lg">Not just knowledge.<br><em>Transformation.</em></h2>
+      <div class="gold-rule"></div>
+      <p class="body-lg">This programme is designed to develop spiritually mature, practically equipped leaders prepared for ministry and marketplace impact. It is not merely academic — it is a journey of character refinement, skill development, and Kingdom deployment.</p>
+    </div>
+    <div class="reveal">
+      <p class="body-md" style="margin-bottom:1.5rem">The Discipleship for Leadership Masters' Training Course combines Biblical foundations with hands-on practical ministry experience, discipleship accountability, and strategic leadership development — producing leaders capable of influencing the church, the marketplace, and society.</p>
+      <div style="border-left:2px solid var(--g);padding-left:1.4rem;margin-top:1.5rem">
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:rgba(255,255,255,.65);line-height:1.75">"Leadership is a calling, not a career. May you be shaped into a leader after God's own heart, ready to serve, build, and thrive."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     CPD COMPLIANCE
+══════════════════════════════════════ -->
+<section class="cpd-section sec" id="cpd">
+  <div style="max-width:1180px;margin:0 auto">
+    <div class="eyebrow reveal">CPD Compliance</div>
+    <h2 class="display-lg reveal">A Structured, <em>Accredited</em> Pathway</h2>
+    <div class="gold-rule reveal"></div>
+    <p class="body-lg reveal" style="max-width:680px">This programme meets CPD (Continuing Professional Development) standards through structured learning hours, documented reflective practice, portfolio assessment, and evidenced competency development across all six modules.</p>
+    <div class="cpd-grid">
+      <div class="cpd-card reveal">
+        <div class="cpd-card-icon">📋</div>
+        <div class="cpd-card-title">Documented Learning</div>
+        <p class="cpd-card-desc">Each module requires reflective journals, portfolio entries, and self-evaluation records — all meeting CPD evidence standards for structured learning.</p>
+      </div>
+      <div class="cpd-card reveal">
+        <div class="cpd-card-icon">🎯</div>
+        <div class="cpd-card-title">Evidenced Outcomes</div>
+        <p class="cpd-card-desc">Clear learning outcomes are defined for every module. Progress is tracked, evidenced, and assessed through practical assignments and peer review.</p>
+      </div>
+      <div class="cpd-card reveal">
+        <div class="cpd-card-icon">📜</div>
+        <div class="cpd-card-title">Formal Assessment</div>
+        <p class="cpd-card-desc">Each module concludes with a formal commissioning assessment. The programme closes with a comprehensive portfolio review and final commissioning.</p>
+      </div>
+      <div class="cpd-card reveal">
+        <div class="cpd-card-icon">🤝</div>
+        <div class="cpd-card-title">Discipleship Accountability</div>
+        <p class="cpd-card-desc">Every participant is assigned a Discipleship Leader for regular structured check-ins — ensuring accountability, reflective practice, and relational discipleship.</p>
+      </div>
+      <div class="cpd-card reveal">
+        <div class="cpd-card-icon">🌍</div>
+        <div class="cpd-card-title">Practical Application</div>
+        <p class="cpd-card-desc">Hands-on ministry experience, leadership shadowing, and real-world assignments ensure that learning is applied, not merely theoretical.</p>
+      </div>
+      <div class="cpd-card reveal">
+        <div class="cpd-card-icon">🏆</div>
+        <div class="cpd-card-title">Masters-Level Certification</div>
+        <p class="cpd-card-desc">Participants who complete both years receive formal certification at Masters' Training level, recognised within the CCC Kingdom Academy ecosystem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     WHO THIS IS FOR
+══════════════════════════════════════ -->
+<section class="sec" style="background:var(--navy);border-top:.5px solid rgba(201,168,76,.12);position:relative;z-index:1">
+  <div style="max-width:1180px;margin:0 auto">
+    <div class="eyebrow reveal">Who This Is For</div>
+    <h2 class="display-lg reveal">Designed for <em>Called Leaders</em></h2>
+    <div class="gold-rule reveal"></div>
+    <div class="who-grid">
+      <div class="who-card reveal"><div class="who-icon">🌱</div><div><div class="who-title">Emerging Leaders</div><p class="who-desc">Those stepping into leadership for the first time, needing structured formation, discipleship, and practical tools.</p></div></div>
+      <div class="who-card reveal"><div class="who-icon">⛪</div><div><div class="who-title">Ministry Leaders & Pastors</div><p class="who-desc">Established church leaders seeking deeper discipleship training to refine their calling and strengthen their leadership.</p></div></div>
+      <div class="who-card reveal"><div class="who-icon">💼</div><div><div class="who-title">Christian Professionals</div><p class="who-desc">Marketplace believers integrating Biblical leadership principles into their workplace, industries, and professional spheres.</p></div></div>
+      <div class="who-card reveal"><div class="who-icon">🔄</div><div><div class="who-title">Leaders in Transition</div><p class="who-desc">Those moving between leadership seasons who need guidance, accountability, and structured development for what is next.</p></div></div>
+      <div class="who-card reveal"><div class="who-icon">🌍</div><div><div class="who-title">Marketplace Influencers</div><p class="who-desc">Those called to Kingdom influence beyond the church — in business, social impact, government, and community transformation.</p></div></div>
+      <div class="who-card reveal"><div class="who-icon">👑</div><div><div class="who-title">Experienced Leaders</div><p class="who-desc">Seasoned leaders desiring to deepen their spiritual formation, sharpen their strategy, and develop the next generation.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     WHAT YOU WILL LEARN
+══════════════════════════════════════ -->
+<section class="outcomes-bg sec" id="outcomes">
+  <div style="max-width:1180px;margin:0 auto">
+    <div class="eyebrow reveal">Programme Outcomes</div>
+    <h2 class="display-lg reveal">What You Will <em>Walk Away With</em></h2>
+    <div class="gold-rule reveal"></div>
+    <p class="body-lg reveal" style="max-width:680px;margin-bottom:0">By the end of this two-year programme, you will have been equipped with the following:</p>
+    <div class="outcomes-grid">
+      <div class="outcome-item reveal"><div class="outcome-tick">✓</div><div class="outcome-text">A deep understanding of Biblical discipleship and its application to every sphere of leadership</div></div>
+      <div class="outcome-item reveal"><div class="outcome-tick">✓</div><div class="outcome-text">Refined character, integrity, and emotional intelligence for sustainable Kingdom leadership</div></div>
+      <div class="outcome-item reveal"><div class="outcome-tick">✓</div><div class="outcome-text">Practical skills in preaching, teaching, pastoral care, and organisational leadership</div></div>
+      <div class="outcome-item reveal"><div class="outcome-tick">✓</div><div class="outcome-text">A theology of fivefold ministry and the ability to lead within and beyond the local church</div></div>
+      <div class="outcome-item reveal"><div class="outcome-tick">✓</div><div class="outcome-text">A personal framework for conflict resolution, team building, and multi-generational ministry</div></div>
+      <div class="outcome-item reveal"><div class="outcome-tick">✓</div><div class="outcome-text">The tools to integrate faith with professional and marketplace responsibilities effectively</div></div>
+      <div class="outcome-item reveal"><div class="outcome-tick">✓</div><div class="outcome-text">A strategic deployment plan — including a leaving strategy, succession planning, and next-assignment preparation</div></div>
+      <div class="outcome-item reveal"><div class="outcome-tick">✓</div><div class="outcome-text">A completed portfolio documenting your leadership journey, case studies, and personal growth</div></div>
+      <div class="outcome-item reveal"><div class="outcome-tick">✓</div><div class="outcome-text">CPD-compliant evidence of structured learning hours and measurable competency development</div></div>
+      <div class="outcome-item reveal"><div class="outcome-tick">✓</div><div class="outcome-text">A lifelong commitment to training others — carrying the discipleship mandate forward into your own sphere</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CURRICULUM
+══════════════════════════════════════ -->
+<section class="course-bg sec" id="curriculum">
+  <div style="max-width:1180px;margin:0 auto">
+    <div class="eyebrow reveal">Course Structure</div>
+    <h2 class="display-lg reveal">Two Years. Six Modules.<br><em>One Transformational Journey.</em></h2>
+    <div class="gold-rule reveal"></div>
+    <p class="body-lg reveal" style="max-width:680px;margin-bottom:3rem">The programme is divided into two years: Year 1 focuses on Foundation and Formation; Year 2 on Application and Activation. Each module concludes with a formal assessment and commissioning before progression.</p>
+
+    <div class="year-tabs">
+      <button class="year-tab active" onclick="switchYear('y1',this)">Year 1 — Foundation &amp; Formation</button>
+      <button class="year-tab" onclick="switchYear('y2',this)">Year 2 — Application &amp; Activation</button>
+    </div>
+
+    <!-- YEAR 1 -->
+    <div class="year-panel active" id="y1">
+      <div class="modules-grid">
+
+        <!-- M1 -->
+        <div class="module-card" onclick="toggleModule(this)">
+          <div class="module-header">
+            <div class="module-num">Module 01</div>
+            <div class="module-title-wrap">
+              <div class="mod-title">Character &amp; Spiritual Formation</div>
+              <div class="mod-sub">The inner life of the leader before public ministry</div>
+            </div>
+          </div>
+          <div class="module-body">
+            <div class="module-body-inner">
+              <p style="font-family:'EB Garamond',serif;font-size:16px;color:var(--tm);margin-bottom:1.2rem;line-height:1.75">Leaders are formed before they are deployed. This module focuses on the internal architecture of Kingdom leadership — character, consecration, accountability, and the awareness of blind spots that can derail even gifted leaders.</p>
+              <ul class="topic-list">
+                <li>The Call to Leadership — divine invitation and personal responsibility <span class="scrip-tag">Luke 22:31-32</span></li>
+                <li>Self-Reflection &amp; Personal Accountability — the discipline of honest self-assessment <span class="scrip-tag">2 Cor 13:5</span></li>
+                <li>Identifying Blind Spots in Leadership — what we cannot see about ourselves <span class="scrip-tag">Matt 7:3-5</span></li>
+                <li>Character vs Reputation — what God sees vs what others see <span class="scrip-tag">1 Sam 16:7</span></li>
+                <li>Developing a Lifestyle of Consecration &amp; Worship <span class="scrip-tag">Romans 12:1-2</span></li>
+                <li>Leadership Discipleship — the locker room where leaders are truly formed <span class="scrip-tag">Titus 1:7-9</span></li>
+              </ul>
+              <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--g);margin-bottom:.8rem">Module Includes</p>
+              <div class="includes-grid">
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Discipleship Lead Check-ins</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Practical Ministry Assignments</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Self-Evaluation &amp; Journals</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Portfolio Development</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Final Assessment &amp; Commissioning</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> CPD Evidence Records</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- M2 -->
+        <div class="module-card" onclick="toggleModule(this)">
+          <div class="module-header">
+            <div class="module-num">Module 02</div>
+            <div class="module-title-wrap">
+              <div class="mod-title">Leadership in the House of God</div>
+              <div class="mod-sub">Structure, team, and ministry leadership within the church</div>
+            </div>
+          </div>
+          <div class="module-body">
+            <div class="module-body-inner">
+              <p style="font-family:'EB Garamond',serif;font-size:16px;color:var(--tm);margin-bottom:1.2rem;line-height:1.75">Effective ministry leadership requires understanding how the church is structured, how teams are built, and how the fivefold ministry gifts work together to equip the body of Christ for every season and culture.</p>
+              <ul class="topic-list">
+                <li>Understanding Fivefold Ministry — church and marketplace dimensions <span class="scrip-tag">Eph 4:11-13</span></li>
+                <li>Conflict Resolution in Ministry — principles and practice <span class="scrip-tag">Matt 18:15-17</span></li>
+                <li>Team Building &amp; Discipleship Strategies <span class="scrip-tag">Eccl 4:9-12</span></li>
+                <li>Ministering Across Generations &amp; Cultures <span class="scrip-tag">Acts 2:17</span></li>
+              </ul>
+              <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--g);margin:.8rem 0">Discipleship Leader Focus Areas</p>
+              <ul class="topic-list">
+                <li>Spiritual Formation &amp; Leadership Cultivation <span class="scrip-tag">1 Tim 4:7-8</span></li>
+                <li>Equipping &amp; Preparation for Assignment <span class="scrip-tag">2 Tim 3:16-17</span></li>
+                <li>Shepherding &amp; Strategic Development <span class="scrip-tag">Jer 3:15</span></li>
+                <li>Character Refinement &amp; Kingdom Training <span class="scrip-tag">James 1:2-4</span></li>
+                <li>Stewardship &amp; Release into the next phase <span class="scrip-tag">Luke 16:10</span></li>
+              </ul>
+              <div class="includes-grid">
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Discipleship Lead Check-ins</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Hands-on Ministry Experience</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Portfolio Development</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Final Assessment &amp; Commissioning</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- M3 -->
+        <div class="module-card" onclick="toggleModule(this)">
+          <div class="module-header">
+            <div class="module-num">Module 03</div>
+            <div class="module-title-wrap">
+              <div class="mod-title">Practical Ministry Development</div>
+              <div class="mod-sub">Preaching, pastoral care, worship, and administration</div>
+            </div>
+          </div>
+          <div class="module-body">
+            <div class="module-body-inner">
+              <p style="font-family:'EB Garamond',serif;font-size:16px;color:var(--tm);margin-bottom:1.2rem;line-height:1.75">A leader must be equipped not just in character but in the practical skills of ministry. This module develops competence in preaching, pastoral care, worship leadership, and the administrative dimensions of effective ministry organisation.</p>
+              <ul class="topic-list">
+                <li>Preaching &amp; Teaching — Hermeneutics and Homiletics <span class="scrip-tag">2 Tim 2:15</span></li>
+                <li>Pastoral Care &amp; Shepherding — caring for the flock <span class="scrip-tag">1 Pet 5:2-3</span></li>
+                <li>Worship &amp; Intercession Leadership <span class="scrip-tag">Psalm 100:2</span></li>
+                <li>Administrative &amp; Organisational Leadership <span class="scrip-tag">Exod 18:21</span></li>
+              </ul>
+              <div class="includes-grid">
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Preaching Practicals</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Senior Leader Shadowing</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Ministry Journals</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Year 1 Portfolio &amp; Final Commissioning</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- YEAR 2 -->
+    <div class="year-panel" id="y2">
+      <div class="modules-grid">
+
+        <!-- M4 -->
+        <div class="module-card" onclick="toggleModule(this)">
+          <div class="module-header">
+            <div class="module-num">Module 04</div>
+            <div class="module-title-wrap">
+              <div class="mod-title">The Kingdom Beyond the Church Walls</div>
+              <div class="mod-sub">Marketplace ministry, social action, and transformational leadership</div>
+            </div>
+          </div>
+          <div class="module-body">
+            <div class="module-body-inner">
+              <p style="font-family:'EB Garamond',serif;font-size:16px;color:var(--tm);margin-bottom:1.2rem;line-height:1.75">The Kingdom of God is not confined to the four walls of a church building. This module equips leaders to carry Kingdom principles into business, public life, education, and every sphere of societal influence.</p>
+              <ul class="topic-list">
+                <li>Marketplace Ministry — defining leadership outside the church <span class="scrip-tag">Col 3:23-24</span></li>
+                <li>Evangelism &amp; Social Action in a Changing World <span class="scrip-tag">Matt 5:13-16</span></li>
+                <li>Transformational Leadership in Society <span class="scrip-tag">Romans 12:2</span></li>
+                <li>Balancing Ministry &amp; Professional Life sustainably <span class="scrip-tag">Eccl 3:1</span></li>
+              </ul>
+              <div class="includes-grid">
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Marketplace Case Studies</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Community Project Assignment</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Leadership Journals</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- M5 -->
+        <div class="module-card" onclick="toggleModule(this)">
+          <div class="module-header">
+            <div class="module-num">Module 05</div>
+            <div class="module-title-wrap">
+              <div class="mod-title">Deployment Strategy &amp; Commissioning</div>
+              <div class="mod-sub">Seasons, transitions, succession, and the leaving strategy</div>
+            </div>
+          </div>
+          <div class="module-body">
+            <div class="module-body-inner">
+              <p style="font-family:'EB Garamond',serif;font-size:16px;color:var(--tm);margin-bottom:1.2rem;line-height:1.75">Great leaders know not only how to lead — they know how to transition well. This module addresses the crucial, often neglected disciplines of seasonal discernment, succession planning, and honouring the house as you move into your next assignment.</p>
+              <ul class="topic-list">
+                <li>Understanding Seasons &amp; Transitions in Leadership <span class="scrip-tag">Eccl 3:1-8</span></li>
+                <li>Developing a Leaving Strategy that Honours the House <span class="scrip-tag">2 Kings 2:9-10</span></li>
+                <li>Discipleship &amp; Succession Planning — raising your replacement <span class="scrip-tag">2 Tim 2:1-2</span></li>
+                <li>Preparing for the Next Assignment — practical steps forward <span class="scrip-tag">Phil 3:13-14</span></li>
+              </ul>
+              <div class="includes-grid">
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Transition Planning Workshop</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Succession Documentation</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Discipleship Lead Review</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- M6 -->
+        <div class="module-card" onclick="toggleModule(this)">
+          <div class="module-header">
+            <div class="module-num">Module 06</div>
+            <div class="module-title-wrap">
+              <div class="mod-title">Self-Assessment &amp; Final Portfolio</div>
+              <div class="mod-sub">Reflection, peer review, blueprint, and commissioning</div>
+            </div>
+          </div>
+          <div class="module-body">
+            <div class="module-body-inner">
+              <p style="font-family:'EB Garamond',serif;font-size:16px;color:var(--tm);margin-bottom:1.2rem;line-height:1.75">The capstone module brings every thread of the two-year journey together into a comprehensive portfolio, personal blueprint, and formal commissioning. This is where the leader is reviewed, affirmed, and released.</p>
+              <ul class="topic-list">
+                <li>Reflective Journals &amp; Case Studies — documenting the journey <span class="scrip-tag">Ps 77:11-12</span></li>
+                <li>Self-Evaluation &amp; Peer Review — structured assessment <span class="scrip-tag">Prov 27:17</span></li>
+                <li>Developing a Ministry or Leadership Blueprint <span class="scrip-tag">Hab 2:2-3</span></li>
+                <li>Final Commissioning &amp; Sending Forth <span class="scrip-tag">Matt 28:18-20</span></li>
+              </ul>
+              <div class="includes-grid">
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Full Portfolio Submission</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Peer &amp; Mentor Review Panel</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Masters' Commissioning Ceremony</div>
+                <div class="include-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> CPD Certificate Issued</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     BIBLICAL & LIVING EXAMPLES
+══════════════════════════════════════ -->
+<section class="examples-bg sec" id="examples">
+  <div style="max-width:1180px;margin:0 auto">
+    <div class="eyebrow reveal">Learning Through Example</div>
+    <h2 class="display-lg reveal">Biblical &amp; Living <em>Models of Leadership</em></h2>
+    <div class="gold-rule reveal"></div>
+    <p class="body-lg reveal" style="max-width:680px;margin-bottom:3rem">Each module draws from both Scripture and history — showing that the principles taught here have been lived, tested, and proven across every generation.</p>
+
+    <div class="examples-tabs">
+      <button class="ex-tab active" onclick="switchEx('m1e',this)">Module 1</button>
+      <button class="ex-tab" onclick="switchEx('m2e',this)">Module 2</button>
+      <button class="ex-tab" onclick="switchEx('m3e',this)">Module 3</button>
+      <button class="ex-tab" onclick="switchEx('m4e',this)">Module 4</button>
+      <button class="ex-tab" onclick="switchEx('m5e',this)">Module 5</button>
+      <button class="ex-tab" onclick="switchEx('m6e',this)">Module 6</button>
+    </div>
+
+    <div class="ex-panel active" id="m1e">
+      <div class="ex-card"><div class="ex-type">Biblical Example</div><div class="ex-name">Peter</div><div class="ex-context">Luke 22:31-32 — From impulse to apostolic authority</div><p class="ex-desc">Peter's transformation from an impulsive disciple to a bold apostle illustrates how character refinement and spiritual formation shape a leader. Jesus prayed for him, knowing that his faith would be tested — and that through the test he would emerge ready to strengthen others.</p></div>
+      <div class="ex-card"><div class="ex-type">Living Example</div><div class="ex-name">Billy Graham</div><div class="ex-context">1918–2018 — Integrity, discipline, and lifelong consistency</div><p class="ex-desc">Graham's decades of ministry were marked by financial accountability, personal holiness, and unwavering commitment to his calling. He surrounded himself with accountability, avoided compromise, and demonstrated that spiritual formation is not a season — it is a lifestyle.</p></div>
+    </div>
+    <div class="ex-panel" id="m2e">
+      <div class="ex-card"><div class="ex-type">Biblical Example</div><div class="ex-name">Moses</div><div class="ex-context">Exodus 18:13-26 — Delegation and structure in leadership</div><p class="ex-desc">Moses initially managed all leadership responsibilities alone — until Jethro provided the wisdom of delegation and team structure. His willingness to receive counsel and restructure his leadership is a masterclass in building sustainable ministry teams.</p></div>
+      <div class="ex-card"><div class="ex-type">Living Example</div><div class="ex-name">Bishop T.D. Jakes</div><div class="ex-context">1957–Present — Multi-generational, multi-cultural church leadership</div><p class="ex-desc">Jakes has built a church that crosses cultural, generational, and social boundaries — while consistently investing in and empowering the next generation of leaders. His model of discipleship within the house of God reflects the principles of Module 2.</p></div>
+    </div>
+    <div class="ex-panel" id="m3e">
+      <div class="ex-card"><div class="ex-type">Biblical Example</div><div class="ex-name">Paul</div><div class="ex-context">2 Timothy 2:2; 1 Corinthians 2:4-5 — Teaching, training, and equipping</div><p class="ex-desc">Paul's ministry combined powerful preaching with intentional pastoral care and deliberate discipleship. He discipled Timothy and Titus, ensuring that sound doctrine, pastoral integrity, and practical ministry competence were passed on to the next generation.</p></div>
+      <div class="ex-card"><div class="ex-type">Living Example</div><div class="ex-name">Reinhard Bonnke</div><div class="ex-context">1940–2019 — Large-scale evangelism and ministry development</div><p class="ex-desc">Bonnke dedicated his life to preaching the Gospel with practical power, training African leaders, and conducting large-scale ministry events that reached tens of millions. His commitment to both proclamation and equipping defines effective practical ministry.</p></div>
+    </div>
+    <div class="ex-panel" id="m4e">
+      <div class="ex-card"><div class="ex-type">Biblical Example</div><div class="ex-name">Joseph</div><div class="ex-context">Genesis 41:39-44 — Kingdom leadership in secular structures</div><p class="ex-desc">Joseph governed Egypt — one of the most powerful nations in the ancient world — while maintaining his covenant identity, integrity, and dependence on God. He never separated his faith from his professional responsibilities. He demonstrates what Kingdom marketplace leadership looks like at the highest level.</p></div>
+      <div class="ex-card"><div class="ex-type">Living Example</div><div class="ex-name">Truett Cathy</div><div class="ex-context">1921–2014 — Founder of Chick-fil-A</div><p class="ex-desc">Cathy built one of America's most successful fast-food companies on the foundation of Christian values — including closing on Sundays, servant leadership, and investing in young people. He proved that faithfulness and fruitfulness are not in conflict in the marketplace.</p></div>
+    </div>
+    <div class="ex-panel" id="m5e">
+      <div class="ex-card"><div class="ex-type">Biblical Example</div><div class="ex-name">Elijah &amp; Elisha</div><div class="ex-context">2 Kings 2:9-10 — Intentional succession and the transfer of mantle</div><p class="ex-desc">Elijah's discipleship of Elisha is one of Scripture's most powerful models of succession. Rather than holding on, Elijah transferred what he carried — and Elisha received a double portion. This module teaches how to hold your leadership with an open hand and prepare the next generation well.</p></div>
+      <div class="ex-card"><div class="ex-type">Living Example</div><div class="ex-name">John C. Maxwell</div><div class="ex-context">1947–Present — Succession, deployment, and next-generation training</div><p class="ex-desc">Maxwell has spent decades not just leading but creating leaders — writing, teaching, and building organisations specifically designed to develop and release the next generation. His emphasis on intentional succession and multiplication models the heart of Module 5.</p></div>
+    </div>
+    <div class="ex-panel" id="m6e">
+      <div class="ex-card"><div class="ex-type">Biblical Example</div><div class="ex-name">Nehemiah</div><div class="ex-context">Nehemiah 2:17-18; 6:15-16 — Strategic planning, assessment, and completion</div><p class="ex-desc">Nehemiah assessed the ruins of Jerusalem, developed a strategic plan, mobilised a team, overcame opposition, and completed the wall in 52 days. He documented the work, reviewed progress, and celebrated the outcome. His leadership is a template for reflective, strategic, and mission-driven completion.</p></div>
+      <div class="ex-card"><div class="ex-type">Living Example</div><div class="ex-name">Rick Warren</div><div class="ex-context">1954–Present — Visionary planning and documented strategy</div><p class="ex-desc">Warren's ability to document, reflect, and implement sustainable leadership strategy has shaped the thinking of church leaders worldwide. His emphasis on purposeful, blueprint-driven leadership mirrors the reflective and strategic demands of the final portfolio module.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SCRIPTURAL FOUNDATIONS
+══════════════════════════════════════ -->
+<section class="scrip-bg sec" id="scriptures">
+  <div style="max-width:1180px;margin:0 auto">
+    <div class="eyebrow reveal">Biblical Foundations</div>
+    <h2 class="display-lg reveal">Seven Scriptural <em>Themes</em></h2>
+    <div class="gold-rule reveal"></div>
+    <p class="body-lg reveal" style="max-width:680px;margin-bottom:0">This training course is anchored in seven key Biblical themes that define, shape, and direct every dimension of Kingdom leadership:</p>
+    <div class="scrip-grid">
+      <div class="scrip-card reveal"><div class="scrip-theme">The Call to Leadership</div><div class="scrip-verse">"Leadership requires spiritual endurance and the responsibility to strengthen others."</div><div class="scrip-ref">Luke 22:31-32 · Jeremiah 1:5</div></div>
+      <div class="scrip-card reveal"><div class="scrip-theme">Character &amp; Spiritual Formation</div><div class="scrip-verse">"God prioritises character over outward appearance."</div><div class="scrip-ref">1 Samuel 16:7 · Romans 12:1-2</div></div>
+      <div class="scrip-card reveal"><div class="scrip-theme">Servant Leadership</div><div class="scrip-verse">"The greatest leader is the one who serves others selflessly."</div><div class="scrip-ref">Mark 10:42-45 · Philippians 2:5-7</div></div>
+      <div class="scrip-card reveal"><div class="scrip-theme">Apprenticeship &amp; Discipleship</div><div class="scrip-verse">"Commit these things to faithful people who will teach others also."</div><div class="scrip-ref">2 Timothy 2:2 · Proverbs 27:17</div></div>
+      <div class="scrip-card reveal"><div class="scrip-theme">The Cost of Leadership</div><div class="scrip-verse">"Count the cost before stepping into the weight of responsibility."</div><div class="scrip-ref">Matthew 16:24-25 · Luke 14:28</div></div>
+      <div class="scrip-card reveal"><div class="scrip-theme">Leadership in the Marketplace</div><div class="scrip-verse">"Kingdom leaders should be excellent in all they do, even in secular spaces."</div><div class="scrip-ref">Colossians 3:23-24 · Daniel 6:3</div></div>
+      <div class="scrip-card reveal"><div class="scrip-theme">Transition &amp; Succession</div><div class="scrip-verse">"Finish well and prepare the next generation to go further."</div><div class="scrip-ref">Ecclesiastes 3:1 · 2 Timothy 4:6-7</div></div>
+      <div class="scrip-card reveal"><div class="scrip-theme">Kingdom Beyond the Church</div><div class="scrip-verse">"Joseph led in government. Daniel influenced nations. Esther changed history."</div><div class="scrip-ref">Genesis 41 · Daniel 6:3 · Esther 4:14</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BAND -->
+<div class="quote-band">
+  <div class="quote-in">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">And the things that you have heard from me among many witnesses, commit these to faithful men who will be able to teach others also.</p>
+    <div class="quote-ref">2 Timothy 2:2</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     ENROL CTA
+══════════════════════════════════════ -->
+<section class="enrol-sec sec" id="enrol">
+  <div class="enrol-bg"></div>
+  <div class="enrol-over"></div>
+  <div class="enrol-glow"></div>
+  <div class="enrol-content reveal">
+    <div class="eyebrow" style="justify-content:center">Begin Your Journey</div>
+    <h2 class="display-lg" style="margin-bottom:1.2rem">Leadership is a calling.<br><em>Are you ready to answer?</em></h2>
+    <div class="gold-rule" style="margin:1.5rem auto"></div>
+    <p class="body-lg" style="max-width:580px;margin:0 auto 2.5rem">This programme will challenge, equip, and empower you to lead with wisdom, purpose, and divine strategy. Embrace this journey with humility, diligence, and a commitment to lifelong learning.</p>
+    <div class="br br-c">
+      <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="btn btn-g" style="font-size:11px;padding:16px 40px">Apply Now — Join the Programme</a>
+      <a href="https://www.patreon.com/ChristsClimateChangers" target="_blank" class="btn btn-s" style="font-size:11px;padding:16px 36px"><span class="pdot"></span> Suddenly — Members Access</a>
+    </div>
+    <div class="hero-stats" style="margin:3rem auto 0;max-width:640px">
+      <div class="hero-stat"><div class="hero-stat-val">2 yrs</div><div class="hero-stat-lbl">Duration</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">6</div><div class="hero-stat-lbl">Modules</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">CPD</div><div class="hero-stat-lbl">Accredited</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">Masters</div><div class="hero-stat-lbl">Level</div></div>
+    </div>
+    <p class="enrol-scrip">"Before I formed you in the womb I knew you; before you were born I set you apart." — Jeremiah 1:5</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">Christ's Climate Changers · Kingdom Academy</div>
+  <div class="footer-links">
+    <a href="christs-climate-changers.html">Home</a>
+    <a href="https://www.skool.com/ccc-kingdom-community" target="_blank">All Courses</a>
+    <a href="https://www.patreon.com/ChristsClimateChangers" target="_blank">Suddenly</a>
+    <a href="mailto:hello@christsclimatechangers.com">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 Christ's Climate Changers. All rights reserved.</div>
+</div>
+
+<script>
+/* Nav scroll */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), {passive:true});
+
+/* Progress bar */
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+}, {passive:true});
+
+/* Mobile menu */
+let menuOpen = false;
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  document.getElementById('mobMenu').classList.toggle('open', menuOpen);
+  document.getElementById('hamBtn').classList.toggle('open', menuOpen);
+  document.body.style.overflow = menuOpen ? 'hidden' : '';
+}
+function closeMenu() {
+  menuOpen = false;
+  document.getElementById('mobMenu').classList.remove('open');
+  document.getElementById('hamBtn').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({top, behavior:'smooth'});
+      if (menuOpen) closeMenu();
+    }
+  });
+});
+
+/* Scroll reveal */
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const sibs = e.target.parentElement.querySelectorAll('.reveal');
+      const idx = Array.from(sibs).indexOf(e.target);
+      setTimeout(() => e.target.classList.add('vis'), Math.min(idx * 90, 400));
+      ro.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.08, rootMargin: '0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+/* Grid stagger */
+const sg = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      Array.from(e.target.children).forEach((c, i) => { c.style.transitionDelay = (i * 0.08) + 's'; });
+      sg.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.05});
+document.querySelectorAll('.cpd-grid, .who-grid, .outcomes-grid, .scrip-grid').forEach(el => sg.observe(el));
+
+/* Year tabs */
+function switchYear(id, btn) {
+  document.querySelectorAll('.year-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.year-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* Module accordion */
+function toggleModule(card) {
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.module-card.open').forEach(c => c.classList.remove('open'));
+  if (!isOpen) card.classList.add('open');
+}
+
+/* Example tabs */
+function switchEx(id, btn) {
+  document.querySelectorAll('.ex-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ex-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
+
