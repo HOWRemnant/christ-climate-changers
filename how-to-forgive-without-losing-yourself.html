@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --navy: #0a1426;
+            --gold: #c5a059; /* More muted, luxury gold */
+            --white: #ffffff;
+            --light-grey: #f4f4f4;
+        }
+
+        body { font-family: 'Playfair Display', Georgia, serif; color: #333; margin: 0; line-height: 1.8; }
+        
+        /* Header */
+        .brand-header { background: var(--white); padding: 30px; text-align: center; border-bottom: 2px solid var(--gold); }
+
+        /* Hero */
+        .hero { 
+            background: linear-gradient(135deg, var(--navy), #1e2a3d); 
+            color: var(--white); 
+            padding: 100px 20px; 
+            text-align: center; 
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        .cta-btn { 
+            background: var(--gold); color: var(--navy); padding: 20px 50px; 
+            text-transform: uppercase; letter-spacing: 2px; font-weight: bold; 
+            text-decoration: none; display: inline-block; margin-top: 30px; transition: 0.3s;
+        }
+        .cta-btn:hover { background: #d4af37; }
+
+        /* Content */
+        .container { max-width: 900px; margin: 60px auto; padding: 20px; }
+        h2 { font-size: 2.2rem; color: var(--navy); border-bottom: 1px solid var(--gold); display: inline-block; }
+        .course-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
+        .module { padding: 25px; border: 1px solid #ddd; background: var(--light-grey); }
+
+        /* Footer */
+        .brand-footer { background: var(--navy); color: #d1d1d1; padding: 60px 20px; text-align: center; }
+        .footer-quote { font-style: italic; font-size: 1.2rem; margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+
+<header class="brand-header">
+    <img src="logo.png" alt="Christ's Climate Changers" style="max-height: 70px;">
+</header>
+
+<section class="hero">
+    <h1>How to Forgive</h1>
+    <p style="font-size: 1.5rem;">Without Losing Yourself</p>
+    <p><em>CPD Accredited Professional Development Masterclass</em></p>
+    <a href="#" class="cta-btn">Begin Your Journey</a>
+</section>
+
+<div class="container">
+    <h2>Course Curriculum</h2>
+    <div class="course-grid">
+        <div class="module">
+            <h3>Part 1: The Foundations</h3>
+            <p>Understand the weight of unforgiveness and the psychology of memory.</p>
+        </div>
+        <div class="module">
+            <h3>Part 2: Mental Authority</h3>
+            <p>Taking thoughts captive and implementing the Philippians 4:8 Filter.</p>
+        </div>
+        <div class="module">
+            <h3>Part 3: Practical Application</h3>
+            <p>Managing triggers and the mind-body connection.</p>
+        </div>
+        <div class="module">
+            <h3>Part 4: Boundaries & Growth</h3>
+            <p>Protecting your peace, identity, and walking in daily freedom.</p>
+        </div>
+    </div>
+
+    <h2>Learning Outcomes</h2>
+    <ul>
+        <li>Master cognitive redirection techniques.</li>
+        <li>Distinguish between forgiveness, reconciliation, and forgetting.</li>
+        <li>Establish life-protecting boundaries.</li>
+    </ul>
+</div>
+
+<footer class="brand-footer">
+    <p class="footer-quote">"For the earth will be filled with the knowledge of the glory of the Lord, as the waters cover the sea."</p>
+    <p>&copy; 2026 Christ's Climate Changers | Disciple · Develop · Deploy</p>
+</footer>
+
+</body>
+</html>
