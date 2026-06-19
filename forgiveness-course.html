@@ -5,290 +5,685 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How to Forgive Without Losing Yourself | Christ's Climate Changers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
+/* ── TOKENS ── */
 :root{
-  --navy:#0a0f1e;--navy-mid:#111827;--navy-light:#1a2540;
+  --navy:#0a0f1e;--nm:#111827;--nl:#1a2540;--dr:#123c73;
   --g:#c9a84c;--gl:#e8c87a;--gs:#f5da82;--gd:#7a5c1e;
   --cr:#f6f0e5;--tm:#8a9ab5;
-  --tl:rgba(255,255,255,.72);
-  --nh:70px;
+  --tl:rgba(255,255,255,.72);--tf:rgba(255,255,255,.45);
+  --nh:68px;
 }
-
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.75;background:#fff;color:#1a1a2e;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.3}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
 
-body{
-    font-family:'EB Garamond', Georgia, serif;
-    font-size:18px;
-    line-height:1.6; 
-    background:var(--navy);
-    color:var(--cr);
-    overflow-x:hidden;
-    padding-top: var(--nh); 
-}
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+@keyframes pdot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.5}}
+@keyframes gpulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:.9;transform:scale(1.1)}}
+@keyframes counter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
 
-p {
-    text-align: justify;
-}
-
-/* HEADER NAV STYLES FROM MAIN PAGE */
-#nav{position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nh);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,60px);background:rgba(10,15,30,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:.5px solid rgba(201,168,76,.15)}
-.nav-logo{display:flex;align-items:center;gap:13px;flex-shrink:0}
-.logo-name{font-family:'Cinzel',serif;font-size:13px;font-weight:500;color:var(--g);letter-spacing:.18em;text-transform:uppercase}
-.logo-tag{font-family:'EB Garamond',serif;font-size:11px;font-style:italic;color:rgba(255,255,255,.5);letter-spacing:.06em}
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nh);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,56px);background:rgba(10,15,30,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:.5px solid rgba(201,168,76,.14);transition:box-shadow .4s}
+#nav.scrolled{box-shadow:0 4px 32px rgba(0,0,0,.55);border-bottom-color:rgba(201,168,76,.26)}
+.nav-logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.nav-crest{width:36px;height:36px;flex-shrink:0}
+.nav-crest svg{width:100%;height:100%}
+.nav-wm{display:flex;flex-direction:column;gap:1px}
+.nav-name{font-family:'Cinzel',serif;font-size:12.5px;font-weight:500;color:var(--g);letter-spacing:.16em;text-transform:uppercase}
+.nav-tag{font-family:'EB Garamond',serif;font-size:10.5px;font-style:italic;color:rgba(255,255,255,.45);letter-spacing:.05em}
 .nav-links{display:flex;list-style:none}
-.nav-links>li>a{display:block;padding:0 12px;line-height:var(--nh);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.65);position:relative;transition:color .2s}
-.nav-links>li>a:hover{color:var(--gl)}
-.nav-cta{background:var(--g);color:var(--navy);border:none;padding:9px 20px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none}
+.nav-links li a{display:block;padding:0 11px;line-height:var(--nh);font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.62);transition:color .2s}
+.nav-links li a:hover{color:var(--gl)}
+.nav-actions{display:flex;gap:10px;align-items:center;flex-shrink:0}
+.nav-cta{background:var(--g);color:var(--navy);border:none;padding:8px 18px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .2s}
 .nav-cta:hover{background:var(--gl)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:20px;height:1.5px;background:#fff;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-menu{position:fixed;inset:0;z-index:998;background:rgba(10,15,30,.97);backdrop-filter:blur(24px);padding:calc(var(--nh)+2rem) 2rem 3rem;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);overflow-y:auto;display:flex;flex-direction:column}
+.mob-menu.open{transform:translateX(0)}
+.mob-links{list-style:none;margin-bottom:2rem}
+.mob-links li a{display:block;padding:14px 0;font-family:'Cinzel',serif;font-size:1rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75);border-bottom:.5px solid rgba(255,255,255,.07);transition:all .2s}
+.mob-links li a:hover{color:var(--g);padding-left:8px}
+@media(max-width:980px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}}
+@media(min-width:981px){.mob-menu{display:none!important}}
 
-/* BRANDED COURSE LAYOUT CONFIGURATIONS */
-.course-page {
-    max-width: 1100px;
-    margin: auto;
-    padding: 40px 30px 20px 30px;
-}
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;padding-top:var(--nh);position:relative;overflow:hidden;background:var(--navy)}
+.hero-left{padding:80px clamp(1.5rem,5vw,72px) 80px clamp(1.5rem,5vw,56px);position:relative;z-index:5}
+.hero-right{position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;justify-content:center}
 
-.course-hero {
-    margin-bottom: 40px;
-}
-
-.course-hero h1 {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(2rem, 5vw, 3rem);
-    margin-bottom: 10px;
-    color: #fff;
-    letter-spacing: .04em;
-}
-
-.course-hero p {
-    font-size: 1.2rem;
-    color: #b7bfd3;
-    max-width: 800px;
-    margin-bottom: 15px;
-}
-
-.btn-primary {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 16px 44px;
-    border: .5px solid var(--g);
-    background: rgba(201,168,76,.06);
-    color: var(--g);
-    text-decoration: none;
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    transition: .25s ease;
-    text-transform: uppercase;
+.hero-right-img {
+    position: absolute;
+    inset: 0;
+    /* Use the file:/// address you just copied */
+    background-image: url('images/image_4986c2.jpg');
+    background-size: cover;
+    background-position: center top;
+    filter: brightness(.55) saturate(1.1);
 }
 
-.btn-primary:hover {
-    background: var(--g);
-    color: var(--navy);
-    box-shadow: 0 4px 20px rgba(201,168,76,.2);
-}
+.hero-right-over{position:absolute;inset:0;background:linear-gradient(to right,var(--navy) 0%,rgba(10,15,30,.3) 40%,transparent 100%)}
+.hero-glow{position:absolute;left:-100px;top:40%;width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,.07) 0%,transparent 65%);animation:gpulse 8s ease-in-out infinite;pointer-events:none;z-index:1}
 
-.course-benefits {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 15px;
-    margin: 30px 0;
-}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.38em;text-transform:uppercase;color:var(--g);margin-bottom:1.4rem;opacity:0;animation:fadeUp .9s .1s ease both}
+.hero-eyebrow::before{content:'';width:24px;height:.5px;background:var(--g);opacity:.7;flex-shrink:0}
 
-.benefit-card {
-    background: var(--navy-light);
-    padding: 20px;
-    border: 0.5px solid rgba(201,168,76,.12);
-}
+.hero-h1{font-family:'Cinzel',serif;font-size:clamp(2.2rem,4.5vw,4rem);font-weight:500;line-height:1.08;letter-spacing:.02em;color:#fff;margin-bottom:.5rem;opacity:0;animation:fadeUp .9s .25s ease both}
+.hero-h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gl);font-size:1.12em;font-weight:300;display:block}
 
-.benefit-card h3 {
-    font-family: 'Cinzel', serif;
-    color: var(--gl);
-    font-size: 14px;
-    margin-bottom: 6px;
-}
+.hero-sub{font-family:'EB Garamond',serif;font-size:18px;color:var(--tl);line-height:1.8;max-width:500px;margin:1.5rem 0 2.2rem;opacity:0;animation:fadeUp .9s .4s ease both}
 
-.curriculum {
-    padding: 30px 0;
-}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;opacity:0;animation:fadeUp .9s .55s ease both}
 
-.curriculum h2 {
-    font-family: 'Cinzel', serif;
-    color: var(--g);
-    margin-bottom: 25px;
-    font-size: 1.6rem;
-    letter-spacing: 0.05em;
-}
+/* Hero stat pills */
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:2.5rem;opacity:0;animation:fadeUp .9s .7s ease both}
+.hero-pill{display:flex;align-items:center;gap:7px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--g);background:rgba(201,168,76,.08);border:.5px solid rgba(201,168,76,.22);padding:7px 13px}
+.hero-pill svg{width:11px;height:11px;flex-shrink:0}
 
-.module {
-    background: var(--navy-mid);
-    padding: 20px;
-    border: 0.5px solid rgba(201,168,76,.25);
-    margin-bottom: 15px;
-}
+@media(max-width:860px){.hero{grid-template-columns:1fr;min-height:auto}.hero-left{padding:80px clamp(1.5rem,5vw,40px) 60px;min-height:80vh;display:flex;flex-direction:column;justify-content:center}.hero-right{display:none}}
 
-.module h3 {
-    font-family: 'Cinzel', serif;
-    color: var(--gl);
-    font-size: 14px;
-    margin-bottom: 10px;
-}
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Cinzel',serif;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;border:none;transition:all .25s ease;white-space:nowrap}
+.btn-g{background:var(--g);color:var(--navy);padding:15px 36px}
+.btn-g:hover{background:var(--gl);transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,168,76,.35)}
+.btn-w{background:transparent;color:var(--g);border:.5px solid var(--g);padding:14px 32px}
+.btn-w:hover{background:rgba(201,168,76,.08)}
+.btn-s{background:linear-gradient(120deg,var(--gd),var(--g),var(--gs),var(--g),var(--gd));background-size:300% 300%;animation:shimmer 4s ease infinite;color:var(--navy);padding:15px 36px;box-shadow:0 0 22px rgba(201,168,76,.35)}
+.btn-s:hover{box-shadow:0 0 40px rgba(201,168,76,.65);transform:translateY(-2px)}
+.pdot{width:7px;height:7px;border-radius:50%;background:var(--navy);animation:pdot 2s ease-in-out infinite;flex-shrink:0}
 
-.module ul {
-    padding-left: 20px;
-    margin-bottom: 5px;
-}
+/* ── TRUST STRIP ── */
+.trust-strip{background:var(--nm);border-top:.5px solid rgba(201,168,76,.14);border-bottom:.5px solid rgba(201,168,76,.14);padding:0;display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:1}
+.trust-item{padding:2rem 1.8rem;border-right:.5px solid rgba(201,168,76,.1);text-align:center}
+.trust-item:last-child{border-right:none}
+.trust-val{font-family:'Cinzel',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:500;color:var(--gl);line-height:1;margin-bottom:.3rem}
+.trust-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--tm)}
+@media(max-width:680px){.trust-strip{grid-template-columns:1fr 1fr}.trust-item:nth-child(2){border-right:none}.trust-item:nth-child(1),.trust-item:nth-child(2){border-bottom:.5px solid rgba(201,168,76,.1)}}
 
-.module li {
-    margin-bottom: 5px;
-    color: var(--tl);
-}
+/* ── SECTION WRAPPER ── */
+.sec{padding:90px clamp(1.5rem,5vw,72px);position:relative;z-index:1}
+.sec-sm{padding:60px clamp(1.5rem,5vw,72px);position:relative;z-index:1}
+.wrap{max-width:1100px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.38em;text-transform:uppercase;color:var(--g);margin-bottom:1.2rem}
+.eyebrow::before{content:'';width:24px;height:.5px;background:var(--g);opacity:.7;flex-shrink:0}
+.h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,3.2vw,2.8rem);font-weight:500;line-height:1.15;letter-spacing:.03em;color:var(--navy)}
+.h2.light{color:#fff}
+.h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--g);font-size:1.12em;font-weight:300}
+.gold-rule{width:52px;height:.5px;background:var(--g);margin:1.6rem 0;opacity:.7}
+.body-t{font-family:'EB Garamond',serif;font-size:17.5px;line-height:1.85;color:#4a5568;max-width:640px}
+.body-t.light{color:var(--tl)}
 
-/* FOOTER SECTION STYLE */
-#footer {
-    background: rgba(10,15,30,.95);
-    border-top: .5px solid rgba(201,168,76,.15);
-    padding: 40px 30px;
-    text-align: center;
-    font-size: 14px;
-    color: var(--tm);
-    margin-top: 60px;
-}
-.footer-logo {
-    font-family: 'Cinzel', serif;
-    color: var(--g);
-    letter-spacing: .15em;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
+/* ── ABOUT (what is this course) ── */
+.about-bg{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img{position:relative;overflow:hidden}
+.about-img-inner{aspect-ratio:4/5;overflow:hidden;border-radius:2px}
+.about-img-inner img{transition:transform .5s ease}
+.about-img:hover .about-img-inner img{transform:scale(1.04)}
+.about-img-over{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,15,30,.5) 0%,transparent 55%)}
+.about-img-tag{position:absolute;bottom:1.5rem;left:1.5rem;background:var(--g);color:var(--navy);font-family:'Cinzel',serif;font-size:9px;letter-spacing:.16em;text-transform:uppercase;padding:7px 14px}
+.about-list{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-top:1.5rem}
+.about-list li{display:flex;align-items:flex-start;gap:12px;font-family:'EB Garamond',serif;font-size:16.5px;color:#2d3748;line-height:1.65}
+.about-list li::before{content:'\2713';color:var(--g);font-size:14px;flex-shrink:0;margin-top:2px;font-weight:700}
+@media(max-width:780px){.about-grid{grid-template-columns:1fr;gap:3rem}.about-img{display:none}}
+
+/* ── WHO IS THIS FOR ── */
+.who-bg{background:var(--nl);color:#fff}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.who-card{background:rgba(255,255,255,.04);border:.5px solid rgba(201,168,76,.12);padding:2rem 1.8rem;transition:all .3s;position:relative;overflow:hidden}
+.who-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--g);transition:height .4s ease}
+.who-card:hover{border-color:rgba(201,168,76,.3);background:rgba(255,255,255,.06);transform:translateY(-3px)}
+.who-card:hover::before{height:100%}
+.who-icon{font-size:1.6rem;margin-bottom:.8rem}
+.who-title{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gl);margin-bottom:.5rem}
+.who-desc{font-family:'EB Garamond',serif;font-size:15.5px;color:var(--tf);line-height:1.7}
+@media(max-width:780px){.who-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.who-grid{grid-template-columns:1fr}}
+
+/* ── OUTCOMES ── */
+.outcomes-bg{background:#f9f7f3}
+.outcomes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:3rem}
+.outcome{display:flex;align-items:flex-start;gap:14px;padding:1.4rem 1.6rem;background:#fff;border:.5px solid rgba(201,168,76,.18);transition:border-color .2s,box-shadow .2s}
+.outcome:hover{border-color:rgba(201,168,76,.38);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.outcome-tick{width:26px;height:26px;border-radius:50%;background:rgba(201,168,76,.1);border:.5px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:2px;color:var(--g);font-weight:700}
+.outcome-text{font-family:'EB Garamond',serif;font-size:16.5px;color:#2d3748;line-height:1.65}
+@media(max-width:680px){.outcomes-grid{grid-template-columns:1fr}}
+
+/* ── CURRICULUM ── */
+.curr-bg{background:#fff}
+.modules-list{display:flex;flex-direction:column;gap:2px;margin-top:3rem}
+.mod{background:#fff;border:.5px solid rgba(201,168,76,.2);overflow:hidden;cursor:pointer;transition:border-color .25s}
+.mod:hover{border-color:rgba(201,168,76,.45)}
+.mod-head{display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:20px;padding:1.5rem 1.8rem;position:relative}
+.mod-num{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gd)}
+.mod-info .mod-title{font-family:'Cinzel',serif;font-size:13.5px;font-weight:500;color:var(--navy);letter-spacing:.03em;margin-bottom:3px}
+.mod-info .mod-sub{font-family:'EB Garamond',serif;font-size:14.5px;color:#6a7585;font-style:italic}
+.mod-toggle{width:28px;height:28px;border:.5px solid rgba(201,168,76,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--g);transition:transform .3s,background .2s;flex-shrink:0}
+.mod.open .mod-toggle{transform:rotate(45deg);background:rgba(201,168,76,.1)}
+.mod-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.mod.open .mod-body{max-height:600px}
+.mod-body-inner{padding:0 1.8rem 1.8rem 6.5rem}
+.session-list{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.session-list li{display:flex;align-items:flex-start;gap:10px;font-family:'EB Garamond',serif;font-size:16px;color:#4a5568;line-height:1.6;padding:.5rem 0;border-bottom:.5px solid rgba(201,168,76,.08)}
+.session-list li:last-child{border-bottom:none}
+.session-num{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;color:var(--g);flex-shrink:0;margin-top:2px;min-width:28px}
+.session-list li .scrip{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;color:var(--gd);background:rgba(201,168,76,.08);border:.5px solid rgba(201,168,76,.18);padding:2px 8px;margin-left:8px;flex-shrink:0;vertical-align:middle;display:inline-block}
+@media(max-width:640px){.mod-head{grid-template-columns:1fr auto;gap:10px}.mod-num{display:none}.mod-body-inner{padding:0 1.2rem 1.5rem 1.2rem}}
+
+/* ── SCRIPTURE BAND ── */
+.scrip-band{background:linear-gradient(135deg,var(--dr),var(--nm));border-top:.5px solid rgba(201,168,76,.18);border-bottom:.5px solid rgba(201,168,76,.18);padding:60px clamp(1.5rem,5vw,72px);text-align:center;position:relative;z-index:1}
+.scrip-band blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:300;color:rgba(255,255,255,.82);line-height:1.65;max-width:700px;margin:0 auto 1rem;border-left:2px solid var(--g);padding-left:28px;text-align:left}
+.scrip-band cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-top:10px}
+
+/* ── TESTIMONIALS ── */
+.testi-bg{background:#f9f7f3}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.tcard{background:#fff;border:.5px solid rgba(201,168,76,.15);padding:2rem;position:relative;transition:box-shadow .25s,border-color .25s}
+.tcard:hover{box-shadow:0 8px 30px rgba(0,0,0,.08);border-color:rgba(201,168,76,.3)}
+.tcard::before{content:'\201C';position:absolute;top:16px;left:20px;font-family:'Cormorant Garamond',serif;font-size:56px;color:var(--g);opacity:.2;line-height:1}
+.tcard-body{font-family:'EB Garamond',serif;font-style:italic;font-size:16.5px;color:#4a5568;line-height:1.8;margin-top:12px;margin-bottom:1.3rem}
+.tcard-name{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--navy)}
+.tcard-role{font-family:'EB Garamond',serif;font-size:13.5px;color:#9a92a0;margin-top:2px}
+@media(max-width:780px){.testi-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.testi-grid{grid-template-columns:1fr}}
+
+/* ── ENROL CTA ── */
+.enrol-sec{position:relative;overflow:hidden;text-align:center;padding:100px clamp(1.5rem,5vw,72px)}
+.enrol-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=1800&q=80');background-size:cover;background-position:center;filter:brightness(.18) saturate(1.2)}
+.enrol-over{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(10,32,64,.88) 0%,rgba(10,15,30,.97) 100%)}
+.enrol-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(201,168,76,.1) 0%,transparent 65%);animation:gpulse 7s ease-in-out infinite;pointer-events:none}
+.enrol-content{position:relative;z-index:2;max-width:700px;margin:0 auto}
+.enrol-price{font-family:'Cinzel',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:500;color:var(--gl);line-height:1;margin-bottom:.3rem}
+.enrol-price-sub{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--tm);margin-bottom:2.5rem}
+.enrol-features{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-bottom:2.5rem}
+.enrol-feat{display:flex;align-items:center;gap:7px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(255,255,255,.05);border:.5px solid rgba(255,255,255,.12);padding:7px 14px}
+.enrol-feat svg{width:10px;height:10px;color:var(--g);flex-shrink:0}
+.enrol-scrip{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,.35);margin-top:2.5rem}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.12);padding:3rem clamp(1.5rem,5vw,72px) 2rem;position:relative;z-index:1}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:.5px solid rgba(255,255,255,.07)}
+.footer-brand{font-family:'Cinzel',serif;font-size:14px;letter-spacing:.14em;color:var(--g);text-transform:uppercase;margin-bottom:.4rem}
+.footer-bio{font-family:'EB Garamond',serif;font-size:15px;color:rgba(255,255,255,.4);line-height:1.75;max-width:280px}
+.footer-col h4{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--g);margin-bottom:1.2rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:.55rem}
+.footer-col ul li a{font-family:'EB Garamond',serif;font-size:15px;color:rgba(255,255,255,.45);transition:color .2s}
+.footer-col ul li a:hover{color:var(--gl)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.footer-copy{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.22)}
+.footer-legal{display:flex;gap:20px}
+.footer-legal a{font-family:'Cinzel',serif;font-size:10px;color:rgba(255,255,255,.22);transition:color .2s}
+.footer-legal a:hover{color:var(--g)}
+
+/* Progress */
+.progress-bar{position:fixed;top:0;left:0;height:1.5px;background:var(--g);z-index:1001;box-shadow:0 0 6px rgba(201,168,76,.5);transition:width .1s linear}
 </style>
-
 </head>
 <body>
 
-<nav id="nav">
-  <div class="nav-logo">
-    <div class="logo-wm">
-      <span class="logo-name">Christ's Climate Changers</span>
-      <span class="logo-tag">Transforming Lives. Impacting Nations.</span>
-    </div>
-  </div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#courses">Courses</a></li>
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- MOBILE MENU -->
+<nav class="mob-menu" id="mobMenu">
+  <ul class="mob-links">
+    <li><a href="#about" onclick="closeMenu()">About the Course</a></li>
+    <li><a href="#who" onclick="closeMenu()">Who It's For</a></li>
+    <li><a href="#outcomes" onclick="closeMenu()">What You'll Learn</a></li>
+    <li><a href="#curriculum" onclick="closeMenu()">Curriculum</a></li>
+    <li><a href="#testimonials" onclick="closeMenu()">Testimonials</a></li>
+    <li><a href="#enrol" onclick="closeMenu()">Enrol</a></li>
   </ul>
-  <div class="nav-actions">
-    <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-top:1.5rem">
+    <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="btn btn-g" style="justify-content:center">Enrol Now</a>
+    <a href="https://www.patreon.com/ChristsClimateChangers" target="_blank" class="btn btn-s" style="justify-content:center"><span class="pdot"></span> Suddenly — Members</a>
   </div>
 </nav>
 
-<section id="forgiveness-course" class="course-page">
-
-    <div class="course-hero">
-        <h1>How to Forgive Without Losing Yourself</h1>
-
-        <p>
-            A practical step-by-step course designed to help you release pain,
-            regain control of your thoughts, establish healthy boundaries,
-            and live in emotional freedom.
-        </p>
-
-        <a href="#curriculum" class="btn-primary">
-            View Course Curriculum &darr;
-        </a>
+<!-- NAV -->
+<nav id="nav">
+  <a href="christs-climate-changers.html" class="nav-logo">
+    <div class="nav-crest">
+      <svg viewBox="0 0 52 52" fill="none">
+        <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#f5da82"/><stop offset="50%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#8a6a1f"/>
+        </linearGradient></defs>
+        <path d="M26 4.5L6.5 12.5V27C6.5 37.8 15.5 45.3 26 48.5C36.5 45.3 45.5 37.8 45.5 27V12.5L26 4.5Z" stroke="url(#gg)" stroke-width="1.3" fill="none"/>
+        <path d="M17 21.5L20.5 17L24 20.5L26 14L28 20.5L31.5 17L35 21.5H17Z" fill="url(#gg)"/>
+        <rect x="17" y="21.5" width="18" height="2.5" fill="url(#gg)" rx=".5"/>
+        <rect x="25" y="26" width="2.2" height="12" fill="url(#gg)" rx=".5"/>
+        <rect x="20" y="30" width="12" height="2.2" fill="url(#gg)" rx=".5"/>
+      </svg>
     </div>
-
-    <div class="course-benefits">
-
-        <div class="benefit-card">
-            <h3>Understand Forgiveness</h3>
-            <p>Learn what forgiveness is and what it is not.</p>
-        </div>
-
-        <div class="benefit-card">
-            <h3>Control Your Thoughts</h3>
-            <p>Break free from painful mental cycles.</p>
-        </div>
-
-        <div class="benefit-card">
-            <h3>Set Healthy Boundaries</h3>
-            <p>Protect your peace without guilt.</p>
-        </div>
-
-        <div class="benefit-card">
-            <h3>Live Free</h3>
-            <p>Move forward without losing yourself.</p>
-        </div>
-
+    <div class="nav-wm">
+      <span class="nav-name">Christ's Climate Changers</span>
+      <span class="nav-tag">Transforming Lives. Impacting Nations.</span>
     </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#outcomes">Outcomes</a></li>
+    <li><a href="#curriculum">Curriculum</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="nav-cta">Enrol Now</a>
+    <button class="hamburger" id="hamBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
-    <div id="curriculum" class="curriculum">
-
-        <h2>Course Curriculum</h2>
-
-        <div class="module">
-            <h3>Module 1: Understanding Forgiveness</h3>
-            <ul>
-                <li>Session 1: What Forgiveness Is—and What It Is Not</li>
-                <li>Session 2: Why Forgetting Feels Impossible</li>
-                <li>Session 3: The Power of Thoughts</li>
-            </ul>
-        </div>
-
-        <div class="module">
-            <h3>Module 2: Taking Control of Your Mind</h3>
-            <ul>
-                <li>Session 4: The Philippians 4:8 Filter</li>
-                <li>Session 5: Taking Thoughts Captive</li>
-                <li>Session 6: Mind Redirection Therapy</li>
-            </ul>
-        </div>
-
-        <div class="module">
-            <h3>Module 3: Applying It In Real Life</h3>
-            <ul>
-                <li>Session 7: When the Pain Keeps Coming Back</li>
-                <li>Session 8: Handling Emotional Triggers</li>
-                <li>Session 9: Mind vs Body</li>
-            </ul>
-        </div>
-
-        <div class="module">
-            <h3>Module 4: Boundaries & Self-Protection</h3>
-            <ul>
-                <li>Session 10: Forgiveness Does Not Mean Access</li>
-                <li>Session 11: Apology vs True Change</li>
-                <li>Session 12: Stop Training People to Hurt You</li>
-            </ul>
-        </div>
-
-        <div class="module">
-            <h3>Module 5: Healing Your Identity</h3>
-            <ul>
-                <li>Session 13: Knowing Your Worth</li>
-                <li>Session 14: When You're Not Ready to Forgive</li>
-            </ul>
-        </div>
-
-        <div class="module">
-            <h3>Module 6: Living Free</h3>
-            <ul>
-                <li>Session 15: Choosing Peace Daily</li>
-                <li>Session 16: Living Without Mental Bondage</li>
-            </ul>
-        </div>
+<!-- ══════════════════════════
+     HERO
+     ══════════════════════════ -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Kingdom Emotional Health Course</div>
+    <h1 class="hero-h1">
+      How to Forgive
+      <em>Without Losing Yourself</em>
+    </h1>
+    <div style="width:52px;height:.5px;background:var(--g);margin:1.5rem 0;opacity:.7"></div>
+    <p class="hero-sub">A practical, step-by-step journey designed to help you release pain, regain control of your thoughts, establish healthy boundaries, and live in genuine emotional freedom — without betraying who you are.</p>
+    <div class="hero-ctas">
+      <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="btn btn-g">Enrol Now</a>
+      <a href="#curriculum" class="btn btn-w">View Curriculum</a>
     </div>
+    <div class="hero-pills">
+      <div class="hero-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="10" height="10" rx="1"/><path d="M4 6l1.5 1.5L8 4"/></svg>6 Modules · 16 Sessions</div>
+      <div class="hero-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="5"/><path d="M6 3v3l2 2"/></svg>Self-Paced · Lifetime Access</div>
+      <div class="hero-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l-3-3"/></svg>Biblical &amp; Practical</div>
+      <div class="hero-pill"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 1L7.5 4.5H11l-2.8 2 1.1 3.5L6 8 2.7 10l1.1-3.5L1 4.5h3.5z"/></svg>Certificate Included</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-img"></div>
+    <div class="hero-right-over"></div>
+  </div>
 </section>
 
-<footer id="footer">
-    <div class="footer-logo">Christ's Climate Changers</div>
-    <p style="text-align: center; color: rgba(255,255,255,0.4); font-size: 13px;">
-        &copy; 2026 Christ's Climate Changers. Advancing His Kingdom. All Rights Reserved.
-    </p>
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item reveal"><div class="trust-val">16</div><div class="trust-lbl">Teaching Sessions</div></div>
+  <div class="trust-item reveal"><div class="trust-val">6</div><div class="trust-lbl">Core Modules</div></div>
+  <div class="trust-item reveal"><div class="trust-val">∞</div><div class="trust-lbl">Lifetime Access</div></div>
+  <div class="trust-item reveal"><div class="trust-val">✦</div><div class="trust-lbl">Certificate Included</div></div>
+</div>
+
+<!-- ══════════════════════════
+     ABOUT
+     ══════════════════════════ -->
+<section class="about-bg sec" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="eyebrow">About This Course</div>
+      <h2 class="h2">Forgiveness is not<br><em>weakness. It is freedom.</em></h2>
+      <div class="gold-rule"></div>
+      <p class="body-t">This is not a course that simply tells you to forgive and move on. It takes you through the honest, sometimes messy reality of what true forgiveness requires — and what it does not. You will learn how to release pain without excusing it, how to protect your identity without hardening your heart, and how to find genuine peace that does not require the other person to change.</p>
+      <p class="body-t" style="margin-top:1rem">Combining Biblical truth with psychological insight and practical tools, this course meets you where you are and walks with you toward where God is calling you to be — free.</p>
+      <ul class="about-list">
+        <li>Biblical foundations from Matthew 6, Philippians 4, and 2 Corinthians 10</li>
+        <li>Practical tools for breaking mental cycles and emotional triggers</li>
+        <li>Honest exploration of boundaries — without guilt or shame</li>
+        <li>A pathway through identity, worth, and healing</li>
+        <li>Suitable for self-study or group use in church or ministry settings</li>
+      </ul>
+    </div>
+    <div class="about-img reveal">
+      <div class="about-img-inner">
+        <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=800&q=75" alt="Healing and peace" loading="lazy">
+      </div>
+      <div class="about-img-over"></div>
+      <div class="about-img-tag">Emotional Freedom</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     WHO IS THIS FOR
+     ══════════════════════════ -->
+<section class="who-bg sec" id="who">
+  <div class="wrap">
+    <div class="eyebrow reveal" style="color:var(--g)">Who This Is For</div>
+    <h2 class="h2 light reveal">This course was built<br><em>for you</em> if&hellip;</h2>
+    <div class="gold-rule reveal"></div>
+    <div class="who-grid">
+      <div class="who-card reveal"><div class="who-icon">💔</div><div class="who-title">The Deeply Hurt</div><p class="who-desc">You are carrying pain from betrayal, abandonment, or repeated hurt — and you are exhausted by the weight of unforgiveness.</p></div>
+      <div class="who-card reveal"><div class="who-icon">🧠</div><div class="who-title">The Trapped Thinker</div><p class="who-desc">Your mind replays the same painful memories. You want to stop thinking about it, but you cannot seem to make it stop.</p></div>
+      <div class="who-card reveal"><div class="who-icon">🛡️</div><div class="who-title">The Boundary-Seeker</div><p class="who-desc">You want to forgive but you also want to protect yourself. You need to know how to do both without compromising your values.</p></div>
+      <div class="who-card reveal"><div class="who-icon">😔</div><div class="who-title">The Ready-But-Struggling</div><p class="who-desc">You know you should forgive. You have even tried. But something keeps pulling you back. You need a different approach.</p></div>
+      <div class="who-card reveal"><div class="who-icon">✝️</div><div class="who-title">The Faithful Believer</div><p class="who-desc">You love God and want to walk in His way — but you need more than a command to forgive. You need a Biblical pathway through the process.</p></div>
+      <div class="who-card reveal"><div class="who-icon">🌱</div><div class="who-title">The Healing Leader</div><p class="who-desc">You minister to others in pain and want to be equipped with tools that are both spiritually grounded and practically effective.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     OUTCOMES
+══════════════════════════ -->
+<section class="outcomes-bg sec" id="outcomes">
+  <div class="wrap">
+    <div class="eyebrow reveal">What You Will Learn</div>
+    <h2 class="h2 reveal">By the end of this course,<br><em>you will be equipped to…</em></h2>
+    <div class="gold-rule reveal"></div>
+    <div class="outcomes-grid">
+      <div class="outcome reveal"><div class="outcome-tick">✓</div><div class="outcome-text">Understand what forgiveness actually is — and what it is not — from both a Biblical and psychological perspective</div></div>
+      <div class="outcome reveal"><div class="outcome-tick">✓</div><div class="outcome-text">Break free from the mental cycles that keep pain alive and intrusive memories returning</div></div>
+      <div class="outcome reveal"><div class="outcome-tick">✓</div><div class="outcome-text">Apply the Philippians 4:8 filter and take every thought captive to the obedience of Christ</div></div>
+      <div class="outcome reveal"><div class="outcome-tick">✓</div><div class="outcome-text">Handle emotional triggers with wisdom instead of reaction, and understand the mind-body connection in healing</div></div>
+      <div class="outcome reveal"><div class="outcome-tick">✓</div><div class="outcome-text">Set healthy, Biblical boundaries without guilt — understanding that forgiveness does not mean unlimited access</div></div>
+      <div class="outcome reveal"><div class="outcome-tick">✓</div><div class="outcome-text">Distinguish between genuine apology and superficial change — and stop training people to repeat harmful patterns</div></div>
+      <div class="outcome reveal"><div class="outcome-tick">✓</div><div class="outcome-text">Know your worth and value apart from the opinions or actions of those who have hurt you</div></div>
+      <div class="outcome reveal"><div class="outcome-tick">✓</div><div class="outcome-text">Choose peace as a daily discipline and live without mental bondage to past pain</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRIPTURE BAND -->
+<div class="scrip-band">
+  <blockquote>
+    "And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God."
+    <cite>Romans 12:2</cite>
+  </blockquote>
+</div>
+
+<!-- ══════════════════════════
+     CURRICULUM
+══════════════════════════ -->
+<section class="curr-bg sec" id="curriculum">
+  <div class="wrap">
+    <div class="eyebrow reveal">Course Curriculum</div>
+    <h2 class="h2 reveal">6 Modules. 16 Sessions.<br><em>One complete pathway to freedom.</em></h2>
+    <div class="gold-rule reveal"></div>
+    <p class="body-t reveal" style="margin-bottom:0">Each session includes video teaching, a reflection journal prompt, and a practical exercise. Work through them at your own pace, in your own space.</p>
+
+    <div class="modules-list">
+
+      <!-- MODULE 1 -->
+      <div class="mod" onclick="toggleMod(this)">
+        <div class="mod-head">
+          <div class="mod-num">Module 01</div>
+          <div class="mod-info">
+            <div class="mod-title">Understanding Forgiveness</div>
+            <div class="mod-sub">What forgiveness is — and what it is not</div>
+          </div>
+          <div class="mod-toggle">+</div>
+        </div>
+        <div class="mod-body">
+          <div class="mod-body-inner">
+            <p style="font-family:'EB Garamond',serif;font-size:16px;color:#4a5568;margin-bottom:1rem;line-height:1.75">Before you can forgive, you need to understand what you are actually being asked to do — and what you are not. This module dismantles the most common misconceptions about forgiveness and lays a clear Biblical and practical foundation.</p>
+            <ul class="session-list">
+              <li><span class="session-num">01</span>What Forgiveness Is — and What It Is Not <span class="scrip">Matthew 6:14-15</span></li>
+              <li><span class="session-num">02</span>Why Forgetting Feels Impossible — and What to Do About It <span class="scrip">Isaiah 43:25</span></li>
+              <li><span class="session-num">03</span>The Power of Thoughts — How the Mind Holds On <span class="scrip">Proverbs 23:7</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE 2 -->
+      <div class="mod" onclick="toggleMod(this)">
+        <div class="mod-head">
+          <div class="mod-num">Module 02</div>
+          <div class="mod-info">
+            <div class="mod-title">Taking Control of Your Mind</div>
+            <div class="mod-sub">Breaking mental cycles and redirecting thought</div>
+          </div>
+          <div class="mod-toggle">+</div>
+        </div>
+        <div class="mod-body">
+          <div class="mod-body-inner">
+            <p style="font-family:'EB Garamond',serif;font-size:16px;color:#4a5568;margin-bottom:1rem;line-height:1.75">The mind is a battlefield. This module gives you Biblical and practical tools to interrupt painful thought patterns, choose what you dwell on, and redirect your mental energy toward healing and Kingdom truth.</p>
+            <ul class="session-list">
+              <li><span class="session-num">04</span>The Philippians 4:8 Filter — What You Were Built to Think About <span class="scrip">Phil 4:8</span></li>
+              <li><span class="session-num">05</span>Taking Thoughts Captive — The Battle for the Mind <span class="scrip">2 Cor 10:5</span></li>
+              <li><span class="session-num">06</span>Mind Redirection Therapy — Practical Strategies That Work <span class="scrip">Romans 12:2</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE 3 -->
+      <div class="mod" onclick="toggleMod(this)">
+        <div class="mod-head">
+          <div class="mod-num">Module 03</div>
+          <div class="mod-info">
+            <div class="mod-title">Applying It in Real Life</div>
+            <div class="mod-sub">When pain keeps returning — triggers, cycles, and the mind-body link</div>
+          </div>
+          <div class="mod-toggle">+</div>
+        </div>
+        <div class="mod-body">
+          <div class="mod-body-inner">
+            <p style="font-family:'EB Garamond',serif;font-size:16px;color:#4a5568;margin-bottom:1rem;line-height:1.75">Theory must become practice. This module helps you apply everything you have learned in the messy, unpredictable reality of daily life — when the memory returns, when you see the person, when the body responds before the mind catches up.</p>
+            <ul class="session-list">
+              <li><span class="session-num">07</span>When the Pain Keeps Coming Back — Why It Happens and How to Respond <span class="scrip">Lam 3:22-23</span></li>
+              <li><span class="session-num">08</span>Handling Emotional Triggers — Responding Instead of Reacting <span class="scrip">James 1:19</span></li>
+              <li><span class="session-num">09</span>Mind vs Body — How Trauma Stores Itself and How to Release It <span class="scrip">Psalm 34:18</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE 4 -->
+      <div class="mod" onclick="toggleMod(this)">
+        <div class="mod-head">
+          <div class="mod-num">Module 04</div>
+          <div class="mod-info">
+            <div class="mod-title">Boundaries &amp; Self-Protection</div>
+            <div class="mod-sub">Forgiving without handing your peace back over</div>
+          </div>
+          <div class="mod-toggle">+</div>
+        </div>
+        <div class="mod-body">
+          <div class="mod-body-inner">
+            <p style="font-family:'EB Garamond',serif;font-size:16px;color:#4a5568;margin-bottom:1rem;line-height:1.75">One of the most damaging myths about forgiveness is that it requires you to restore access to the person who hurt you. This module sets the record straight — and equips you to protect yourself with wisdom, not bitterness.</p>
+            <ul class="session-list">
+              <li><span class="session-num">10</span>Forgiveness Does Not Mean Access — Drawing the Line with Clarity <span class="scrip">Matt 10:16</span></li>
+              <li><span class="session-num">11</span>Apology vs True Change — How to Tell the Difference <span class="scrip">Luke 3:8</span></li>
+              <li><span class="session-num">12</span>Stop Training People to Hurt You — Breaking Patterns Before They Break You <span class="scrip">Prov 4:23</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE 5 -->
+      <div class="mod" onclick="toggleMod(this)">
+        <div class="mod-head">
+          <div class="mod-num">Module 05</div>
+          <div class="mod-info">
+            <div class="mod-title">Healing Your Identity</div>
+            <div class="mod-sub">Knowing your worth when pain has distorted your self-image</div>
+          </div>
+          <div class="mod-toggle">+</div>
+        </div>
+        <div class="mod-body">
+          <div class="mod-body-inner">
+            <p style="font-family:'EB Garamond',serif;font-size:16px;color:#4a5568;margin-bottom:1rem;line-height:1.75">Being hurt by someone can alter the way you see yourself. This module rebuilds the foundation of identity — grounding your worth in who God says you are rather than in what someone did to you or said about you.</p>
+            <ul class="session-list">
+              <li><span class="session-num">13</span>Knowing Your Worth — Identity That Cannot Be Taken <span class="scrip">Ps 139:14 · Eph 1:4</span></li>
+              <li><span class="session-num">14</span>When You're Not Ready to Forgive — An Honest Conversation <span class="scrip">Mark 9:24</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE 6 -->
+      <div class="mod" onclick="toggleMod(this)">
+        <div class="mod-head">
+          <div class="mod-num">Module 06</div>
+          <div class="mod-info">
+            <div class="mod-title">Living Free</div>
+            <div class="mod-sub">Choosing peace daily — and never going back</div>
+          </div>
+          <div class="mod-toggle">+</div>
+        </div>
+        <div class="mod-body">
+          <div class="mod-body-inner">
+            <p style="font-family:'EB Garamond',serif;font-size:16px;color:#4a5568;margin-bottom:1rem;line-height:1.75">Freedom is not a destination you arrive at once — it is a life you choose to live daily. This final module equips you with the disciplines, declarations, and perspective you need to sustain genuine peace long after the course is complete.</p>
+            <ul class="session-list">
+              <li><span class="session-num">15</span>Choosing Peace Daily — The Discipline of the Renewed Mind <span class="scrip">Isaiah 26:3</span></li>
+              <li><span class="session-num">16</span>Living Without Mental Bondage — Your New Normal <span class="scrip">John 8:36 · Gal 5:1</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     TESTIMONIALS
+══════════════════════════ -->
+<section class="testi-bg sec" id="testimonials">
+  <div class="wrap">
+    <div class="eyebrow reveal">What Students Say</div>
+    <h2 class="h2 reveal">Real people.<br><em>Real transformation.</em></h2>
+    <div class="gold-rule reveal"></div>
+    <div class="testi-grid">
+      <div class="tcard reveal">
+        <p class="tcard-body">Module 4 changed everything for me. I had always believed forgiving meant letting them back in. Finding out that was a lie — and getting the tools to set real boundaries — was the most liberating thing I have ever experienced.</p>
+        <div class="tcard-name">Sister Patricia O.</div>
+        <div class="tcard-role">Church Leader, London</div>
+      </div>
+      <div class="tcard reveal">
+        <p class="tcard-body">I had been stuck in the same mental cycle for three years. By Session 5 I had a framework I could actually use. The thought-captive exercise alone is worth the entire course.</p>
+        <div class="tcard-name">Brother Emmanuel A.</div>
+        <div class="tcard-role">Pastor, Birmingham</div>
+      </div>
+      <div class="tcard reveal">
+        <p class="tcard-body">I thought I had already forgiven. This course showed me I had suppressed, not released. The difference is life-changing. Session 7 on why the pain keeps coming back finally gave me an answer I had been waiting years for.</p>
+        <div class="tcard-name">Grace A.</div>
+        <div class="tcard-role">Kingdom Entrepreneur, Manchester</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     ENROL CTA
+══════════════════════════ -->
+<section class="enrol-sec" id="enrol">
+  <div class="enrol-bg"></div>
+  <div class="enrol-over"></div>
+  <div class="enrol-glow"></div>
+  <div class="enrol-content reveal">
+    <div class="eyebrow" style="justify-content:center">Enrol Today</div>
+    <h2 style="font-family:'Cinzel',serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:500;color:#fff;margin-bottom:.5rem;letter-spacing:.02em">Freedom is not just possible.<br><span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gl);font-size:1.12em">It is available — right now.</span></h2>
+    <div style="width:52px;height:.5px;background:var(--g);margin:1.5rem auto;opacity:.7"></div>
+    <p style="font-family:'EB Garamond',serif;font-size:17px;color:var(--tl);max-width:540px;margin:0 auto 2.5rem;line-height:1.85">This course will not make forgiveness effortless. But it will make it possible — and show you exactly how to move from where you are to where God is calling you to be.</p>
+    <div class="enrol-price">£97</div>
+    <div class="enrol-price-sub">One-Time Payment · Lifetime Access</div>
+    <div class="enrol-features">
+      <div class="enrol-feat"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> 6 Modules &amp; 16 Sessions</div>
+      <div class="enrol-feat"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Reflection Journals</div>
+      <div class="enrol-feat"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Practical Exercises</div>
+      <div class="enrol-feat"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Certificate Included</div>
+      <div class="enrol-feat"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> Lifetime Access</div>
+      <div class="enrol-feat"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg> CCC Community Access</div>
+    </div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center">
+      <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="btn btn-g" style="font-size:11.5px;padding:17px 44px">Enrol Now — £97</a>
+      <a href="https://www.patreon.com/ChristsClimateChangers" target="_blank" class="btn btn-s" style="font-size:11.5px;padding:17px 38px"><span class="pdot"></span> Suddenly — Members Access</a>
+    </div>
+    <p class="enrol-scrip">"If the Son sets you free, you will be free indeed." — John 8:36</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Christ's Climate Changers</div>
+      <p class="footer-bio">Transforming Lives. Impacting Nations. Advancing His Kingdom — one renewed mind at a time.</p>
+    </div>
+    <div class="footer-col"><h4>Course</h4><ul>
+      <li><a href="#about">About the Course</a></li>
+      <li><a href="#outcomes">What You'll Learn</a></li>
+      <li><a href="#curriculum">Curriculum</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Community</h4><ul>
+      <li><a href="https://www.skool.com/ccc-kingdom-community" target="_blank">Skool Community</a></li>
+      <li><a href="https://www.patreon.com/ChristsClimateChangers" target="_blank" style="color:var(--g)">✦ Suddenly Membership</a></li>
+      <li><a href="christs-climate-changers.html">All Courses</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Connect</h4><ul>
+      <li><a href="christs-climate-changers.html">Main Website</a></li>
+      <li><a href="mailto:hello@christsclimatechangers.com">Contact Us</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Christ's Climate Changers. All Rights Reserved.</p>
+    <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a></div>
+  </div>
 </footer>
 
+<script>
+/* Nav */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), {passive:true});
+
+/* Progress */
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+}, {passive:true});
+
+/* Mobile menu */
+let open = false;
+function toggleMenu(){ open=!open; document.getElementById('mobMenu').classList.toggle('open',open); document.getElementById('hamBtn').classList.toggle('open',open); document.body.style.overflow=open?'hidden':''; }
+function closeMenu(){ open=false; document.getElementById('mobMenu').classList.remove('open'); document.getElementById('hamBtn').classList.remove('open'); document.body.style.overflow=''; }
+
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const t = document.getElementById(id);
+    if(t){ e.preventDefault(); window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'}); if(open)closeMenu(); }
+  });
+});
+
+/* Reveal */
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const sibs = e.target.parentElement.querySelectorAll('.reveal');
+      const idx = Array.from(sibs).indexOf(e.target);
+      setTimeout(()=>e.target.classList.add('vis'), Math.min(idx*90,400));
+      ro.unobserve(e.target);
+    }
+  });
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* Grid stagger */
+const sg = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ Array.from(e.target.children).forEach((c,i)=>{c.style.transitionDelay=(i*.08)+'s';}); sg.unobserve(e.target); }
+  });
+},{threshold:.05});
+document.querySelectorAll('.who-grid,.outcomes-grid,.testi-grid,.trust-strip').forEach(el=>sg.observe(el));
+
+/* Module accordion */
+function toggleMod(mod){
+  const was = mod.classList.contains('open');
+  document.querySelectorAll('.mod.open').forEach(m=>m.classList.remove('open'));
+  if(!was) mod.classList.add('open');
+}
+</script>
 </body>
 </html>
