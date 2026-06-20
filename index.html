@@ -53,11 +53,12 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 .hero-content {
-  margin-top: -2rem;
+    margin-top: 0 !important; /* Reset this to zero */
 }
 
 .ccc-hero-title {
-  margin-top: -1rem;
+    margin-top: 0 !important; /* Reset this to zero */
+    white-space: normal !important; /* Forces text to wrap */
 }
 
 .hero-over {
@@ -76,6 +77,18 @@ img{display:block;width:100%;height:100%;object-fit:cover}
     background: var(--navy-mid); /* Fills any extra gaps nicely */
     overflow: hidden;
 }
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* Increase the first number here to push content down below the fixed nav */
+    padding-top: calc(var(--nh) + 120px) !important; 
+    padding-bottom: 80px;
+}  
   
 /* TYPE */
 .label{display:inline-flex;align-items:center;gap:14px;font-family:'Cinzel',serif;font-size:10px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:var(--g);margin-bottom:1.2rem}
