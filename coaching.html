@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kingdom Coaching | Christ's Climate Changers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ── */
+:root{
+  /* Brighter royal blue palette */
+  --d:    #050e2a;   /* darkest bg */
+  --nm:   #0a1a3f;   /* dark mid */
+  --nl:   #0e2358;   /* navy light */
+  --blue: #1040a0;   /* vivid royal blue */
+  --mid:  #1a55cc;   /* bright mid blue */
+  --bri:  #2563eb;   /* bright accent */
+  --dr:   #0d2e7a;   /* deep royal */
+  /* Gold */
+  --g:    #c9a84c;
+  --gl:   #e8c87a;
+  --gs:   #f5da82;
+  --gd:   #7a5c1e;
+  /* Text / neutral */
+  --cr:   #f0f4ff;
+  --tm:   #8aa0cc;
+  --tl:   rgba(255,255,255,.75);
+  --tf:   rgba(255,255,255,.45);
+  --nh:   70px;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.75;background:#fff;color:#0e1a36;overflow-x:hidden}
+
+/* subtle paper texture */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.35}
+
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+@keyframes pdot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.5}}
+@keyframes gpulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.8;transform:scale(1.1)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nh);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,60px);background:rgba(5,14,42,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:.5px solid rgba(37,99,235,.25);transition:box-shadow .4s,border-color .4s}
+#nav.scrolled{box-shadow:0 4px 36px rgba(0,0,0,.6);border-bottom-color:rgba(201,168,76,.22)}
+.nav-logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.nav-crest{width:38px;height:38px;flex-shrink:0}
+.nav-crest svg{width:100%;height:100%}
+.nav-wm{display:flex;flex-direction:column;gap:1px}
+.nav-name{font-family:'Cinzel',serif;font-size:12px;font-weight:500;color:var(--g);letter-spacing:.16em;text-transform:uppercase}
+.nav-tag{font-family:'EB Garamond',serif;font-size:10.5px;font-style:italic;color:rgba(255,255,255,.42);letter-spacing:.05em}
+.nav-links{display:flex;list-style:none}
+.nav-links li a{display:block;padding:0 11px;line-height:var(--nh);font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:color .2s}
+.nav-links li a:hover{color:var(--gl)}
+.nav-cta{background:var(--g);color:var(--d);border:none;padding:9px 20px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.nav-cta:hover{background:var(--gl)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:20px;height:1.5px;background:#fff;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-menu{position:fixed;inset:0;z-index:998;background:rgba(5,14,42,.98);backdrop-filter:blur(24px);padding:calc(var(--nh)+2rem) 2rem 3rem;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);overflow-y:auto;display:flex;flex-direction:column}
+.mob-menu.open{transform:translateX(0)}
+.mob-links{list-style:none;margin-bottom:2rem}
+.mob-links li a{display:block;padding:14px 0;font-family:'Cinzel',serif;font-size:1rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75);border-bottom:.5px solid rgba(255,255,255,.07);transition:all .2s}
+.mob-links li a:hover{color:var(--g);padding-left:8px}
+@media(max-width:980px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}}
+@media(min-width:981px){.mob-menu{display:none!important}}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Cinzel',serif;font-size:11px;font-weight:500;letter-spacing:.17em;text-transform:uppercase;cursor:pointer;border:none;transition:all .25s ease;white-space:nowrap}
+.btn-g{background:var(--g);color:var(--d);padding:15px 36px}
+.btn-g:hover{background:var(--gl);transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,168,76,.38)}
+.btn-blue{background:var(--bri);color:#fff;padding:15px 36px}
+.btn-blue:hover{background:var(--mid);transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,99,235,.4)}
+.btn-w{background:transparent;color:var(--g);border:.5px solid var(--g);padding:14px 32px}
+.btn-w:hover{background:rgba(201,168,76,.08)}
+.btn-outline-white{background:transparent;color:#fff;border:.5px solid rgba(255,255,255,.4);padding:14px 32px}
+.btn-outline-white:hover{border-color:var(--g);color:var(--g)}
+.btn-s{background:linear-gradient(120deg,var(--gd),var(--g),var(--gs),var(--g),var(--gd));background-size:300% 300%;animation:shimmer 4s ease infinite;color:var(--d);padding:15px 36px;box-shadow:0 0 22px rgba(201,168,76,.35)}
+.btn-s:hover{box-shadow:0 0 40px rgba(201,168,76,.65);transform:translateY(-2px)}
+.pdot{width:7px;height:7px;border-radius:50%;background:var(--d);animation:pdot 2s ease-in-out infinite;flex-shrink:0}
+.br{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.br-c{justify-content:center}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.5rem,4vw,60px)}
+.sec{padding:90px clamp(1.5rem,4vw,60px);position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.38em;text-transform:uppercase;color:var(--g);margin-bottom:1.2rem}
+.eyebrow::before{content:'';width:22px;height:.5px;background:var(--g);opacity:.7;flex-shrink:0}
+.h2{font-family:'Cinzel',serif;font-size:clamp(1.6rem,3vw,2.8rem);font-weight:500;line-height:1.12;letter-spacing:.025em}
+.h2.dark{color:var(--d)}.h2.light{color:#fff}
+.h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--g);font-size:1.1em;font-weight:300}
+.gold-rule{width:52px;height:.5px;background:var(--g);margin:1.6rem 0;opacity:.7}
+.body-t{font-family:'EB Garamond',serif;font-size:17.5px;line-height:1.85}
+.body-t.dark{color:#4a5a7a}
+.body-t.light{color:var(--tl)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;align-items:stretch;padding-top:var(--nh);position:relative;overflow:hidden;background:var(--d)}
+
+/* Animated gradient bg */
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse 80% 70% at 20% 50%,rgba(16,64,160,.75) 0%,transparent 65%),
+  radial-gradient(ellipse 50% 60% at 80% 30%,rgba(37,99,235,.25) 0%,transparent 55%),
+  radial-gradient(ellipse 40% 40% at 50% 90%,rgba(201,168,76,.06) 0%,transparent 55%),
+  linear-gradient(140deg,#050e2a 0%,#0a1a3f 50%,#050e2a 100%)}
+.hero-rays{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.ray{position:absolute;top:-10%;width:1.5px;height:130%;background:linear-gradient(to bottom,transparent,rgba(37,99,235,.08),transparent);animation:rsway 22s ease-in-out infinite}
+.ray:nth-child(1){left:45%;animation-delay:0s}.ray:nth-child(2){left:60%;animation-delay:6s;opacity:.6}.ray:nth-child(3){left:72%;animation-delay:12s}.ray:nth-child(4){left:35%;animation-delay:18s;opacity:.4}
+@keyframes rsway{0%,100%{opacity:.4;transform:skewX(-2deg)}50%{opacity:.9;transform:skewX(2deg)}}
+.hero-glow{position:absolute;left:5%;top:35%;width:500px;height:500px;background:radial-gradient(circle,rgba(37,99,235,.15) 0%,transparent 65%);animation:gpulse 9s ease-in-out infinite;pointer-events:none;z-index:1}
+
+.hero-left{padding:80px 60px 80px clamp(1.5rem,5vw,72px);position:relative;z-index:5;display:flex;flex-direction:column;justify-content:center}
+.hero-right{position:relative;overflow:hidden}
+.hero-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1200&q=80');background-size:cover;background-position:center top;filter:brightness(.5) saturate(1.1)}
+.hero-img-over{position:absolute;inset:0;background:linear-gradient(to right,var(--d) 0%,rgba(5,14,42,.35) 35%,transparent 100%)}
+
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(37,99,235,.18);border:.5px solid rgba(37,99,235,.45);padding:7px 16px;margin-bottom:1.6rem;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.8);opacity:0;animation:fadeUp .9s .05s ease both}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--bri);animation:pdot 3s ease-in-out infinite}
+
+.hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.38em;text-transform:uppercase;color:var(--g);margin-bottom:1.2rem;opacity:0;animation:fadeUp .9s .15s ease both}
+.hero-eyebrow::before{content:'';width:22px;height:.5px;background:var(--g);opacity:.7;flex-shrink:0}
+
+.hero-h1{font-family:'Cinzel',serif;font-size:clamp(2.2rem,4.5vw,4.2rem);font-weight:500;line-height:1.06;letter-spacing:.02em;color:#fff;opacity:0;animation:fadeUp .9s .28s ease both}
+.hero-h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gl);font-size:1.1em;font-weight:300;display:block;margin-top:.2rem}
+
+.hero-sub{font-family:'EB Garamond',serif;font-size:18px;color:var(--tl);line-height:1.82;max-width:520px;margin:1.6rem 0 2.4rem;opacity:0;animation:fadeUp .9s .42s ease both}
+
+.hero-ctas{opacity:0;animation:fadeUp .9s .56s ease both}
+
+/* Quick info pills */
+.hero-pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:2.2rem;opacity:0;animation:fadeUp .9s .68s ease both}
+.hero-pill{display:flex;align-items:center;gap:7px;font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(255,255,255,.05);border:.5px solid rgba(255,255,255,.12);padding:7px 13px}
+.hero-pill .dot{width:5px;height:5px;border-radius:50%;background:var(--bri);flex-shrink:0}
+
+/* Floating stats card */
+.hero-stats-card{position:absolute;bottom:3rem;right:3rem;z-index:10;background:rgba(5,14,42,.88);backdrop-filter:blur(12px);border:.5px solid rgba(201,168,76,.25);padding:1.4rem 1.8rem;animation:float 6s ease-in-out infinite;opacity:0;animation:fadeUp 1s .8s ease both,float 6s 1.8s ease-in-out infinite}
+.hs-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem 1.8rem}
+.hs-item .val{font-family:'Cinzel',serif;font-size:1.5rem;font-weight:500;color:var(--gl);line-height:1}
+.hs-item .lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--tm);margin-top:2px}
+
+@media(max-width:860px){.hero{grid-template-columns:1fr;min-height:auto}.hero-left{padding:80px clamp(1.5rem,5vw,40px) 60px;min-height:85vh}.hero-right{display:none}.hero-stats-card{display:none}}
+
+/* ── TRUST STRIP ── */
+.trust-strip{background:var(--nm);border-top:.5px solid rgba(37,99,235,.2);border-bottom:.5px solid rgba(37,99,235,.2);display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:1}
+.trust-item{padding:2rem 1.8rem;border-right:.5px solid rgba(255,255,255,.07);text-align:center;transition:background .2s}
+.trust-item:last-child{border-right:none}
+.trust-item:hover{background:rgba(37,99,235,.08)}
+.trust-val{font-family:'Cinzel',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:500;color:var(--gl);line-height:1;margin-bottom:.3rem}
+.trust-lbl{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--tm)}
+@media(max-width:680px){.trust-strip{grid-template-columns:1fr 1fr}.trust-item:nth-child(2){border-right:none}.trust-item:nth-child(1),.trust-item:nth-child(2){border-bottom:.5px solid rgba(255,255,255,.07)}}
+
+/* ── ABOUT ── */
+.about-bg{background:#f4f6fb}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img{position:relative;overflow:hidden}
+.about-img-wrap{aspect-ratio:4/5;overflow:hidden}
+.about-img-wrap img{transition:transform .5s ease}
+.about-img:hover .about-img-wrap img{transform:scale(1.04)}
+.about-blue-tag{position:absolute;bottom:1.5rem;left:1.5rem;background:var(--bri);color:#fff;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px}
+.checkmark-list{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-top:1.4rem}
+.checkmark-list li{display:flex;align-items:flex-start;gap:11px;font-family:'EB Garamond',serif;font-size:16.5px;color:#2d3a5e;line-height:1.65}
+.checkmark-list li::before{content:'\2713';color:var(--bri);font-size:13px;flex-shrink:0;margin-top:2px;font-weight:700}
+@media(max-width:780px){.about-grid{grid-template-columns:1fr;gap:3rem}.about-img{display:none}}
+
+/* ── SERVICES ── */
+.services-bg{background:var(--d)}
+
+/* service cards grid */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:3rem}
+.svc{background:var(--nm);border:.5px solid rgba(37,99,235,.15);padding:2.4rem 2rem;position:relative;overflow:hidden;transition:all .3s;cursor:pointer}
+.svc::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:linear-gradient(to bottom,var(--bri),var(--g));transition:height .4s ease}
+.svc:hover{border-color:rgba(37,99,235,.4);background:rgba(16,40,100,.6);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.svc:hover::before{height:100%}
+.svc.featured{border-color:var(--g);background:rgba(16,40,100,.7)}
+.svc.featured::before{background:var(--g);height:100%}
+.svc-badge{position:absolute;top:-1px;right:20px;background:var(--g);color:var(--d);font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;padding:5px 12px}
+.svc-icon{font-size:2rem;margin-bottom:1.2rem}
+.svc-num{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.28em;color:rgba(37,99,235,.6);margin-bottom:.6rem;text-transform:uppercase}
+.svc-title{font-family:'Cinzel',serif;font-size:14px;font-weight:500;color:#fff;margin-bottom:.6rem;letter-spacing:.04em}
+.svc-price{font-family:'Cinzel',serif;font-size:1.5rem;color:var(--gl);margin-bottom:.4rem;line-height:1}
+.svc-price-sub{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);margin-bottom:1rem}
+.svc-desc{font-family:'EB Garamond',serif;font-size:15.5px;color:var(--tf);line-height:1.7;margin-bottom:1.4rem}
+.svc-features{list-style:none;display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.6rem}
+.svc-features li{font-family:'EB Garamond',serif;font-size:14.5px;color:rgba(255,255,255,.62);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.svc-features li::before{content:'\2014';color:var(--bri);font-size:12px;flex-shrink:0;margin-top:2px}
+.svc-cta{display:inline-flex;align-items:center;gap:6px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--g);border:.5px solid rgba(201,168,76,.3);padding:9px 16px;background:rgba(201,168,76,.06);transition:all .2s}
+.svc-cta:hover{background:var(--g);color:var(--d)}
+.svc.featured .svc-cta{background:var(--g);color:var(--d)}
+.svc.featured .svc-cta:hover{background:var(--gl)}
+@media(max-width:1000px){.services-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.services-grid{grid-template-columns:1fr}}
+
+/* ── HOW IT WORKS ── */
+.how-bg{background:#f4f6fb}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:3rem}
+.step{background:#fff;border:.5px solid rgba(37,99,235,.12);padding:2rem 1.8rem;position:relative;overflow:hidden;transition:all .25s}
+.step:hover{border-color:rgba(37,99,235,.35);box-shadow:0 6px 24px rgba(0,0,0,.08);transform:translateY(-2px)}
+.step-num{font-family:'Cinzel',serif;font-size:2.8rem;font-weight:500;color:rgba(37,99,235,.1);line-height:1;margin-bottom:.5rem}
+.step-icon{font-size:1.6rem;margin-bottom:.8rem}
+.step-title{font-family:'Cinzel',serif;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--d);margin-bottom:.5rem}
+.step-desc{font-family:'EB Garamond',serif;font-size:15.5px;color:#4a5a7a;line-height:1.7}
+.step-connector{position:absolute;top:50%;right:-1px;width:20px;height:1px;background:var(--bri);opacity:.3;transform:translateY(-50%)}
+.step:last-child .step-connector{display:none}
+@media(max-width:780px){.steps-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.steps-grid{grid-template-columns:1fr}}
+
+/* ── WHO ── */
+.who-bg{background:var(--nl)}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.who-card{background:rgba(255,255,255,.04);border:.5px solid rgba(37,99,235,.2);padding:2rem 1.8rem;transition:all .3s;position:relative;overflow:hidden}
+.who-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--bri);transition:height .4s ease}
+.who-card:hover{border-color:rgba(37,99,235,.45);background:rgba(37,99,235,.08);transform:translateY(-3px)}.who-card:hover::before{height:100%}
+.who-icon{font-size:1.7rem;margin-bottom:.8rem}
+.who-title{font-family:'Cinzel',serif;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:.5rem}
+.who-desc{font-family:'EB Garamond',serif;font-size:15.5px;color:var(--tf);line-height:1.7}
+@media(max-width:780px){.who-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.who-grid{grid-template-columns:1fr}}
+
+/* ── RETREAT FEATURE ── */
+.retreat-sec{position:relative;overflow:hidden;min-height:580px;display:flex;align-items:center}
+.retreat-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80');background-size:cover;background-position:center 30%;filter:brightness(.28) saturate(1.2)}
+.retreat-over{position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,14,42,.97) 0%,rgba(10,26,63,.8) 55%,rgba(5,14,42,.65) 100%)}
+.retreat-glow{position:absolute;right:15%;top:40%;width:400px;height:400px;background:radial-gradient(circle,rgba(37,99,235,.14) 0%,transparent 65%);animation:gpulse 8s ease-in-out infinite;pointer-events:none}
+.retreat-content{position:relative;z-index:2;padding:80px clamp(1.5rem,5vw,72px);max-width:660px}
+.retreat-features{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:2rem 0}
+.retreat-feat{display:flex;align-items:center;gap:9px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);background:rgba(255,255,255,.05);border:.5px solid rgba(37,99,235,.2);padding:8px 14px}
+.retreat-feat svg{width:10px;height:10px;color:var(--bri);flex-shrink:0}
+@media(max-width:680px){.retreat-features{grid-template-columns:1fr}}
+
+/* ── TESTIMONIALS ── */
+.testi-bg{background:#f4f6fb}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.tcard{background:#fff;border:.5px solid rgba(37,99,235,.12);padding:2rem;position:relative;transition:box-shadow .25s,border-color .25s}
+.tcard:hover{box-shadow:0 8px 30px rgba(0,0,0,.08);border-color:rgba(37,99,235,.3)}
+.tcard::before{content:'\201C';position:absolute;top:14px;left:18px;font-family:'Cormorant Garamond',serif;font-size:56px;color:var(--bri);opacity:.15;line-height:1}
+.tcard-stars{color:var(--g);font-size:13px;margin-bottom:.5rem;margin-top:4px}
+.tcard-body{font-family:'EB Garamond',serif;font-style:italic;font-size:16.5px;color:#4a5a7a;line-height:1.82;margin-bottom:1.4rem}
+.tcard-name{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--d)}
+.tcard-role{font-family:'EB Garamond',serif;font-size:13.5px;color:#9aaccf;margin-top:2px}
+@media(max-width:780px){.testi-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.testi-grid{grid-template-columns:1fr}}
+
+/* ── COMPARISON TABLE ── */
+.compare-bg{background:var(--d)}
+.compare-table{width:100%;border-collapse:collapse;margin-top:3rem}
+.compare-table th{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:1.2rem 1.5rem;text-align:center;border-bottom:.5px solid rgba(37,99,235,.2)}
+.compare-table th:first-child{text-align:left;color:var(--tm)}
+.compare-table th.featured-col{background:rgba(37,99,235,.15);border:.5px solid rgba(37,99,235,.3);color:var(--gl)}
+.compare-table td{font-family:'EB Garamond',serif;font-size:16px;padding:1rem 1.5rem;border-bottom:.5px solid rgba(255,255,255,.05);text-align:center;color:var(--tl)}
+.compare-table td:first-child{text-align:left;color:rgba(255,255,255,.55)}
+.compare-table td.featured-col{background:rgba(37,99,235,.06);border-left:.5px solid rgba(37,99,235,.25);border-right:.5px solid rgba(37,99,235,.25)}
+.compare-table .check{color:var(--bri);font-size:16px}
+.compare-table .cross{color:rgba(255,255,255,.2);font-size:14px}
+@media(max-width:680px){.compare-table{display:none}}
+
+/* ── FAQ ── */
+.faq-bg{background:#f4f6fb}
+.faq-list{display:flex;flex-direction:column;gap:2px;margin-top:3rem;max-width:800px;margin-left:auto;margin-right:auto}
+.faq-item{background:#fff;border:.5px solid rgba(37,99,235,.12);overflow:hidden;cursor:pointer;transition:border-color .2s}
+.faq-item:hover,.faq-item.open{border-color:rgba(37,99,235,.35)}
+.faq-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.4rem 1.8rem}
+.faq-q{font-family:'Cinzel',serif;font-size:13px;font-weight:500;color:var(--d);letter-spacing:.02em;transition:color .2s}
+.faq-item:hover .faq-q,.faq-item.open .faq-q{color:var(--blue)}
+.faq-icon{width:26px;height:26px;border:.5px solid rgba(37,99,235,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--bri);transition:transform .3s,background .2s;flex-shrink:0}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(37,99,235,.1)}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.open .faq-body{max-height:300px}
+.faq-body-inner{padding:0 1.8rem 1.6rem;font-family:'EB Garamond',serif;font-size:16.5px;color:#4a5a7a;line-height:1.82}
+
+/* ── BOOK CTA ── */
+.book-sec{position:relative;overflow:hidden;text-align:center;padding:100px clamp(1.5rem,4vw,60px)}
+.book-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=1800&q=80');background-size:cover;background-position:center;filter:brightness(.18) saturate(1.1)}
+.book-over{position:absolute;inset:0;background:radial-gradient(ellipse 85% 75% at 50% 50%,rgba(10,26,100,.9) 0%,rgba(5,14,42,.98) 100%)}
+.book-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,.15) 0%,transparent 60%);animation:gpulse 7s ease-in-out infinite;pointer-events:none}
+.book-content{position:relative;z-index:2;max-width:700px;margin:0 auto}
+.book-scripture{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,.32);margin-top:2.5rem}
+
+/* ── SCRIPTURE BAND ── */
+.scrip-band{background:linear-gradient(135deg,var(--dr),var(--nm));border-top:.5px solid rgba(37,99,235,.25);border-bottom:.5px solid rgba(37,99,235,.25);padding:56px clamp(1.5rem,4vw,60px);text-align:center;position:relative;z-index:1}
+.scrip-band blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.15rem,2.3vw,1.7rem);font-weight:300;color:rgba(255,255,255,.82);line-height:1.65;max-width:680px;margin:0 auto 1rem;border-left:2px solid var(--bri);padding-left:28px;text-align:left}
+.scrip-band cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-top:10px}
+
+/* ── FOOTER ── */
+footer{background:var(--d);border-top:.5px solid rgba(37,99,235,.15);padding:3rem clamp(1.5rem,4vw,60px) 2rem;position:relative;z-index:1}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:.5px solid rgba(255,255,255,.07)}
+.footer-brand{font-family:'Cinzel',serif;font-size:14px;letter-spacing:.14em;color:var(--g);text-transform:uppercase;margin-bottom:.4rem}
+.footer-bio{font-family:'EB Garamond',serif;font-size:15px;color:rgba(255,255,255,.38);line-height:1.75;max-width:280px}
+.footer-col h4{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--g);margin-bottom:1.2rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:.55rem}
+.footer-col ul li a{font-family:'EB Garamond',serif;font-size:15px;color:rgba(255,255,255,.42);transition:color .2s}
+.footer-col ul li a:hover{color:var(--gl)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.footer-copy{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.08em;color:rgba(255,255,255,.2)}
+.footer-legal{display:flex;gap:20px}
+.footer-legal a{font-family:'Cinzel',serif;font-size:9.5px;color:rgba(255,255,255,.2);transition:color .2s}
+.footer-legal a:hover{color:var(--g)}
+
+/* Progress */
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(to right,var(--bri),var(--g));z-index:1001;box-shadow:0 0 8px rgba(37,99,235,.5);transition:width .1s linear}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- MOBILE MENU -->
+<nav class="mob-menu" id="mobMenu">
+  <ul class="mob-links">
+    <li><a href="#about" onclick="closeMenu()">About</a></li>
+    <li><a href="#services" onclick="closeMenu()">Coaching Services</a></li>
+    <li><a href="#how" onclick="closeMenu()">How It Works</a></li>
+    <li><a href="#retreat" onclick="closeMenu()">Coaching Retreat</a></li>
+    <li><a href="#testimonials" onclick="closeMenu()">Testimonials</a></li>
+    <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
+    <li><a href="#book" onclick="closeMenu()">Book a Session</a></li>
+  </ul>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-top:1.5rem">
+    <a href="#book" onclick="closeMenu()" class="btn btn-g" style="justify-content:center">Book a Free Call</a>
+    <a href="https://www.patreon.com/ChristsClimateChangers" target="_blank" class="btn btn-s" style="justify-content:center"><span class="pdot"></span> Suddenly — Members</a>
+  </div>
+</nav>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="christs-climate-changers.html" class="nav-logo">
+    <div class="nav-crest">
+      <svg viewBox="0 0 52 52" fill="none">
+        <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#f5da82"/><stop offset="50%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#8a6a1f"/>
+        </linearGradient></defs>
+        <path d="M26 4.5L6.5 12.5V27C6.5 37.8 15.5 45.3 26 48.5C36.5 45.3 45.5 37.8 45.5 27V12.5L26 4.5Z" stroke="url(#gg)" stroke-width="1.3" fill="none"/>
+        <path d="M17 21.5L20.5 17L24 20.5L26 14L28 20.5L31.5 17L35 21.5H17Z" fill="url(#gg)"/>
+        <rect x="17" y="21.5" width="18" height="2.5" fill="url(#gg)" rx=".5"/>
+        <rect x="25" y="26" width="2.2" height="12" fill="url(#gg)" rx=".5"/>
+        <rect x="20" y="30" width="12" height="2.2" fill="url(#gg)" rx=".5"/>
+      </svg>
+    </div>
+    <div class="nav-wm">
+      <span class="nav-name">Christ's Climate Changers</span>
+      <span class="nav-tag">Kingdom Coaching</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#retreat">Retreat</a></li>
+    <li><a href="#testimonials">Results</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="https://calendar.google.com/calendar/u/8/r/month/2026/7/24?pli=1" class="nav-cta">Book a Free Call</a>
+    <button class="hamburger" id="hamBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════
+     HERO
+══════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-rays"><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge"><span class="hero-badge-dot"></span> Kingdom Coaching · Christ's Climate Changers</div>
+    <div class="hero-eyebrow">Executive Kingdom Coaching</div>
+    <h1 class="hero-h1">
+      Unlock Your<br>Kingdom Purpose
+      <em>Through Expert Coaching</em>
+    </h1>
+    <p class="hero-sub">Transformational, Spirit-led coaching designed to clarify your calling, break through limitations, develop your leadership, and deploy you into the fullness of what God has prepared — in ministry and in the marketplace.</p>
+    <div class="hero-ctas br">
+      <a href="https://calendar.google.com/calendar/u/8/r/month/2026/7/24?pli=1" class="btn btn-g" target="_blank" rel="noopener noreferrer">Book a Free Discovery Call</a>
+      <a href="https://calendar.google.com/calendar/u/8/r/month/2026/7/24?pli=1" class="btn btn-outline-white">View All Services</a>
+    </div>
+    <div class="hero-pills">
+      <div class="hero-pill"><span class="dot"></span>1-to-1 Sessions</div>
+      <div class="hero-pill"><span class="dot"></span>Group Coaching</div>
+      <div class="hero-pill"><span class="dot"></span>Courses &amp; Training</div>
+      <div class="hero-pill"><span class="dot"></span>Membership</div>
+      <div class="hero-pill"><span class="dot"></span>Retreats</div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-img"></div>
+    <div class="hero-img-over"></div>
+    <!-- Floating stats card -->
+    <div class="hero-stats-card">
+      <div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:1rem">Client Impact</div>
+      <div class="hs-grid">
+        <div class="hs-item"><div class="val">500+</div><div class="lbl">Lives Coached</div></div>
+        <div class="hs-item"><div class="val">30+</div><div class="lbl">Nations</div></div>
+        <div class="hs-item"><div class="val">95%</div><div class="lbl">Satisfaction</div></div>
+        <div class="hs-item"><div class="val">5★</div><div class="lbl">Reviews</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item reveal"><div class="trust-val">500+</div><div class="trust-lbl">Clients Coached</div></div>
+  <div class="trust-item reveal"><div class="trust-val">5</div><div class="trust-lbl">Coaching Pathways</div></div>
+  <div class="trust-item reveal"><div class="trust-val">30+</div><div class="trust-lbl">Nations Reached</div></div>
+  <div class="trust-item reveal"><div class="trust-val">5★</div><div class="trust-lbl">Rated Experience</div></div>
+</div>
+
+<!-- ══════════════════════════
+     ABOUT
+     ══════════════════════════ -->
+<section class="about-bg sec" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="eyebrow">Kingdom Coaching Philosophy</div>
+      <h2 class="h2 dark">Coaching that goes<br><em>beyond strategy</em></h2>
+      <div class="gold-rule"></div>
+      <p class="body-t dark">Most coaching changes what you do. Kingdom coaching changes who you are. At Christ's Climate Changers, every coaching engagement begins with your identity in Christ and builds outward from there — into your calling, your leadership, your relationships, and your impact.</p>
+      <p class="body-t dark" style="margin-top:1rem">Whether you are a leader stepping into your next season, a professional integrating faith into your work, or someone who simply knows there is more — this coaching is designed to help you get there with Biblical clarity, practical strategy, and Spirit-led direction.</p>
+      <ul class="checkmark-list">
+        <li>Biblically grounded — every session anchored in God's Word and your Kingdom identity</li>
+        <li>Strategically focused — clear goals, practical tools, and accountable progress</li>
+        <li>Personally tailored — no generic frameworks; every pathway designed for you</li>
+        <li>Spiritually sensitive — space for prayer, discernment, and Holy Spirit direction</li>
+        <li>Results-oriented — measurable transformation in calling, confidence, and clarity</li>
+      </ul>
+      <div class="br" style="margin-top:2rem">
+        <a href="https://calendar.google.com/calendar/u/8/r/month/2026/7/24?pli=1" class="btn btn-blue">Book a Free Discovery Call</a>
+        <a href="#services" class="btn btn-w">Explore Services</a>
+      </div>
+    </div>
+    <div class="about-img reveal">
+      <div class="about-img-wrap">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=75" alt="Kingdom Coaching" loading="lazy">
+      </div>
+      <div class="about-blue-tag">Kingdom-Centred Coaching</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     SERVICES
+     ══════════════════════════ -->
+<section class="services-bg sec" id="services">
+  <div class="wrap">
+    <div class="eyebrow reveal" style="color:var(--g)">Coaching Services</div>
+    <h2 class="h2 light reveal">Five pathways to<br><em>your Kingdom breakthrough</em></h2>
+    <div class="gold-rule reveal"></div>
+    <p class="body-t light reveal" style="max-width:620px">Choose the coaching experience that matches your season, your goals, and your level of commitment. All pathways are rooted in the same Kingdom foundation — the depth of engagement is yours to choose.</p>
+    <div class="services-grid">
+
+      <!-- 1: 1-to-1 -->
+      <div class="svc reveal">
+        <div class="svc-num">01</div>
+        <div class="svc-icon">🎯</div>
+        <div class="svc-title">1-to-1 Coaching</div>
+        <div class="svc-price">£250<span style="font-size:.5em">/session</span></div>
+        <div class="svc-price-sub">Or from £850 / 4-session package</div>
+        <p class="svc-desc">The deepest, most personalised coaching experience available. Entirely focused on you — your calling, your challenges, and your next breakthrough.</p>
+        <ul class="svc-features">
+          <li>60-minute private video session</li>
+          <li>Pre-session clarity questionnaire</li>
+          <li>Personalised action plan &amp; resources</li>
+          <li>Email follow-up &amp; accountability</li>
+          <li>Prayer &amp; Biblical discernment included</li>
+        </ul>
+        <a href="#book" class="svc-cta">Book a Session →</a>
+      </div>
+
+      <!-- 2: Group (featured) -->
+      <div class="svc featured reveal">
+        <div class="svc-badge">Most Popular</div>
+        <div class="svc-num">02</div>
+        <div class="svc-icon">👑</div>
+        <div class="svc-title">Group Coaching</div>
+        <div class="svc-price">£149<span style="font-size:.5em">/month</span></div>
+        <div class="svc-price-sub">Cohort of 8–12 leaders · Monthly intake</div>
+        <p class="svc-desc">Transformational group coaching in a cohort of Kingdom-minded leaders. Shared journey, collective breakthrough, and lasting peer community.</p>
+        <ul class="svc-features">
+          <li>2 x live group sessions per month</li>
+          <li>Private community &amp; accountability</li>
+          <li>Monthly masterclass teaching</li>
+          <li>Resource library access</li>
+          <li>Guest expert sessions quarterly</li>
+        </ul>
+        <a href="#book" class="svc-cta">Join the Cohort →</a>
+      </div>
+
+      <!-- 3: Courses -->
+      <div class="svc reveal">
+        <div class="svc-num">03</div>
+        <div class="svc-icon">📖</div>
+        <div class="svc-title">Coaching Courses &amp; Training</div>
+        <div class="svc-price">From £97</div>
+        <div class="svc-price-sub">Self-paced · Lifetime access</div>
+        <p class="svc-desc">Structured, self-paced coaching courses combining Biblical teaching, practical frameworks, and Kingdom strategy — available whenever you are ready.</p>
+        <ul class="svc-features">
+          <li>Video teaching + workbooks</li>
+          <li>Reflection journals &amp; exercises</li>
+          <li>Certificate of completion</li>
+          <li>Community access included</li>
+          <li>Courses on: leadership, identity, calling, healing</li>
+        </ul>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="svc-cta">Browse Courses →</a>
+      </div>
+
+      <!-- 4: Membership -->
+      <div class="svc reveal">
+        <div class="svc-num">04</div>
+        <div class="svc-icon">✦</div>
+        <div class="svc-title">Suddenly — Membership</div>
+        <div class="svc-price">From £25<span style="font-size:.5em">/month</span></div>
+        <div class="svc-price-sub">Patreon · Cancel anytime</div>
+        <p class="svc-desc">The exclusive Kingdom membership experience. Access premium content, coaching insights, prophetic teachings, and community — all under one roof.</p>
+        <ul class="svc-features">
+          <li>Exclusive monthly coaching sessions</li>
+          <li>Kingdom strategy &amp; prophetic insights</li>
+          <li>Member-only teachings &amp; resources</li>
+          <li>Priority retreat &amp; event access</li>
+          <li>Private Patreon community</li>
+        </ul>
+        <a href="https://www.patreon.com/ChristsClimateChangers" target="_blank" class="svc-cta">Join Suddenly →</a>
+      </div>
+
+      <!-- 5: Retreat -->
+      <div class="svc featured reveal" style="grid-column:span 2">
+        <div class="svc-badge">Premium Experience</div>
+        <div class="svc-num">05</div>
+        <div class="svc-icon">🌿</div>
+        <div class="svc-title">Coaching Retreat</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start">
+          <div>
+            <div class="svc-price">From £1,200<span style="font-size:.5em">/person</span></div>
+            <div class="svc-price-sub">2–4 days · Luxury UK locations · All inclusive</div>
+            <p class="svc-desc">An immersive, luxury retreat experience combining intensive group coaching, personal breakthrough sessions, worship, and rest in premium UK retreat environments.</p>
+          </div>
+          <div>
+            <ul class="svc-features">
+              <li>2–4 days at a luxury UK retreat venue</li>
+              <li>Intensive group coaching sessions</li>
+              <li>Optional 1-to-1 breakthrough session</li>
+              <li>Worship, prayer &amp; spiritual formation</li>
+              <li>All accommodation &amp; meals included</li>
+              <li>Post-retreat 30-day follow-up support</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top:1.4rem;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="#book" class="svc-cta">Reserve Your Place →</a>
+          <a href="#retreat" class="svc-cta" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)">View Retreat Details →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     HOW IT WORKS
+     ══════════════════════════ -->
+<section class="how-bg sec" id="how">
+  <div class="wrap">
+    <div class="eyebrow reveal">The Coaching Journey</div>
+    <h2 class="h2 dark reveal">How it <em>works</em></h2>
+    <div class="gold-rule reveal"></div>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-icon">📞</div>
+        <div class="step-title">Discovery Call</div>
+        <p class="step-desc">A free 30-minute call to understand where you are, where you want to go, and which coaching pathway is right for your season.</p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <div class="step-icon">🗺️</div>
+        <div class="step-title">Clarity Assessment</div>
+        <p class="step-desc">A tailored intake process to identify your current challenges, Kingdom calling, key goals, and the specific areas where breakthrough is needed.</p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <div class="step-icon">🏗️</div>
+        <div class="step-title">Coaching Plan</div>
+        <p class="step-desc">A personalised coaching plan built around your life, your goals, and your timeline — with clear milestones and accountability built in.</p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <div class="step-icon">🚀</div>
+        <div class="step-title">Activate &amp; Deploy</div>
+        <p class="step-desc">Enter your coaching journey, work through your breakthrough, and step into the clarity, confidence, and Kingdom impact God has prepared for you.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem">
+      <a href="https://calendar.google.com/calendar/u/8/r/month/2026/5/1?pli=1" class="btn btn-blue">Start with a Free Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     WHO THIS IS FOR
+     ══════════════════════════ -->
+<section class="who-bg sec" id="who">
+  <div class="wrap">
+    <div class="eyebrow reveal" style="color:var(--g)">Ideal Clients</div>
+    <h2 class="h2 light reveal">This coaching is for you <em>if&hellip;</em></h2>
+    <div class="gold-rule reveal"></div>
+    <div class="who-grid">
+      <div class="who-card reveal"><div class="who-icon">🌱</div><div class="who-title">The Emerging Leader</div><p class="who-desc">You sense a calling but lack the clarity, structure, or confidence to step fully into it. You need both Biblical foundation and strategic direction.</p></div>
+      <div class="who-card reveal"><div class="who-icon">⛪</div><div class="who-title">The Ministry Leader</div><p class="who-desc">You lead others but feel the weight of it. You need space, strategy, and someone who understands the unique demands of Kingdom ministry.</p></div>
+      <div class="who-card reveal"><div class="who-icon">💼</div><div class="who-title">The Marketplace Professional</div><p class="who-desc">You want to integrate your faith with your career, build a Kingdom business, or use your professional platform for eternal impact.</p></div>
+      <div class="who-card reveal"><div class="who-icon">🔄</div><div class="who-title">The Leader in Transition</div><p class="who-desc">You are moving between seasons — leaving one role, entering another, or navigating a change you did not choose. You need clarity and courage for what is next.</p></div>
+      <div class="who-card reveal"><div class="who-icon">🧠</div><div class="who-title">The Growth-Seeker</div><p class="who-desc">You are committed to lifelong development and want consistent, structured input that produces measurable spiritual and professional growth.</p></div>
+      <div class="who-card reveal"><div class="who-icon">🌍</div><div class="who-title">The Kingdom Entrepreneur</div><p class="who-desc">You are building something — a business, a ministry, a movement — and you want to build it on Kingdom principles with expert strategic support.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRIPTURE BAND -->
+<div class="scrip-band">
+  <blockquote>
+    "Where there is no counsel, the people fall; but in the multitude of counsellors there is safety."
+    <cite>Proverbs 11:14</cite>
+  </blockquote>
+</div>
+
+<!-- ══════════════════════════
+     RETREAT FEATURE
+     ══════════════════════════ -->
+<section class="retreat-sec" id="retreat">
+  <div class="retreat-bg"></div>
+  <div class="retreat-over"></div>
+  <div class="retreat-glow"></div>
+  <div class="retreat-content reveal">
+    <div class="eyebrow" style="color:var(--g)">Coaching Retreat</div>
+    <h2 class="h2 light">Step away.<br><em>Step into everything.</em></h2>
+    <div class="gold-rule"></div>
+    <p class="body-t light">Our luxury coaching retreats are some of the most transformational experiences we offer. Away from the noise of everyday life, in a curated environment of beauty and peace, something shifts. Ideas become clear. Calling becomes tangible. Breakthrough becomes real. This is coaching at its most immersive — and most powerful.</p>
+    <div class="retreat-features">
+      <div class="retreat-feat"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg>2–4 Day Luxury UK Venues</div>
+      <div class="retreat-feat"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg>Intensive Group Sessions</div>
+      <div class="retreat-feat"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg>1-to-1 Breakthrough Options</div>
+      <div class="retreat-feat"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg>Worship &amp; Prayer Woven Throughout</div>
+      <div class="retreat-feat"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg>All Meals &amp; Accommodation Included</div>
+      <div class="retreat-feat"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6l2.5 2.5L10 3"/></svg>Post-Retreat 30-Day Support</div>
+    </div>
+    <div class="br">
+      <a href="#book" class="btn btn-g">Reserve Your Place</a>
+      <a href="#book" class="btn btn-outline-white">Enquire About Dates</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     COMPARISON TABLE
+══════════════════════════ -->
+<section class="compare-bg sec">
+  <div class="wrap">
+    <div class="eyebrow reveal" style="color:var(--g)">Compare Pathways</div>
+    <h2 class="h2 light reveal">Find your <em>right fit</em></h2>
+    <div class="gold-rule reveal"></div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>1-to-1</th>
+          <th class="featured-col">Group ★</th>
+          <th>Courses</th>
+          <th>Membership</th>
+          <th>Retreat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Personalised sessions</td><td><span class="check">✓</span></td><td class="featured-col"><span class="cross">—</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Live coaching calls</td><td><span class="check">✓</span></td><td class="featured-col"><span class="check">✓</span></td><td><span class="cross">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Self-paced learning</td><td><span class="cross">—</span></td><td class="featured-col"><span class="cross">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">—</span></td></tr>
+        <tr><td>Community &amp; peer support</td><td><span class="cross">—</span></td><td class="featured-col"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Certificate included</td><td><span class="cross">—</span></td><td class="featured-col"><span class="cross">—</span></td><td><span class="check">✓</span></td><td><span class="cross">—</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Exclusive content</td><td><span class="cross">—</span></td><td class="featured-col"><span class="check">✓</span></td><td><span class="cross">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Retreat experience</td><td><span class="cross">—</span></td><td class="featured-col"><span class="cross">—</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Starting price</td><td>£250/session</td><td class="featured-col">£149/month</td><td>From £97</td><td>From £25/mo</td><td>From £1,200</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     TESTIMONIALS
+══════════════════════════ -->
+<section class="testi-bg sec" id="testimonials">
+  <div class="wrap">
+    <div class="eyebrow reveal">Client Results</div>
+    <h2 class="h2 dark reveal">Real coaching.<br><em>Real transformation.</em></h2>
+    <div class="gold-rule reveal"></div>
+    <div class="testi-grid">
+      <div class="tcard reveal">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-body">Within three sessions I had more clarity about my calling than I had gained in three years of seeking it alone. The combination of Biblical truth and practical strategy is exactly what I needed. I am now walking in it.</p>
+        <div class="tcard-name">Sister Patricia O.</div>
+        <div class="tcard-role">Ministry Leader, London</div>
+      </div>
+      <div class="tcard reveal">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-body">The group coaching cohort was transformational. Not just from the coach, but from the community. Being in a room — even virtually — with other Kingdom-minded leaders who are serious about their calling changed everything for me.</p>
+        <div class="tcard-name">Pastor David K.</div>
+        <div class="tcard-role">Church Planter, Birmingham</div>
+      </div>
+      <div class="tcard reveal">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-body">The coaching retreat was the single most impactful investment I have ever made in my leadership. By day two, something broke open that had been stuck for years. I left with a plan, a peace, and a purpose I could actually name.</p>
+        <div class="tcard-name">Grace A.</div>
+        <div class="tcard-role">Kingdom Entrepreneur, Manchester</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     FAQ
+══════════════════════════ -->
+<section class="faq-bg sec" id="faq">
+  <div class="wrap">
+    <div class="eyebrow reveal">Common Questions</div>
+    <h2 class="h2 dark reveal">Everything you need <em>to know</em></h2>
+    <div class="gold-rule reveal"></div>
+    <div class="faq-list">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-head"><span class="faq-q">Do I need to be a Christian to receive coaching?</span><span class="faq-icon">+</span></div>
+        <div class="faq-body"><div class="faq-body-inner">Our coaching is unapologetically Biblical and Kingdom-centred. It is designed for believers who want to grow in their faith, calling, and leadership. While we warmly welcome anyone, the content is rooted in Scripture and will be most transformational for those who share that foundation.</div></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-head"><span class="faq-q">How do I know which coaching pathway is right for me?</span><span class="faq-icon">+</span></div>
+        <div class="faq-body"><div class="faq-body-inner">That is exactly what the free Discovery Call is for. In 30 minutes, we will discuss where you are, what you are working toward, and what level of support will be most effective. There is no obligation and no pressure — just clarity.</div></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-head"><span class="faq-q">Are sessions held online or in person?</span><span class="faq-icon">+</span></div>
+        <div class="faq-body"><div class="faq-body-inner">All 1-to-1 and group coaching sessions are held online via Zoom, making them accessible regardless of your location. Coaching retreat experiences are held in-person at carefully selected luxury venues across the UK.</div></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-head"><span class="faq-q">What is the difference between coaching and counselling?</span><span class="faq-icon">+</span></div>
+        <div class="faq-body"><div class="faq-body-inner">Coaching is forward-focused — it works from where you are toward where you want to go. It is action-oriented, goal-directed, and future-facing. Counselling and therapy focus on processing and healing the past. Our coaching incorporates prayer and Biblical truth, but is not a substitute for professional therapeutic support where that is needed.</div></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-head"><span class="faq-q">Can I get coaching through the Suddenly Membership?</span><span class="faq-icon">+</span></div>
+        <div class="faq-body"><div class="faq-body-inner">Yes. Suddenly Members on Patreon receive access to monthly group coaching sessions, exclusive coaching content, and priority booking for retreats and intensives. It is the most affordable way to access consistent Kingdom coaching support.</div></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-head"><span class="faq-q">How long does a coaching engagement typically last?</span><span class="faq-icon">+</span></div>
+        <div class="faq-body"><div class="faq-body-inner">This varies by pathway. Individual sessions can be booked on a standalone basis. Package programmes typically run 8–12 weeks. Group cohorts run in 3-month cycles. Membership is ongoing. The Discovery Call will help identify what timeframe is most appropriate for your specific goals.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     BOOK CTA
+══════════════════════════ -->
+<section class="book-sec" id="book">
+  <div class="book-bg"></div>
+  <div class="book-over"></div>
+  <div class="book-glow"></div>
+  <div class="book-content reveal">
+    <div class="eyebrow" style="justify-content:center;color:var(--g)">Start Today</div>
+    <h2 style="font-family:'Cinzel',serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:500;color:#fff;margin-bottom:.5rem;letter-spacing:.02em;line-height:1.1">
+      Your next season is waiting.<br>
+      <span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gl);font-size:1.1em">Don't step into it alone.</span>
+    </h2>
+    <div style="width:52px;height:.5px;background:var(--g);margin:1.5rem auto;opacity:.7"></div>
+    <p style="font-family:'EB Garamond',serif;font-size:17.5px;color:var(--tl);max-width:540px;margin:0 auto 2.5rem;line-height:1.85">Begin with a free 30-minute Discovery Call. No pressure, no commitment — just an honest conversation about where you are and what is possible with the right support.</p>
+    <div class="br br-c" style="margin-bottom:2rem">
+      <a href="https://calendar.google.com/calendar/u/8/r/month/2026/7/24?pli=1" class="btn btn-g" style="font-size:11.5px;padding:17px 40px">Book Your Free Discovery Call</a>
+      <a href="https://calendar.google.com/calendar/u/8/r/month/2026/7/24?pli=1" target="_blank" class="btn btn-s" style="font-size:11.5px;padding:17px 36px"><span class="pdot"></span> Join Suddenly — Members</a>
+    </div>
+    <!-- Quick service links -->
+    <div style="display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem">
+      <a href="#services" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--tm);background:rgba(255,255,255,.05);border:.5px solid rgba(255,255,255,.1);padding:8px 16px;transition:color .2s" onmouseover="this.style.color='var(--g)'" onmouseout="this.style.color='var(--tm)'">1-to-1 Coaching</a>
+      <a href="#services" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--tm);background:rgba(255,255,255,.05);border:.5px solid rgba(255,255,255,.1);padding:8px 16px;transition:color .2s" onmouseover="this.style.color='var(--g)'" onmouseout="this.style.color='var(--tm)'">Group Coaching</a>
+      <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--tm);background:rgba(255,255,255,.05);border:.5px solid rgba(255,255,255,.1);padding:8px 16px;transition:color .2s" onmouseover="this.style.color='var(--g)'" onmouseout="this.style.color='var(--tm)'">Courses &amp; Training</a>
+      <a href="#retreat" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--tm);background:rgba(255,255,255,.05);border:.5px solid rgba(255,255,255,.1);padding:8px 16px;transition:color .2s" onmouseover="this.style.color='var(--g)'" onmouseout="this.style.color='var(--tm)'">Coaching Retreat</a>
+    </div>
+    <p class="book-scripture">"Plans fail for lack of counsel, but with many advisers they succeed." — Proverbs 15:22</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Christ's Climate Changers</div>
+      <p class="footer-bio">Kingdom Coaching — Transforming Lives. Impacting Nations. Advancing His Kingdom.</p>
+    </div>
+    <div class="footer-col"><h4>Coaching</h4><ul>
+      <li><a href="#services">1-to-1 Coaching</a></li>
+      <li><a href="#services">Group Coaching</a></li>
+      <li><a href="https://www.skool.com/ccc-kingdom-community" target="_blank">Courses &amp; Training</a></li>
+      <li><a href="https://www.patreon.com/ChristsClimateChangers" target="_blank">Suddenly Membership</a></li>
+      <li><a href="#retreat">Coaching Retreat</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Resources</h4><ul>
+      <li><a href="christs-climate-changers.html">Main Website</a></li>
+      <li><a href="https://www.skool.com/ccc-kingdom-community" target="_blank">Skool Community</a></li>
+      <li><a href="christs-climate-changers.html#courses">All Courses</a></li>
+      <li><a href="christs-climate-changers.html#prayer">Prayer Gatherings</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul>
+      <li><a href="https://calendar.google.com/calendar/u/8/r/month/2026/7/24?pli=1">Book Discovery Call</a></li>
+      <li><a href="https://calendar.google.com/calendar/u/8/r/month/2026/7/24?pli=1">coaching@christsclimatechangers.com</a></li>
+      <li><a href="https://www.patreon.com/ChristsClimateChangers" target="_blank" style="color:var(--g)">✦ Suddenly Members</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Christ's Climate Changers. All Rights Reserved.</p>
+    <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms</a></div>
+  </div>
+</footer>
+
+<script>
+/* Nav */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
+
+/* Progress */
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+  document.getElementById('progressBar').style.width=pct+'%';
+},{passive:true});
+
+/* Mobile menu */
+let mOpen=false;
+function toggleMenu(){mOpen=!mOpen;document.getElementById('mobMenu').classList.toggle('open',mOpen);document.getElementById('hamBtn').classList.toggle('open',mOpen);document.body.style.overflow=mOpen?'hidden':'';}
+function closeMenu(){mOpen=false;document.getElementById('mobMenu').classList.remove('open');document.getElementById('hamBtn').classList.remove('open');document.body.style.overflow='';}
+
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href').slice(1);
+    const t=document.getElementById(id);
+    if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});if(mOpen)closeMenu();}
+  });
+});
+
+/* Reveal */
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const sibs=e.target.parentElement.querySelectorAll('.reveal');
+      const idx=Array.from(sibs).indexOf(e.target);
+      setTimeout(()=>e.target.classList.add('vis'),Math.min(idx*90,400));
+      ro.unobserve(e.target);
+    }
+  });
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* Grid stagger */
+const sg=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){Array.from(e.target.children).forEach((c,i)=>{c.style.transitionDelay=(i*.08)+'s';});sg.unobserve(e.target);}
+  });
+},{threshold:.05});
+document.querySelectorAll('.services-grid,.who-grid,.testi-grid,.trust-strip,.steps-grid').forEach(el=>sg.observe(el));
+
+/* FAQ */
+function toggleFaq(item){
+  const was=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(f=>f.classList.remove('open'));
+  if(!was)item.classList.add('open');
+}
+</script>
+</body>
+</html>
