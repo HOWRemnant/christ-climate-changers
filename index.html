@@ -32,19 +32,16 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 .ccc-hero-title {
-  /* ... keep your other settings ... */
-  white-space: normal; /* Allows text to wrap to the next line */
-  font-size: clamp(2rem, 8vw, 5rem); /* Slightly smaller start size for mobile */
-  padding: 0 15px; /* Adds breathing room so text doesn't touch screen edges */
-}
-
-.ccc-hero-title span {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--g); /* gold */
-  text-transform: none;
-  letter-spacing: .03em;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(3rem, 5vw, 5rem); /* Adjusted for better desktop scaling */
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 2rem auto; /* Removed negative margin */
+  white-space: normal; /* Allows text to wrap */
+  padding: 0 20px;
 }
 
 .ccc-hero-sub {
@@ -55,6 +52,16 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   margin-top: 0.8rem;
 }
 
+ .hero-scripture {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: rgba(255,255,255,.6);
+  max-width: 700px;
+  margin: 2rem auto 2rem auto; /* Increased top margin to push it down */
+  line-height: 1.6;
+} 
+  
 .hero-content {
   margin-top: -2rem;
 }
