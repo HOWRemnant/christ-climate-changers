@@ -97,11 +97,13 @@ img{display:block;width:100%;height:100%;object-fit:cover}
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: center;
     /* Increase the first number here to push content down below the fixed nav */
-    padding-top: calc(var(--nh) + 120px) !important; 
+ padding-top: 150px !important; 
     padding-bottom: 80px;
+    position: relative;
+    overflow: hidden;
 }  
   
 /* TYPE */
@@ -914,11 +916,6 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
     padding-right: 15px !important;
   }
 }
-
-.hero-content {
-    background: red !important; /* If the background turns red, you know you are editing the right class */
-    margin-top: -150px !important;
-}  
 </style>
 </head>
 <body>
