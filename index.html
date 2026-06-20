@@ -34,14 +34,24 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .ccc-hero-title {
   text-align: center;
   font-family: 'Cinzel', serif;
-  font-size: clamp(3rem, 5vw, 5rem); /* Adjusted for better desktop scaling */
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 600;
   letter-spacing: .08em;
   color: #fff;
-  text-transform: uppercase;
-  margin: 2rem auto; /* Removed negative margin */
-  white-space: normal; /* Allows text to wrap */
-  padding: 0 20px;
+  text-transform: uppercase; /* Keeps CHRIST'S in caps */
+  line-height: 1.1;         /* Tightens the space between the two lines */
+  margin: 1rem auto 2rem;   /* Gives it breathing room */
+}
+
+.ccc-hero-title span {
+  display: block;           /* Forces the span onto its own line */
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--g);          /* Your gold color */
+  text-transform: none;     /* Allows "Climate Changers" to be mixed case */
+  letter-spacing: .03em;
+  margin-top: 0.5rem;
 }
 
 .ccc-hero-sub {
@@ -56,6 +66,10 @@ img{display:block;width:100%;height:100%;object-fit:cover}
     margin-top: 0 !important; /* Reset this to zero */
 }
 
+  .hero {
+  padding-top: 140px !important; /* Adjust this value (e.g., 120px to 160px) to move content down */
+}
+  
 .ccc-hero-title {
     margin-top: 0 !important; /* Reset this to zero */
     white-space: normal !important; /* Forces text to wrap */
