@@ -921,47 +921,35 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
     padding-right: 15px !important;
   }
 }
+
+/* 1. Define the grid at the highest level */
+.grid-container {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+    align-items: stretch !important; /* Forces equal height */
+}
+
+/* 2. Standardize the items inside */
+.course-item {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important; /* Forces the box to match the grid cell */
+    border: 1px solid #ccc;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+}
+
+/* 3. Force the button to the bottom */
+.btn-wrapper {
+    margin-top: auto !important;
+    padding-top: 15px;
+    text-align: center;
+}
 </style>
 </head>
 <body>
 
-<style>
-    .fix-container {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 20px !important;
-        width: 100% !important;
-    }
-
-    .fix-card {
-        display: flex !important;
-        flex-direction: column !important;
-        padding: 20px !important;
-        border: 1px solid rgba(255,255,255,0.1) !important;
-        background: rgba(255,255,255,0.03) !important;
-        min-height: 450px !important; /* Force a height that covers all content */
-        position: relative !important;
-    }
-
-    .fix-btn {
-        margin-top: auto !important;
-        width: 100% !important;
-        text-align: center !important;
-        padding: 10px 0 !important;
-        display: block !important;
-    }
-</style>
-
-<div class="fix-container">
-    <div class="fix-card">
-        <h3>Title</h3>
-        <p>Description...</p>
-        <div class="fix-btn">
-            <a href="#" class="btn">Learn More</a>
-        </div>
-    </div>
-    </div>
-  
 <!-- MOBILE MENU -->
 <nav class="mob-menu" id="mobMenu">
   <ul class="mob-links">
