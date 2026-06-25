@@ -926,33 +926,46 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 <body>
 
 <style>
-    /* Reset everything to stop Systeme.io from interfering */
-    .force-grid {
+    /* 1. Force a 3-column grid */
+    .courses-master-grid {
         display: grid !important;
-        grid-template-columns: 1fr 1fr 1fr !important;
+        grid-template-columns: repeat(3, 1fr) !important;
         gap: 20px !important;
         align-items: stretch !important;
     }
 
-    .force-card {
+    /* 2. Force every card to be identical */
+    .course-card {
         display: flex !important;
         flex-direction: column !important;
-        height: 100% !important;
         padding: 20px !important;
         border: 1px solid rgba(255,255,255,0.1) !important;
+        background: rgba(255,255,255,0.03) !important;
+        height: 100% !important; /* Forces cards to match height of the row */
+        box-sizing: border-box !important;
     }
 
-    .force-btn-wrapper {
+    /* 3. Forces the button to the bottom */
+    .btn-container {
         margin-top: auto !important;
-        padding-top: 15px !important;
+        padding-top: 20px !important;
         text-align: center !important;
+    }
+    
+    /* 4. Ensures text fills the top space evenly */
+    .ccard-desc {
+        flex-grow: 1 !important;
+        margin-bottom: 15px !important;
     }
 </style>
 
-<div class="force-grid">
-    <div class="force-card">
-        <div class="force-btn-wrapper">
-             <a href="..." class="btn">Button</a>
+<div class="courses-master-grid">
+    <div class="course-card">
+        <div class="bundle-bar-title">TITLE HERE</div>
+        <p class="ccard-desc">DESCRIPTION HERE...</p>
+        <div class="ccard-price">PRICE HERE</div>
+        <div class="btn-container">
+            <a href="#" class="btn btn-g">Learn More →</a>
         </div>
     </div>
     </div>
