@@ -926,46 +926,36 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 <body>
 
 <style>
-    /* 1. Force 3 equal columns */
-    .courses-master-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
+    /* Reset everything to stop Systeme.io from interfering */
+    .force-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 20px !important;
+        align-items: stretch !important;
     }
 
-    /* 2. Uniform card height */
-    .course-card {
-        display: flex;
-        flex-direction: column;
+    .force-card {
+        display: flex !important;
+        flex-direction: column !important;
+        height: 100% !important;
         padding: 20px !important;
-        border: 1px solid rgba(255,255,255,0.1);
-        background: rgba(255,255,255,0.03);
-        height: 100%; /* Ensures all cards in a row match the tallest one */
-        min-height: 400px; /* Adjust this value if you want them shorter/taller */
-        box-sizing: border-box;
+        border: 1px solid rgba(255,255,255,0.1) !important;
     }
 
-    /* 3. Keep description consistent */
-    .ccard-desc {
-        flex-grow: 1; /* Allows text to take up space */
-        margin-bottom: 20px !important;
-    }
-
-    /* 4. Ensure buttons are always at the bottom */
-    .btn-container {
-        margin-top: auto; /* This forces the button to the bottom */
-        text-align: center;
+    .force-btn-wrapper {
+        margin-top: auto !important;
+        padding-top: 15px !important;
+        text-align: center !important;
     }
 </style>
 
-<div class="course-card">
-    <div class="bundle-bar-title">Title</div>
-    <p class="ccard-desc">Description text...</p>
-    <div class="ccard-price">£XXX</div>
-    <div class="btn-container">
-        <a href="..." class="btn btn-g">Learn More</a>
+<div class="force-grid">
+    <div class="force-card">
+        <div class="force-btn-wrapper">
+             <a href="..." class="btn">Button</a>
+        </div>
     </div>
-</div>
+    </div>
   
 <!-- MOBILE MENU -->
 <nav class="mob-menu" id="mobMenu">
