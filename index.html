@@ -926,43 +926,48 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 <body>
 
 <style>
-    /* Force 3 items per row, equal width and height */
-    .courses-master-container {
+    /* 1. Master Grid: Always 3 columns */
+    .courses-master-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
+        gap: 15px;
         align-items: stretch;
     }
 
-    /* Standardize all cards */
-    .ccard, .bundle-bar {
+    /* 2. Unified Card Style: Forces uniform height */
+    .course-card {
         display: flex;
         flex-direction: column;
         padding: 20px !important;
+        border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.03);
         height: 100%;
         box-sizing: border-box;
-        border: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* Push the CTA buttons to the bottom consistently */
-    .ccard-cta, .btn-g {
-        margin-top: auto !important;
-        margin-left: auto;
-        margin-right: auto;
-        display: inline-block;
-        padding: 10px 20px;
+    /* 3. Forces the button to the bottom and visible */
+    .btn-container {
+        margin-top: auto !important; /* Pushes button to bottom */
+        padding-top: 15px;
+        text-align: center;
     }
     
-    /* Ensure text doesn't add unnecessary height */
-    .ccard-desc, p {
-        flex-grow: 1;
-        margin-bottom: 15px !important;
+    .btn-g {
+        display: inline-block !important;
+        padding: 10px 25px !important;
     }
 </style>
 
-<div class="courses-master-container">
-    <div class="ccard">...</div>
-    <div class="bundle-bar">...</div>
+<div class="courses-master-grid">
+    <div class="course-card">
+        <div class="bundle-bar-title">How to Forgive Without Losing Yourself</div>
+        <p>Discover how to walk out true, biblical forgiveness...</p>
+        <div class="ccard-price">£400</div>
+        <div class="btn-container">
+            <a href="forgiveness-course.html" class="btn btn-g">Learn More</a>
+        </div>
+    </div>
+    
     </div>
   
 <!-- MOBILE MENU -->
