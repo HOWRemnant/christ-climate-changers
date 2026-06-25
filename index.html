@@ -926,24 +926,30 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 <body>
 
 <style>
-    /* Your CSS goes here */
-    .bundle-bar {
-        padding: 10px !important;
+    /* Ensure the grid container uses flexbox */
+    .courses-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: stretch; /* This forces equal height */
     }
-    .bundle-bar p {
-        margin: 5px 0 !important;
+
+    /* Force both card types to be equal in height and flexible */
+    .ccard, .bundle-bar {
+        display: flex;
+        flex-direction: column;
+        flex: 1; /* This makes them share space equally */
+        min-width: 300px; /* Adjust based on your layout needs */
+        padding: 20px;
+        border: 1px solid #eee;
     }
-    .bundle-bar-title {
-        margin-bottom: 5px !important;
+
+    /* Push the CTA button to the bottom of the card */
+    .ccard-cta, .btn-g {
+        margin-top: auto;
     }
 </style>
-
-<section class="courses-grid reveal">
-    <div class="bundle-bar reveal">
-        ...
-    </div>
-    ...
-</section>
+  
 <!-- MOBILE MENU -->
 <nav class="mob-menu" id="mobMenu">
   <ul class="mob-links">
