@@ -926,49 +926,46 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 <body>
 
 <style>
-    /* 1. Master Grid: Always 3 columns */
+    /* 1. Force 3 equal columns */
     .courses-master-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-        align-items: stretch;
+        gap: 20px;
     }
 
-    /* 2. Unified Card Style: Forces uniform height */
+    /* 2. Uniform card height */
     .course-card {
         display: flex;
         flex-direction: column;
         padding: 20px !important;
         border: 1px solid rgba(255,255,255,0.1);
         background: rgba(255,255,255,0.03);
-        height: 100%;
+        height: 100%; /* Ensures all cards in a row match the tallest one */
+        min-height: 400px; /* Adjust this value if you want them shorter/taller */
         box-sizing: border-box;
     }
 
-    /* 3. Forces the button to the bottom and visible */
-    .btn-container {
-        margin-top: auto !important; /* Pushes button to bottom */
-        padding-top: 15px;
-        text-align: center;
+    /* 3. Keep description consistent */
+    .ccard-desc {
+        flex-grow: 1; /* Allows text to take up space */
+        margin-bottom: 20px !important;
     }
-    
-    .btn-g {
-        display: inline-block !important;
-        padding: 10px 25px !important;
+
+    /* 4. Ensure buttons are always at the bottom */
+    .btn-container {
+        margin-top: auto; /* This forces the button to the bottom */
+        text-align: center;
     }
 </style>
 
-<div class="courses-master-grid">
-    <div class="course-card">
-        <div class="bundle-bar-title">How to Forgive Without Losing Yourself</div>
-        <p>Discover how to walk out true, biblical forgiveness...</p>
-        <div class="ccard-price">£400</div>
-        <div class="btn-container">
-            <a href="forgiveness-course.html" class="btn btn-g">Learn More</a>
-        </div>
+<div class="course-card">
+    <div class="bundle-bar-title">Title</div>
+    <p class="ccard-desc">Description text...</p>
+    <div class="ccard-price">£XXX</div>
+    <div class="btn-container">
+        <a href="..." class="btn btn-g">Learn More</a>
     </div>
-    
-    </div>
+</div>
   
 <!-- MOBILE MENU -->
 <nav class="mob-menu" id="mobMenu">
