@@ -926,46 +926,38 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 <body>
 
 <style>
-    /* 1. Force a 3-column grid */
-    .courses-master-grid {
+    .fix-container {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
         gap: 20px !important;
-        align-items: stretch !important;
+        width: 100% !important;
     }
 
-    /* 2. Force every card to be identical */
-    .course-card {
+    .fix-card {
         display: flex !important;
         flex-direction: column !important;
         padding: 20px !important;
         border: 1px solid rgba(255,255,255,0.1) !important;
         background: rgba(255,255,255,0.03) !important;
-        height: 100% !important; /* Forces cards to match height of the row */
-        box-sizing: border-box !important;
+        min-height: 450px !important; /* Force a height that covers all content */
+        position: relative !important;
     }
 
-    /* 3. Forces the button to the bottom */
-    .btn-container {
+    .fix-btn {
         margin-top: auto !important;
-        padding-top: 20px !important;
+        width: 100% !important;
         text-align: center !important;
-    }
-    
-    /* 4. Ensures text fills the top space evenly */
-    .ccard-desc {
-        flex-grow: 1 !important;
-        margin-bottom: 15px !important;
+        padding: 10px 0 !important;
+        display: block !important;
     }
 </style>
 
-<div class="courses-master-grid">
-    <div class="course-card">
-        <div class="bundle-bar-title">TITLE HERE</div>
-        <p class="ccard-desc">DESCRIPTION HERE...</p>
-        <div class="ccard-price">PRICE HERE</div>
-        <div class="btn-container">
-            <a href="#" class="btn btn-g">Learn More →</a>
+<div class="fix-container">
+    <div class="fix-card">
+        <h3>Title</h3>
+        <p>Description...</p>
+        <div class="fix-btn">
+            <a href="#" class="btn">Learn More</a>
         </div>
     </div>
     </div>
