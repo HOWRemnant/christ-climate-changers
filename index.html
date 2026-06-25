@@ -925,6 +925,42 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 </head>
 <body>
 
+<style>
+    /* 1. Define the 3-per-line grid */
+    .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Forces 3 columns */
+        gap: 15px; /* Space between cards */
+        align-items: start;
+    }
+
+    /* 2. Standardize all cards to be the same height */
+    .ccard, .bundle-bar {
+        display: flex;
+        flex-direction: column;
+        padding: 15px !important; /* Reduces vertical height */
+        margin: 0 !important;      /* Removes extra gaps */
+        height: 100%;             /* Ensures all are same height */
+        box-sizing: border-box;
+    }
+
+    /* 3. Tighten the content inside */
+    .ccard-desc, p {
+        font-size: 14px !important;
+        margin: 5px 0 10px 0 !important;
+        flex-grow: 1; /* Pushes button to bottom */
+    }
+
+    .bundle-bar-title, .ccard-title {
+        font-size: 16px !important;
+        margin-bottom: 5px !important;
+    }
+    
+    .ccard-cta, .btn-g {
+        margin-top: auto; /* Keeps buttons aligned at the bottom */
+    }
+</style>  
+  
 <!-- MOBILE MENU -->
 <nav class="mob-menu" id="mobMenu">
   <ul class="mob-links">
