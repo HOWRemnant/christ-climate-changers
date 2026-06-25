@@ -926,38 +926,36 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 <body>
 
 <style>
-    /* 1. Define the 3-per-line grid */
-    .courses-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* Forces 3 columns */
-        gap: 15px; /* Space between cards */
-        align-items: start;
-    }
-
-    /* 2. Standardize all cards to be the same height */
-    .ccard, .bundle-bar {
+    /* 1. Tighten the overall container height */
+    .bundle-bar {
+        padding: 10px 15px !important; /* Reduces vertical space top/bottom */
         display: flex;
         flex-direction: column;
-        padding: 15px !important; /* Reduces vertical height */
-        margin: 0 !important;      /* Removes extra gaps */
-        height: 100%;             /* Ensures all are same height */
+        justify-content: flex-start; /* Keeps content at the top */
+        height: 100%;
         box-sizing: border-box;
     }
 
-    /* 3. Tighten the content inside */
-    .ccard-desc, p {
+    /* 2. Compact the text areas to reduce height */
+    .bundle-bar p {
+        margin: 5px 0 !important; /* Minimal spacing around description */
         font-size: 14px !important;
-        margin: 5px 0 10px 0 !important;
-        flex-grow: 1; /* Pushes button to bottom */
+        line-height: 1.4 !important;
     }
 
-    .bundle-bar-title, .ccard-title {
-        font-size: 16px !important;
+    .bundle-bar-title {
         margin-bottom: 5px !important;
+        line-height: 1.2 !important;
     }
-    
-    .ccard-cta, .btn-g {
-        margin-top: auto; /* Keeps buttons aligned at the bottom */
+
+    /* 3. Button: Center it and make it smaller */
+    .btn-g {
+        display: inline-block !important;
+        width: auto !important;
+        margin: 10px auto 5px auto !important; /* Centers it and adds breathing room */
+        padding: 8px 20px !important; /* Smaller button size */
+        text-align: center;
+        flex-shrink: 0;
     }
 </style>  
   
