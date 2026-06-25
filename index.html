@@ -926,38 +926,44 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 <body>
 
 <style>
-    /* 1. Tighten the overall container height */
-    .bundle-bar {
-        padding: 10px 15px !important; /* Reduces vertical space top/bottom */
+    /* Force 3 items per row, equal width and height */
+    .courses-master-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        align-items: stretch;
+    }
+
+    /* Standardize all cards */
+    .ccard, .bundle-bar {
         display: flex;
         flex-direction: column;
-        justify-content: flex-start; /* Keeps content at the top */
+        padding: 20px !important;
         height: 100%;
         box-sizing: border-box;
+        border: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* 2. Compact the text areas to reduce height */
-    .bundle-bar p {
-        margin: 5px 0 !important; /* Minimal spacing around description */
-        font-size: 14px !important;
-        line-height: 1.4 !important;
+    /* Push the CTA buttons to the bottom consistently */
+    .ccard-cta, .btn-g {
+        margin-top: auto !important;
+        margin-left: auto;
+        margin-right: auto;
+        display: inline-block;
+        padding: 10px 20px;
     }
+    
+    /* Ensure text doesn't add unnecessary height */
+    .ccard-desc, p {
+        flex-grow: 1;
+        margin-bottom: 15px !important;
+    }
+</style>
 
-    .bundle-bar-title {
-        margin-bottom: 5px !important;
-        line-height: 1.2 !important;
-    }
-
-    /* 3. Button: Center it and make it smaller */
-    .btn-g {
-        display: inline-block !important;
-        width: auto !important;
-        margin: 10px auto 5px auto !important; /* Centers it and adds breathing room */
-        padding: 8px 20px !important; /* Smaller button size */
-        text-align: center;
-        flex-shrink: 0;
-    }
-</style>  
+<div class="courses-master-container">
+    <div class="ccard">...</div>
+    <div class="bundle-bar">...</div>
+    </div>
   
 <!-- MOBILE MENU -->
 <nav class="mob-menu" id="mobMenu">
