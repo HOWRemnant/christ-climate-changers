@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breaking Generational Curses | Christ's Climate Changers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a0f1e;--nm:#111827;--nl:#1a2540;
+  --g:#c9a84c;--gl:#e8c87a;--gs:#f5da82;--gd:#7a5c1e;
+  --cr:#f6f0e5;--tm:#8a9ab5;
+  --tl:rgba(255,255,255,.8);--tf:rgba(255,255,255,.48);
+  --nh:70px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.8;background:var(--navy);color:var(--cr);overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
+a{text-decoration:none;color:inherit}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+@keyframes pdot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.5}}
+@keyframes gpulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.85;transform:scale(1.1)}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--g);z-index:1001;box-shadow:0 0 8px rgba(201,168,76,.5);transition:width .1s linear}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nh);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,60px);background:rgba(10,15,30,.93);backdrop-filter:blur(14px);border-bottom:.5px solid rgba(201,168,76,.18);transition:box-shadow .4s}
+#nav.scrolled{box-shadow:0 4px 36px rgba(0,0,0,.5);border-bottom-color:rgba(201,168,76,.32)}
+.nav-logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.nav-crest{width:36px;height:36px;flex-shrink:0}.nav-crest svg{width:100%;height:100%}
+.logo-wm{display:flex;flex-direction:column;gap:1px}
+.logo-name{font-family:'Cinzel',serif;font-size:12px;font-weight:500;color:var(--g);letter-spacing:.16em;text-transform:uppercase}
+.logo-tag{font-family:'EB Garamond',serif;font-size:10.5px;font-style:italic;color:rgba(255,255,255,.44)}
+.nav-links{display:flex;list-style:none}
+.nav-links>li>a{display:block;padding:0 11px;line-height:var(--nh);font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.65);transition:color .2s}
+.nav-links>li>a:hover{color:var(--gl)}
+.nav-cta{background:var(--g);color:var(--navy);border:none;padding:9px 20px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.nav-cta:hover{background:var(--gl)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:20px;height:1.5px;background:#fff;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-menu{position:fixed;inset:0;z-index:998;background:rgba(10,15,30,.98);backdrop-filter:blur(24px);padding:calc(var(--nh)+2rem) 2rem 3rem;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);overflow-y:auto;display:flex;flex-direction:column}
+.mob-menu.open{transform:translateX(0)}
+.mob-links{list-style:none;margin-bottom:2rem}
+.mob-links li a{display:block;padding:14px 0;font-family:'Cinzel',serif;font-size:1rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.78);border-bottom:.5px solid rgba(255,255,255,.07);transition:all .2s}
+.mob-links li a:hover{color:var(--g);padding-left:8px}
+@media(max-width:980px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}}
+@media(min-width:981px){.mob-menu{display:none!important}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Cinzel',serif;font-size:11px;font-weight:500;letter-spacing:.17em;text-transform:uppercase;cursor:pointer;border:none;transition:all .25s ease;white-space:nowrap}
+.btn-g{background:var(--g);color:var(--navy);padding:15px 36px}
+.btn-g:hover{background:var(--gl);transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,168,76,.4)}
+.btn-w{background:transparent;color:var(--g);border:.5px solid var(--g);padding:14px 32px}
+.btn-w:hover{background:rgba(201,168,76,.1)}
+.btn-outline-white{background:transparent;color:#fff;border:.5px solid rgba(255,255,255,.4);padding:14px 32px}
+.btn-outline-white:hover{border-color:var(--g);color:var(--g)}
+.btn-s{background:linear-gradient(120deg,var(--gd),var(--g),var(--gs),var(--g),var(--gd));background-size:300% 300%;animation:shimmer 4s ease infinite;color:var(--navy);padding:15px 36px;box-shadow:0 0 22px rgba(201,168,76,.35)}
+.btn-s:hover{box-shadow:0 0 40px rgba(201,168,76,.65);transform:translateY(-2px)}
+.pdot{width:7px;height:7px;border-radius:50%;background:var(--navy);animation:pdot 2s ease-in-out infinite;flex-shrink:0}
+.br{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.br-c{justify-content:center}
+
+/* LAYOUT */
+.wrap{max-width:1100px;margin:0 auto;padding:0 clamp(1.5rem,4vw,60px)}
+.sec{padding:90px clamp(1.5rem,4vw,60px);position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--g);margin-bottom:1.2rem}
+.eyebrow::before{content:'';width:22px;height:.5px;background:var(--g);opacity:.8;flex-shrink:0}
+.eyebrow.dk{color:var(--gd)}.eyebrow.dk::before{background:var(--gd)}
+.h2{font-family:'Cinzel',serif;font-size:clamp(1.5rem,2.8vw,2.5rem);font-weight:500;line-height:1.18;letter-spacing:.03em}
+.h2.light{color:#fff}.h2.dark{color:var(--navy)}
+.h2 em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gl);font-size:1.1em;font-weight:300}
+.h2.dark em{color:var(--gd)}
+.gold-rule{width:50px;height:.5px;background:var(--g);margin:1.5rem 0;opacity:.8}
+.gold-rule.dk{background:var(--gd)}
+.body-t{font-family:'EB Garamond',serif;font-size:17.5px;line-height:1.9;text-align:left}
+.body-t.light{color:var(--tl)}.body-t.dark{color:#3d4f72}
+
+/* HERO */
+.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nh)+55px) clamp(1.5rem,5vw,60px) 70px;position:relative;overflow:hidden}
+.hero-bg-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=1800&q=80');background-size:cover;background-position:center 40%;filter:brightness(.18) saturate(1.2)}
+.hero-over{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 28%,rgba(201,168,76,.1) 0%,transparent 65%),linear-gradient(165deg,rgba(10,15,30,.96) 0%,rgba(10,25,60,.84) 50%,rgba(10,15,30,.95) 100%)}
+.hero-glow{position:absolute;top:32%;left:50%;transform:translate(-50%,-50%);width:540px;height:540px;background:radial-gradient(circle,rgba(201,168,76,.12) 0%,transparent 65%);animation:gpulse 9s ease-in-out infinite;pointer-events:none}
+.hero-content{position:relative;z-index:5;max-width:820px}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(201,168,76,.12);border:.5px solid rgba(201,168,76,.42);padding:8px 20px;margin-bottom:1.8rem;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--gl);opacity:0;animation:fadeUp .9s .1s ease both}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--g);animation:pdot 3s ease-in-out infinite}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.38em;color:var(--g);text-transform:uppercase;margin-bottom:22px;opacity:0;animation:fadeUp 1s ease .22s forwards;display:inline-flex;align-items:center;gap:16px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;width:32px;height:.5px;background:var(--g);opacity:.7}
+.hero-title{font-family:'Cinzel',serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:500;line-height:1.08;color:#fff;margin-bottom:16px;opacity:0;animation:fadeUp 1s ease .38s forwards;letter-spacing:.02em}
+.hero-title em{color:var(--gl);font-style:italic;font-family:'Cormorant Garamond',serif;font-weight:300;display:block;margin-top:.15em}
+.hero-sub{font-family:'EB Garamond',serif;font-size:18px;color:var(--tl);max-width:660px;margin:0 auto 2rem;line-height:1.9;text-align:center;opacity:0;animation:fadeUp 1s ease .52s forwards}
+.hero-scripture{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,1.7vw,17.5px);color:rgba(255,255,255,.6);max-width:700px;margin:0 auto 2.2rem;line-height:1.85;border-top:.5px solid rgba(201,168,76,.22);border-bottom:.5px solid rgba(201,168,76,.22);padding:1.5rem 0;opacity:0;animation:fadeUp 1s ease .65s forwards}
+.hero-scripture cite{display:block;font-style:normal;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.18em;color:var(--g);margin-top:10px;text-transform:uppercase}
+.hero-price-row{display:flex;align-items:center;justify-content:center;gap:22px;margin-bottom:2.2rem;flex-wrap:wrap;opacity:0;animation:fadeUp 1s ease .78s forwards}
+.price-badge{background:rgba(201,168,76,.1);border:.5px solid rgba(201,168,76,.4);padding:12px 28px;display:flex;flex-direction:column;align-items:center}
+.price-amount{font-family:'Cinzel',serif;font-size:2rem;font-weight:500;color:var(--gl);line-height:1}
+.price-meta{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tm);margin-top:6px}
+.hero-pills{display:flex;gap:9px;flex-wrap:wrap;justify-content:center}
+.pill{display:inline-flex;align-items:center;gap:7px;font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gl);border:.5px solid rgba(201,168,76,.3);padding:7px 13px;background:rgba(201,168,76,.07)}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp 1s ease .92s forwards}
+
+/* HIGHLIGHTS */
+.highlights{display:grid;grid-template-columns:repeat(4,1fr);background:var(--nm);border-top:.5px solid rgba(201,168,76,.18);border-bottom:.5px solid rgba(201,168,76,.18);position:relative;z-index:1}
+.hl-item{padding:2.2rem 1.8rem;text-align:center;border-right:.5px solid rgba(201,168,76,.13)}
+.hl-item:last-child{border-right:none}
+.hl-icon{font-size:1.6rem;margin-bottom:.5rem}
+.hl-val{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:500;color:var(--gl);margin-bottom:4px}
+.hl-label{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--tm)}
+@media(max-width:680px){.highlights{grid-template-columns:1fr 1fr}.hl-item:nth-child(2){border-right:none}.hl-item:nth-child(1),.hl-item:nth-child(2){border-bottom:.5px solid rgba(201,168,76,.13)}}
+
+/* WHITE SECTIONS */
+.white-bg{background:#fff;position:relative;z-index:1}
+.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.outcomes{list-style:none;display:flex;flex-direction:column;gap:.9rem;margin-top:1.4rem}
+.outcomes li{display:flex;align-items:flex-start;gap:12px;font-family:'EB Garamond',serif;font-size:16.5px;color:#2d3a5e;line-height:1.65;text-align:left}
+.outcome-tick{width:22px;height:22px;border-radius:50%;background:rgba(201,168,76,.14);border:.5px solid rgba(201,168,76,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;color:var(--gd);font-size:11px;font-weight:700}
+.enrol-card{position:sticky;top:88px;background:var(--navy);border:.5px solid rgba(201,168,76,.28);padding:2.5rem}
+.enrol-price{font-family:'Cinzel',serif;font-size:2.8rem;font-weight:500;color:var(--gl);line-height:1;margin-bottom:4px}
+.enrol-meta{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tm);margin-bottom:1.8rem}
+.enrol-features{list-style:none;display:flex;flex-direction:column;gap:.65rem;margin:1.6rem 0;border-top:.5px solid rgba(201,168,76,.2);padding-top:1.4rem}
+.enrol-features li{display:flex;align-items:center;gap:11px;font-family:'EB Garamond',serif;font-size:15.5px;color:rgba(255,255,255,.8)}
+.enrol-features li span{color:var(--g)}
+.scrip-pull{background:#f0ece0;border:.5px solid rgba(201,168,76,.2);border-left:3px solid var(--gd);padding:1.4rem 1.6rem;margin-top:1.4rem}
+.scrip-pull p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16.5px;color:#3d2a0a;line-height:1.7;text-align:left}
+.scrip-pull cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gd);margin-top:.5rem}
+@media(max-width:900px){.overview-grid{grid-template-columns:1fr;gap:3rem}.enrol-card{position:static}}
+
+/* SIGNS grid */
+.dark-sec{background:var(--nm);border-top:.5px solid rgba(201,168,76,.16);border-bottom:.5px solid rgba(201,168,76,.16);position:relative;z-index:1}
+.signs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.sign-card{background:var(--navy);border:.5px solid rgba(201,168,76,.16);padding:2.2rem 2rem;position:relative;overflow:hidden;transition:all .3s}
+.sign-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--g),transparent);opacity:0;transition:opacity .3s}
+.sign-card:hover{border-color:rgba(201,168,76,.42);transform:translateY(-4px)}.sign-card:hover::before{opacity:1}
+.sign-icon{font-size:2rem;margin-bottom:.9rem}
+.sign-title{font-family:'Cinzel',serif;font-size:12.5px;font-weight:500;color:var(--gl);margin-bottom:.6rem;letter-spacing:.04em}
+.sign-desc{font-family:'EB Garamond',serif;font-size:14.5px;color:rgba(255,255,255,.6);line-height:1.72;text-align:left}
+.sign-scrip{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-top:.7rem;display:block}
+@media(max-width:900px){.signs-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.signs-grid{grid-template-columns:1fr}}
+
+/* BIBLE EXAMPLES */
+.bible-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.bible-card{background:var(--nl);border:.5px solid rgba(201,168,76,.16);padding:2.2rem 2rem;position:relative;overflow:hidden;transition:all .3s}
+.bible-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--g);transition:height .4s ease}
+.bible-card:hover{border-color:rgba(201,168,76,.42);transform:translateY(-4px)}.bible-card:hover::before{height:100%}
+.bible-icon{font-size:2rem;margin-bottom:.9rem}
+.bible-who{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin-bottom:.4rem}
+.bible-name{font-family:'Cinzel',serif;font-size:13.5px;font-weight:500;color:var(--gl);margin-bottom:.5rem;letter-spacing:.03em}
+.bible-ref{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--g);margin-bottom:.9rem;display:block}
+.bible-verse{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:.9rem;border-left:2px solid rgba(201,168,76,.3);padding-left:14px}
+.bible-body{font-family:'EB Garamond',serif;font-size:14.5px;color:rgba(255,255,255,.56);line-height:1.72;text-align:left}
+.bible-lesson{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-top:1rem;padding-top:.7rem;border-top:.5px solid rgba(201,168,76,.18)}
+@media(max-width:900px){.bible-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.bible-grid{grid-template-columns:1fr}}
+
+/* TODAY'S MANIFESTATIONS (white) */
+.manifest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.8rem}
+.manifest-card{background:#f7f7fa;border:.5px solid rgba(201,168,76,.18);border-left:3px solid var(--gd);padding:1.9rem 1.7rem;transition:all .25s}
+.manifest-card:hover{border-color:rgba(201,168,76,.44);transform:translateY(-3px);box-shadow:0 6px 24px rgba(0,0,0,.09)}
+.manifest-icon{font-size:1.8rem;margin-bottom:.7rem}
+.manifest-title{font-family:'Cinzel',serif;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin-bottom:.5rem}
+.manifest-desc{font-family:'EB Garamond',serif;font-size:15px;color:#4a5a7a;line-height:1.7;text-align:left}
+.manifest-scrip{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--gd);margin-top:.7rem}
+@media(max-width:900px){.manifest-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.manifest-grid{grid-template-columns:1fr}}
+
+/* MODULES */
+.modules-sec{background:var(--nl);border-top:.5px solid rgba(201,168,76,.16);border-bottom:.5px solid rgba(201,168,76,.16);padding:90px clamp(1.5rem,4vw,60px);position:relative;z-index:1}
+.modules-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2.8rem}
+.module{background:var(--nm);border:.5px solid rgba(201,168,76,.14);padding:2.2rem 2rem;position:relative;overflow:hidden;transition:border-color .3s,background .3s}
+.module::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--g);transition:height .4s ease}
+.module:hover{border-color:rgba(201,168,76,.42);background:rgba(201,168,76,.05)}.module:hover::before{height:100%}
+.module-num{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.28em;color:var(--gd);margin-bottom:9px;text-transform:uppercase}
+.module-title{font-family:'Cinzel',serif;font-size:13.5px;font-weight:500;color:var(--gl);margin-bottom:9px;letter-spacing:.03em;line-height:1.35}
+.module-desc{font-family:'EB Garamond',serif;font-size:15px;color:rgba(255,255,255,.63);line-height:1.75;margin-bottom:1rem;text-align:left}
+.module-topics{list-style:none;display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.module-topics li{display:flex;align-items:flex-start;gap:8px;font-family:'EB Garamond',serif;font-size:14px;color:rgba(255,255,255,.52);line-height:1.5;text-align:left}
+.module-topics li::before{content:'\2014';color:var(--gd);flex-shrink:0;font-size:11px;margin-top:2px}
+.module-scrip{display:inline-block;font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.1em;color:var(--gl);background:rgba(201,168,76,.1);border:.5px solid rgba(201,168,76,.25);padding:4px 12px}
+@media(max-width:680px){.modules-grid{grid-template-columns:1fr}}
+
+/* DELIVERANCE FRAMEWORK (white) */
+.framework-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:2.8rem}
+.framework-card{background:var(--navy);border:.5px solid rgba(201,168,76,.2);padding:2rem 1.7rem;position:relative;overflow:hidden;transition:all .3s}
+.framework-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--g);transition:height .4s ease}
+.framework-card:hover{border-color:rgba(201,168,76,.44);transform:translateY(-3px)}.framework-card:hover::before{height:100%}
+.fw-icon{font-size:1.6rem;margin-bottom:.8rem}
+.fw-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gl);margin-bottom:.5rem}
+.fw-desc{font-family:'EB Garamond',serif;font-size:14.5px;color:rgba(255,255,255,.62);line-height:1.65;text-align:left}
+@media(max-width:900px){.framework-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.framework-grid{grid-template-columns:1fr}}
+
+/* HEALING JOURNEY */
+.healing-bg{background:var(--nm);border-top:.5px solid rgba(201,168,76,.16);position:relative;z-index:1}
+.journey-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:3rem}
+.j-step{background:var(--navy);border:.5px solid rgba(201,168,76,.14);padding:2rem 1.6rem;text-align:center;position:relative;transition:all .25s}
+.j-step::after{content:'';position:absolute;top:50%;right:-1px;width:14px;height:1px;background:var(--gd);opacity:.4}
+.j-step:last-child::after{display:none}
+.j-step:hover{border-color:rgba(201,168,76,.42);transform:translateY(-3px)}
+.j-num{font-family:'Cinzel',serif;font-size:2.4rem;font-weight:500;color:rgba(201,168,76,.12);line-height:1;margin-bottom:.5rem}
+.j-icon{font-size:1.6rem;margin-bottom:.7rem}
+.j-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:.6rem}
+.j-desc{font-family:'EB Garamond',serif;font-size:14px;color:var(--tf);line-height:1.7;text-align:left}
+.j-scrip{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-top:.6rem;display:block}
+@media(max-width:1000px){.journey-steps{grid-template-columns:repeat(3,1fr)}.j-step::after{display:none}}
+@media(max-width:580px){.journey-steps{grid-template-columns:1fr 1fr}}
+
+/* INCLUDED */
+.included-bg{background:var(--nl);position:relative;z-index:1}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:2.8rem}
+.feature{background:rgba(255,255,255,.04);border:.5px solid rgba(201,168,76,.2);padding:1.9rem 1.6rem;position:relative;overflow:hidden;transition:all .3s}
+.feature::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--g);transition:height .4s ease}
+.feature:hover{border-color:rgba(201,168,76,.44);background:rgba(201,168,76,.07);transform:translateY(-3px)}.feature:hover::before{height:100%}
+.feature-icon{font-size:1.6rem;margin-bottom:.8rem}
+.feature h3{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:.5rem}
+.feature p{font-family:'EB Garamond',serif;font-size:14.5px;color:var(--tf);line-height:1.65;text-align:left}
+@media(max-width:900px){.features{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.features{grid-template-columns:1fr}}
+
+/* WHO (white) */
+.who-bg{background:#fff;position:relative;z-index:1}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.8rem}
+.who-card{background:#f7f7fa;border:.5px solid rgba(201,168,76,.18);padding:1.9rem;display:flex;align-items:flex-start;gap:14px;transition:all .25s}
+.who-card:hover{border-color:rgba(201,168,76,.42);background:#f0ece0;transform:translateY(-3px)}
+.who-icon{width:38px;height:38px;border:.5px solid rgba(201,168,76,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;background:rgba(201,168,76,.1)}
+.who-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin-bottom:4px}
+.who-desc{font-family:'EB Garamond',serif;font-size:15px;color:#5a6a8a;line-height:1.65;text-align:left}
+@media(max-width:900px){.who-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.who-grid{grid-template-columns:1fr}}
+
+/* TESTIMONIALS (white) */
+.testi-bg{background:#fff;position:relative;z-index:1}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.8rem}
+.tcard{background:#f7f7fa;border:.5px solid rgba(201,168,76,.18);padding:2rem;position:relative;transition:all .25s}
+.tcard:hover{box-shadow:0 8px 30px rgba(0,0,0,.08);border-color:rgba(201,168,76,.42)}
+.tcard::before{content:'\201C';position:absolute;top:14px;left:18px;font-family:'Cormorant Garamond',serif;font-size:56px;color:var(--gd);opacity:.2;line-height:1}
+.tcard-body{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:#4a5a7a;line-height:1.82;margin-top:14px;margin-bottom:1.2rem;text-align:left}
+.tcard-name{font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy)}
+.tcard-role{font-family:'EB Garamond',serif;font-size:13px;color:#9aaccf;margin-top:3px}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.testi-grid{grid-template-columns:1fr}}
+
+/* FAQ (white) */
+.faq-bg{background:#fff;position:relative;z-index:1}
+.faq-list{display:flex;flex-direction:column;gap:2px;margin-top:2.8rem;max-width:780px;margin-left:auto;margin-right:auto}
+.faq-item{background:#f7f7fa;border:.5px solid rgba(201,168,76,.16);overflow:hidden;cursor:pointer;transition:border-color .2s}
+.faq-item:hover,.faq-item.open{border-color:rgba(201,168,76,.42)}
+.faq-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.4rem 1.8rem}
+.faq-q{font-family:'Cinzel',serif;font-size:13px;font-weight:500;color:var(--navy);letter-spacing:.02em;transition:color .2s;text-align:left}
+.faq-item:hover .faq-q,.faq-item.open .faq-q{color:var(--gd)}
+.faq-icon{width:26px;height:26px;border:.5px solid rgba(201,168,76,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--gd);transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(201,168,76,.12)}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.faq-item.open .faq-body{max-height:360px}
+.faq-body-inner{padding:0 1.8rem 1.6rem;font-family:'EB Garamond',serif;font-size:16px;color:#4a5a7a;line-height:1.85;text-align:left}
+
+/* COMPANION STRIP */
+.companion-strip{background:var(--nm);border:.5px solid rgba(201,168,76,.26);padding:2rem 2.4rem;margin-top:3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;position:relative;overflow:hidden}
+.companion-strip::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--g),transparent);opacity:.55}
+
+/* SCRIPTURE BAND */
+.scrip-band{background:linear-gradient(135deg,var(--navy),var(--nm));border-top:.5px solid rgba(201,168,76,.25);border-bottom:.5px solid rgba(201,168,76,.25);padding:52px clamp(1.5rem,4vw,60px);text-align:center;position:relative;z-index:1}
+.scrip-band blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,2.1vw,1.6rem);font-weight:300;color:rgba(255,255,255,.85);line-height:1.7;max-width:700px;margin:0 auto 1rem;border-left:2px solid var(--g);padding-left:28px;text-align:left}
+.scrip-band cite{display:block;font-family:'Cinzel',serif;font-style:normal;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-top:10px}
+
+/* FINAL CTA */
+.final-cta{position:relative;overflow:hidden;text-align:center;padding:100px clamp(1.5rem,5vw,60px)}
+.final-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=1800&q=80');background-size:cover;background-position:center;filter:brightness(.14) saturate(1.1)}
+.final-over{position:absolute;inset:0;background:radial-gradient(ellipse 85% 75% at 50% 50%,rgba(10,25,60,.92) 0%,rgba(10,15,30,.98) 100%)}
+.final-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:560px;height:560px;background:radial-gradient(circle,rgba(201,168,76,.14) 0%,transparent 60%);animation:gpulse 7s ease-in-out infinite;pointer-events:none}
+.final-content{position:relative;z-index:2;max-width:680px;margin:0 auto}
+.final-scrip{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,.34);margin-top:2.5rem}
+
+/* FOOTER */
+footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.16);padding:2.8rem clamp(1.5rem,4vw,60px) 2rem;position:relative;z-index:1;text-align:center}
+.footer-logo{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.16em;color:var(--g);text-transform:uppercase;margin-bottom:.6rem}
+.footer-links{display:flex;justify-content:center;gap:24px;margin:1.2rem 0;flex-wrap:wrap}
+.footer-links a{font-family:'EB Garamond',serif;font-size:14px;color:var(--tm);transition:color .2s}
+.footer-links a:hover{color:var(--gl)}
+.footer-copy{font-family:'EB Garamond',serif;font-size:13px;color:rgba(255,255,255,.3);margin-top:.6rem}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="mob-menu" id="mobMenu">
+  <ul class="mob-links">
+    <li><a href="#overview" onclick="closeMenu()">Overview</a></li>
+    <li><a href="#signs" onclick="closeMenu()">Signs of a Curse</a></li>
+    <li><a href="#scripture" onclick="closeMenu()">Scripture Examples</a></li>
+    <li><a href="#today" onclick="closeMenu()">Today's Generation</a></li>
+    <li><a href="#modules" onclick="closeMenu()">Modules</a></li>
+    <li><a href="#healing" onclick="closeMenu()">Healing Journey</a></li>
+    <li><a href="#who" onclick="closeMenu()">Who It's For</a></li>
+    <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
+  </ul>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-top:1.5rem">
+    <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="btn btn-g" style="justify-content:center">Enrol Now — £167</a>
+    <a href="https://www.patreon.com/ChristsClimateChangers" target="_blank" class="btn btn-s" style="justify-content:center"><span class="pdot"></span> Suddenly — Members</a>
+  </div>
+</nav>
+
+<nav id="nav">
+  <a href="christs-climate-changers.html" class="nav-logo">
+    <div class="nav-crest">
+      <svg viewBox="0 0 52 52" fill="none">
+        <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f5da82"/><stop offset="50%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#8a6a1f"/></linearGradient></defs>
+        <path d="M26 4.5L6.5 12.5V27C6.5 37.8 15.5 45.3 26 48.5C36.5 45.3 45.5 37.8 45.5 27V12.5L26 4.5Z" stroke="url(#gg)" stroke-width="1.3" fill="none"/>
+        <path d="M17 21.5L20.5 17L24 20.5L26 14L28 20.5L31.5 17L35 21.5H17Z" fill="url(#gg)"/>
+        <rect x="17" y="21.5" width="18" height="2.5" fill="url(#gg)" rx=".5"/>
+        <rect x="25" y="26" width="2.2" height="12" fill="url(#gg)" rx=".5"/>
+        <rect x="20" y="30" width="12" height="2.2" fill="url(#gg)" rx=".5"/>
+      </svg>
+    </div>
+    <div class="logo-wm">
+      <span class="logo-name">Christ's Climate Changers</span>
+      <span class="logo-tag">Breaking Generational Curses</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#signs">Signs</a></li>
+    <li><a href="#scripture">Scripture</a></li>
+    <li><a href="#today">Today</a></li>
+    <li><a href="#modules">Modules</a></li>
+    <li><a href="#healing">Healing</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:14px">
+    <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="nav-cta">Enrol Now</a>
+    <button class="hamburger" id="hamBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-img"></div>
+  <div class="hero-over"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="hero-badge-dot"></span> Kingdom Deliverance Course · Christ's Climate Changers</div>
+    <div class="hero-eyebrow">Freedom Is Your Inheritance</div>
+    <h1 class="hero-title">Breaking Generational Curses<em>What the cross already purchased</em></h1>
+    <p class="hero-sub">A powerful, Biblically-grounded course identifying the spiritual bondages that follow family lines — poverty, sickness, premature death, mental breakdown, fruitlessness, and occult bondage — and walking you step by step into the complete freedom Christ has already won.</p>
+    <p class="hero-scripture">
+      "Christ redeemed us from the curse of the law by becoming a curse for us — for it is written: Cursed is everyone who is hung on a pole. He redeemed us in order that the blessing given to Abraham might come to the Gentiles through Christ Jesus, so that by faith we might receive the promise of the Spirit."
+      <cite>Galatians 3:13-14</cite>
+    </p>
+    <div class="hero-price-row">
+      <div class="price-badge">
+        <div class="price-amount">£167</div>
+        <div class="price-meta">One-Time · Lifetime Access</div>
+      </div>
+      <div class="hero-pills">
+        <div class="pill">10 Modules</div>
+        <div class="pill">Deliverance Prayers</div>
+        <div class="pill">Certificate</div>
+      </div>
+    </div>
+    <div class="hero-ctas">
+      <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="btn btn-g">Enrol Now — £167</a>
+      <a href="https://www.patreon.com/ChristsClimateChangers" target="_blank" class="btn btn-s"><span class="pdot"></span> Suddenly — Members</a>
+      <a href="#modules" class="btn btn-outline-white">View Modules</a>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<div class="highlights">
+  <div class="hl-item reveal"><div class="hl-icon">⛓</div><div class="hl-val">Broken</div><div class="hl-label">Every Chain</div></div>
+  <div class="hl-item reveal"><div class="hl-icon">📖</div><div class="hl-val">10</div><div class="hl-label">Modules</div></div>
+  <div class="hl-item reveal"><div class="hl-icon">🙏</div><div class="hl-val">Guided</div><div class="hl-label">Deliverance Prayers</div></div>
+  <div class="hl-item reveal"><div class="hl-icon">✝️</div><div class="hl-val">Freedom</div><div class="hl-label">Through the Cross</div></div>
+</div>
+
+<!-- OVERVIEW (white) -->
+<section class="white-bg sec" id="overview">
+  <div class="wrap overview-grid">
+    <div class="reveal">
+      <div class="eyebrow dk">Course Overview</div>
+      <h2 class="h2 dark">What is a <em>generational curse?</em></h2>
+      <div class="gold-rule dk"></div>
+      <p class="body-t dark">A generational curse is a spiritual bondage — a demonic access point, a divine consequence of unrepented sin, or an inherited covenantal tie — that follows a family line until it is deliberately and specifically broken through the authority of Christ and the application of His blood.</p>
+      <p class="body-t dark" style="margin-top:1rem">Deuteronomy 28 is the most complete description of curses in Scripture — listing with extraordinary specificity the consequences of covenant disobedience: mental breakdown, recurring sickness, persistent poverty, family collapse, premature death, failure and fruitlessness. Many people reading that list recognise their family history on its pages. This course gives those recognitions a Biblical name and a Biblical solution.</p>
+      <p class="body-t dark" style="margin-top:1rem">The solution is not deliverance as performance, not spiritual warfare as entertainment, and not the repetition of formulas. The solution is the finished work of Jesus Christ — applied with understanding, faith, and Biblical authority through repentance, renunciation, and declaration.</p>
+      <div style="margin-top:2rem"><div class="eyebrow dk">What You Will Learn</div></div>
+      <ul class="outcomes">
+        <li><div class="outcome-tick">✓</div>Define generational curses with Biblical precision and identify them in your family line</li>
+        <li><div class="outcome-tick">✓</div>Recognise the seven major curse categories from Deuteronomy 28 in modern life</li>
+        <li><div class="outcome-tick">✓</div>Understand how curses enter — through sin, spoken words, occult, and ungodly covenants</li>
+        <li><div class="outcome-tick">✓</div>Apply the authority of Galatians 3:13 with Biblical confidence and faith</li>
+        <li><div class="outcome-tick">✓</div>Walk through guided deliverance prayers for every major curse category</li>
+        <li><div class="outcome-tick">✓</div>Break soul ties, ungodly oaths, and occult covenants by name</li>
+        <li><div class="outcome-tick">✓</div>Receive and declare the Abrahamic blessing as your rightful Kingdom inheritance</li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <div class="enrol-card">
+        <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin-bottom:1rem">Enrol Today</div>
+        <div class="enrol-price">£167</div>
+        <div class="enrol-meta">One-Time Payment · Lifetime Access</div>
+        <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="btn btn-g" style="width:100%;justify-content:center;margin-bottom:.9rem">Enrol Now — Begin Today</a>
+        <a href="https://www.patreon.com/ChristsClimateChangers" target="_blank" class="btn btn-s" style="width:100%;justify-content:center"><span class="pdot"></span> Suddenly — Members Access</a>
+        <ul class="enrol-features">
+          <li><span>✓</span>10 deliverance-focused teaching modules</li>
+          <li><span>✓</span>7 curse category identification guide</li>
+          <li><span>✓</span>Guided deliverance prayer scripts</li>
+          <li><span>✓</span>Soul tie &amp; oath-breaking prayers</li>
+          <li><span>✓</span>Abrahamic blessing declaration guide</li>
+          <li><span>✓</span>CCC Kingdom Community access</li>
+          <li><span>✓</span>Certificate of Completion</li>
+        </ul>
+      </div>
+      <div class="scrip-pull">
+        <p>"The thief comes only to steal and kill and destroy; I have come that they may have life, and have it to the full."</p>
+        <cite>John 10:10</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNS OF A CURSE -->
+<section class="dark-sec sec" id="signs">
+  <div class="wrap">
+    <div class="eyebrow reveal">Recognise the Bondage</div>
+    <h2 class="h2 light reveal">Seven signs of a <em>generational curse</em></h2>
+    <div class="gold-rule reveal"></div>
+    <p class="body-t light reveal" style="max-width:700px">Derek Prince identified seven key Biblical indicators of a generational curse operating in a family line. These are grounded in Deuteronomy 28 — not superstition. They are spiritual markers with real causes, and real solutions.</p>
+    <div class="signs-grid">
+      <div class="sign-card reveal">
+        <div class="sign-icon">🧠</div>
+        <div class="sign-title">Mental &amp; Emotional Breakdown</div>
+        <p class="sign-desc">Recurring depression, anxiety, schizophrenia, or emotional collapse appearing across multiple generations with no clear medical cause. The same breakdown, at similar ages, through similar triggers — generation after generation.</p>
+        <span class="sign-scrip">Deuteronomy 28:28 · 2 Timothy 1:7</span>
+      </div>
+      <div class="sign-card reveal">
+        <div class="sign-icon">🤒</div>
+        <div class="sign-title">Repeated or Hereditary Sickness</div>
+        <p class="sign-desc">Specific diseases appearing consistently in a family line — cancer at the same age, the same chronic conditions — beyond what genetics alone explains. Patterns of sickness that no amount of medical treatment permanently resolves.</p>
+        <span class="sign-scrip">Deuteronomy 28:22 · Isaiah 53:5</span>
+      </div>
+      <div class="sign-card reveal">
+        <div class="sign-icon">💸</div>
+        <div class="sign-title">Persistent Financial Failure</div>
+        <p class="sign-desc">Never enough — money disappears without explanation, businesses fail despite effort, financial advance is always followed by sudden reversal. An invisible hand keeping the family at the bottom regardless of ability or hard work.</p>
+        <span class="sign-scrip">Deuteronomy 28:17-18 · Haggai 1:6</span>
+      </div>
+      <div class="sign-card reveal">
+        <div class="sign-icon">💔</div>
+        <div class="sign-title">Marriage &amp; Family Breakdown</div>
+        <p class="sign-desc">Divorce, infidelity, estrangement, and relational destruction repeating across generations. Family structures that consistently collapse under invisible pressure — something beyond the individuals involved, something systemic.</p>
+        <span class="sign-scrip">Deuteronomy 28:41 · Malachi 4:6</span>
+      </div>
+      <div class="sign-card reveal">
+        <div class="sign-icon">☠️</div>
+        <div class="sign-title">Premature Death</div>
+        <p class="sign-desc">Family members dying young — accidents, sudden illness, violence — with unusual frequency across the bloodline. A spirit of premature death that follows the family line and claims lives before their time in every generation.</p>
+        <span class="sign-scrip">Deuteronomy 28:45 · John 10:10</span>
+      </div>
+      <div class="sign-card reveal">
+        <div class="sign-icon">🔄</div>
+        <div class="sign-title">Chronic Fruitlessness &amp; Failure</div>
+        <p class="sign-desc">Working hard without lasting result. Businesses that never grow. Ministry that never bears fruit. Opportunities that consistently evaporate. The sense of moving forward but never arriving — every generation in the same place as the last.</p>
+        <span class="sign-scrip">Deuteronomy 28:38-40 · Haggai 1:9</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRIPTURE EXAMPLES -->
+<section class="dark-sec sec" id="scripture" style="background:var(--nl)">
+  <div class="wrap">
+    <div class="eyebrow reveal">Biblical Evidence</div>
+    <h2 class="h2 light reveal">Generational curses <em>in Scripture</em></h2>
+    <div class="gold-rule reveal"></div>
+    <p class="body-t light reveal" style="max-width:700px">The Bible records multiple accounts of curses entering family lines — their cause, their trajectory, and most importantly: the God who has the power to break every one of them through the cross of His Son.</p>
+    <div class="bible-grid">
+
+      <div class="bible-card reveal">
+        <div class="bible-icon">🏔</div>
+        <div class="bible-who">Noah's Son</div>
+        <div class="bible-name">Ham &amp; Canaan — The Curse of Dishonour</div>
+        <span class="bible-ref">Genesis 9:25-27</span>
+        <div class="bible-verse">"Cursed be Canaan! The lowest of slaves will he be to his brothers."</div>
+        <p class="bible-body">Noah's curse on Canaan — following Ham's deliberate act of dishonour and exposure — produced an entire people group under spiritual bondage. The Canaanites' subsequent idolatry, child sacrifice, and sexual depravity demonstrates how a spoken curse, when received and lived into, opens a bloodline to spiritual occupation across many generations.</p>
+        <div class="bible-lesson">Entry point: Dishonour of a parent — spoken curse received as identity</div>
+      </div>
+
+      <div class="bible-card reveal">
+        <div class="bible-icon">⚔️</div>
+        <div class="bible-who">King David</div>
+        <div class="bible-name">David's House — The Sword That Never Left</div>
+        <span class="bible-ref">2 Samuel 12:10-12</span>
+        <div class="bible-verse">"Now therefore, the sword shall never depart from your house, because you despised me and took the wife of Uriah the Hittite to be your own wife."</div>
+        <p class="bible-body">Nathan's prophetic pronouncement over David was not a private prediction — it was a divinely-announced curse consequent on covenant violation. David sinned in secret; the consequences were public and generational. Amnon raped Tamar. Absalom murdered Amnon. Absalom led a rebellion. Adonijah attempted to seize the throne. The sword remained.</p>
+        <div class="bible-lesson">Entry point: Sexual sin and murder — prophetic curse on a royal bloodline</div>
+      </div>
+
+      <div class="bible-card reveal">
+        <div class="bible-icon">💛</div>
+        <div class="bible-who">Elisha's Servant</div>
+        <div class="bible-name">Gehazi — Greed and Leprosy</div>
+        <span class="bible-ref">2 Kings 5:27</span>
+        <div class="bible-verse">"Naaman's leprosy will cling to you and to your descendants forever."</div>
+        <p class="bible-body">Elisha pronounced a specific, named, generational curse upon Gehazi and his offspring for lying and greed. The curse was precise — a named disease, a named family line, a named timeframe: forever. This is one of the clearest Biblical examples of a curse explicitly extended to descendants because of an ancestor's sin.</p>
+        <div class="bible-lesson">Entry point: Greed, deception and dishonour of prophetic ministry</div>
+      </div>
+
+      <div class="bible-card reveal">
+        <div class="bible-icon">🏺</div>
+        <div class="bible-who">Achan's Household</div>
+        <div class="bible-name">Achan — Sin Under the Ban</div>
+        <span class="bible-ref">Joshua 7:24-26</span>
+        <div class="bible-verse">"Achan son of Zerah... his sons and daughters... were brought to the Valley of Achor."</div>
+        <p class="bible-body">Achan took what was under God's ban — devoted things from Jericho — and hid them in his tent. Israel's army was defeated as a result. His entire household bore the consequences. This powerful account illustrates how one person's act of covenant violation brings a curse on the household, not just the individual — and how that curse must be specifically identified and removed.</p>
+        <div class="bible-lesson">Entry point: Hidden sin, stealing what belongs to God, corporate consequence</div>
+      </div>
+
+      <div class="bible-card reveal">
+        <div class="bible-icon">🩸</div>
+        <div class="bible-who">The Jerusalem Crowd</div>
+        <div class="bible-name">A Self-Imposed Blood Curse</div>
+        <span class="bible-ref">Matthew 27:25</span>
+        <div class="bible-verse">"His blood be on us and on our children!"</div>
+        <p class="bible-body">The crowd's declaration at Christ's crucifixion is a sober example of a corporate, self-imposed spoken curse. Words of blood guilt spoken over a generation carry real spiritual weight — they are a covenant, not merely an emotion. Many people unknowingly carry the weight of self-imposed word curses spoken over their own families by angry, wounded, or ignorant ancestors.</p>
+        <div class="bible-lesson">Entry point: Self-imposed spoken curse — words of blood and guilt</div>
+      </div>
+
+      <div class="bible-card reveal">
+        <div class="bible-icon">🌿</div>
+        <div class="bible-who">The Rechabites</div>
+        <div class="bible-name">Jonadab — A Generational Blessing</div>
+        <span class="bible-ref">Jeremiah 35:18-19</span>
+        <div class="bible-verse">"Jonadab son of Rekab will never fail to have a descendant to serve me."</div>
+        <p class="bible-body">God's promise to the Rechabites is the positive proof of the principle: what travels as a curse can also travel as a blessing. Because they obeyed their forefather's commands across generations, God established an eternal blessing on their line. The breaking of a curse is not the end goal — the receiving of the blessing is. You are not just being freed from something. You are being freed into something.</p>
+        <div class="bible-lesson">Proof: Generational obedience produces generational blessing — the goal</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TODAY'S MANIFESTATIONS (white) -->
+<section class="white-bg sec" id="today">
+  <div class="wrap">
+    <div class="eyebrow dk reveal">How It Looks Today</div>
+    <h2 class="h2 dark reveal">Generational curses <em>in the modern world</em></h2>
+    <div class="gold-rule dk reveal"></div>
+    <p class="body-t dark reveal" style="max-width:700px">The Deuteronomy 28 curse list reads like a diagnosis of many family systems today. These are not coincidences — they are spiritual patterns with identifiable causes that require spiritual solutions. The cross has already provided those solutions.</p>
+    <div class="manifest-grid">
+
+      <div class="manifest-card reveal">
+        <div class="manifest-icon">🏥</div>
+        <div class="manifest-title">Cancer &amp; Hereditary Disease</div>
+        <p class="manifest-desc">The same cancer appearing in the same location, at similar ages, across three or four generations of the same family — beyond what genetics alone can account for. A spirit of infirmity operating through a family bloodline until specifically and spiritually addressed.</p>
+        <div class="manifest-scrip">Deuteronomy 28:22, 35 · Isaiah 53:5</div>
+      </div>
+
+      <div class="manifest-card reveal">
+        <div class="manifest-icon">🔁</div>
+        <div class="manifest-title">Cyclical Poverty Resisting Every Effort</div>
+        <p class="manifest-desc">Money that arrives and disappears. Businesses launched and closed. Inheritances lost. Every financial advance followed by sudden reversal — as if an unseen force consistently strips what the family builds. Hard work produces nothing lasting.</p>
+        <div class="manifest-scrip">Deuteronomy 28:17-18 · Haggai 1:6</div>
+      </div>
+
+      <div class="manifest-card reveal">
+        <div class="manifest-icon">😵</div>
+        <div class="manifest-title">Suicide &amp; Premature Death Patterns</div>
+        <p class="manifest-desc">Multiple family members taking their own lives, or dying young through violence, accident, or unexplained illness. A spirit of premature death identifiable across generations — the same end coming to people in the same family at the same stage of life.</p>
+        <div class="manifest-scrip">John 10:10 · Deuteronomy 28:45</div>
+      </div>
+
+      <div class="manifest-card reveal">
+        <div class="manifest-icon">🔮</div>
+        <div class="manifest-title">Freemasonry &amp; Secret Society Legacy</div>
+        <p class="manifest-desc">A grandfather's membership in Freemasonry or other secret societies brings oaths taken in darkness into the family bloodline. These oaths — sworn on penalty of physical harm, often invoking false gods — create legal access points for demonic activity in every subsequent generation until specifically renounced and cancelled.</p>
+        <div class="manifest-scrip">Exodus 20:3-5 · Deuteronomy 18:10-12</div>
+      </div>
+
+      <div class="manifest-card reveal">
+        <div class="manifest-icon">🧿</div>
+        <div class="manifest-title">Witchcraft, Ancestral Worship &amp; Occult</div>
+        <p class="manifest-desc">Grandparents' or great-grandparents' involvement in traditional witchcraft, ancestral veneration, voodoo, Santeria, or new-age spirituality create spiritual covenants that remain active across generations — producing oppression, spiritual blindness, and resistance to the Gospel in their descendants until broken.</p>
+        <div class="manifest-scrip">Deuteronomy 18:9-12 · Acts 19:18-19</div>
+      </div>
+
+      <div class="manifest-card reveal">
+        <div class="manifest-icon">😶</div>
+        <div class="manifest-title">Word Curses Spoken Over the Family</div>
+        <p class="manifest-desc">"You will never amount to anything." "The men in this family always fail." "We never get ahead." Careless, bitter, or deliberately malicious words spoken by parents, grandparents, or authority figures function as self-fulfilling spiritual declarations — curses in the truest sense — that shape identity and destiny across generations.</p>
+        <div class="manifest-scrip">Proverbs 18:21 · Matthew 12:36-37</div>
+      </div>
+
+      <div class="manifest-card reveal">
+        <div class="manifest-icon">🤝</div>
+        <div class="manifest-title">Ungodly Soul Ties &amp; Blood Oaths</div>
+        <p class="manifest-desc">Sexual covenants, blood brotherhoods, initiation oaths, gang initiations, and binding agreements entered by ancestors create spiritual ties that remain active. These covenants grant legal access to demonic forces that follow the bloodline until every soul tie is specifically identified and severed through the blood of Christ.</p>
+        <div class="manifest-scrip">1 Corinthians 6:16 · Numbers 30:2</div>
+      </div>
+
+      <div class="manifest-card reveal">
+        <div class="manifest-icon">🚧</div>
+        <div class="manifest-title">Blocked Destiny &amp; Persistent Frustration</div>
+        <p class="manifest-desc">Everything attempted is blocked. Doors open and immediately close. Opportunities evaporate. Qualifications lead nowhere. Relationships promised don't materialise. The sense — confirmed generation after generation — that something unseen is working systematically against the family's ability to fulfil its potential.</p>
+        <div class="manifest-scrip">Deuteronomy 28:29 · Isaiah 43:18-19</div>
+      </div>
+
+      <div class="manifest-card reveal">
+        <div class="manifest-icon">👻</div>
+        <div class="manifest-title">Demonic Visitation &amp; Spiritual Harassment</div>
+        <p class="manifest-desc">Nightmares, sleep paralysis, and demonic presence that follow family members identically across generations — the same experiences described by grandmother, mother, and daughter; by grandfather, father, and son. Spiritual harassment that is not individual but familial — attached to the bloodline, not just the person.</p>
+        <div class="manifest-scrip">Psalm 91:5-6 · Ephesians 6:12</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="modules-sec" id="modules">
+  <div class="wrap">
+    <div class="eyebrow reveal">Course Curriculum</div>
+    <h2 class="h2 light reveal">10 Modules — <em>from bondage to Abrahamic blessing</em></h2>
+    <div class="gold-rule reveal"></div>
+    <div class="modules-grid reveal">
+
+      <div class="module">
+        <div class="module-num">Module 01</div>
+        <div class="module-title">What Is a Generational Curse? — A Biblical Foundation</div>
+        <p class="module-desc">Establish a clear, Biblically-grounded understanding of generational curses — distinguishing them from generational sin, addressing common misconceptions, and building the theological foundation needed to approach deliverance with faith rather than fear.</p>
+        <ul class="module-topics"><li>Deuteronomy 28 — blessings and curses in detail</li><li>The distinction between curse, consequence, and divine discipline</li><li>Why salvation does not automatically remove all curse effects</li></ul>
+        <div class="module-scrip">Deuteronomy 28:1-2, 15 · Galatians 3:13-14</div>
+      </div>
+
+      <div class="module">
+        <div class="module-num">Module 02</div>
+        <div class="module-title">The Seven Categories of Generational Curse</div>
+        <p class="module-desc">A detailed Biblical study of the seven major curse categories identified in Deuteronomy 28 — mental breakdown, hereditary sickness, persistent poverty, family breakdown, premature death, fruitlessness, and spiritual bondage — including how to identify which are operating in your family line.</p>
+        <ul class="module-topics"><li>Each of the seven categories examined with Scripture and application</li><li>How to identify which categories are active in your family</li><li>How categories cluster and compound across generations</li></ul>
+        <div class="module-scrip">Deuteronomy 28:22-45</div>
+      </div>
+
+      <div class="module">
+        <div class="module-num">Module 03</div>
+        <div class="module-title">How Curses Enter — The Open Door Audit</div>
+        <p class="module-desc">A thorough Biblical examination of the primary entry points for generational curses — ancestral sin, occult involvement, Freemasonry, spoken word curses, sexual covenants, blood oaths, and deliberate acts of disobedience — with a guided personal and family audit.</p>
+        <ul class="module-topics"><li>Freemasonry, witchcraft, and what ancestral oaths do spiritually</li><li>How spoken words function as curses when spoken in authority</li><li>Sexual sin, soul ties, and their generational spiritual reach</li></ul>
+        <div class="module-scrip">Exodus 20:3-5 · Proverbs 18:21 · 1 Corinthians 6:16</div>
+      </div>
+
+      <div class="module">
+        <div class="module-num">Module 04</div>
+        <div class="module-title">Biblical Case Studies — How Curses Operated</div>
+        <p class="module-desc">Walk through the Scripture's most instructive examples of generational curses — Canaan, David's household, Gehazi, Achan, the blood curse at the crucifixion — extracting principles that apply directly to families today.</p>
+        <ul class="module-topics"><li>Ham and Canaan — dishonour as a curse entry point</li><li>Gehazi — greed, deception, and the transfer of disease</li><li>Achan — hidden sin, corporate consequence, family removal</li></ul>
+        <div class="module-scrip">Genesis 9:25 · 2 Kings 5:27 · Joshua 7</div>
+      </div>
+
+      <div class="module">
+        <div class="module-num">Module 05</div>
+        <div class="module-title">Galatians 3:13 — The Complete Legal Answer</div>
+        <p class="module-desc">The cross of Christ is the only sufficient, legally complete, and permanent answer to every generational curse. This module builds the theology of what Christ actually accomplished — and how to apply it practically, not theoretically.</p>
+        <ul class="module-topics"><li>What "becoming a curse for us" means in its full Biblical weight</li><li>The blessing of Abraham — what is now legally ours in Christ</li><li>Why the curse has no legal right to remain — and how to enforce that</li></ul>
+        <div class="module-scrip">Galatians 3:13-14 · Colossians 2:13-15 · Romans 8:1-2</div>
+      </div>
+
+      <div class="module">
+        <div class="module-num">Module 06</div>
+        <div class="module-title">Repentance, Renunciation &amp; Revocation</div>
+        <p class="module-desc">The three-part spiritual action that closes curse entry points — identificational repentance for ancestral sin, renunciation of every demonic agreement, and revocation of every oath, curse, and covenant. This is the turning point module.</p>
+        <ul class="module-topics"><li>Identificational repentance — praying for your bloodline</li><li>Renouncing Freemasonry, witchcraft, and occult ties by name</li><li>Revoking spoken word curses over your life and your line</li></ul>
+        <div class="module-scrip">Nehemiah 9:2 · 1 John 1:9 · James 4:7</div>
+      </div>
+
+      <div class="module">
+        <div class="module-num">Module 07</div>
+        <div class="module-title">Guided Deliverance Prayers — Applying the Blood</div>
+        <p class="module-desc">Structured, Biblically-anchored guided deliverance prayers addressing each of the seven curse categories — written to be prayed aloud with faith, authority, and the understanding that Christ has already won. The most practically powerful module in the course.</p>
+        <ul class="module-topics"><li>Prayers for mental breakdown, sickness, and poverty curses</li><li>Prayers breaking Freemasonry, occult, and bloodline bondages</li><li>Declaring the blood of Jesus over your entire family line</li></ul>
+        <div class="module-scrip">Luke 10:19 · Mark 16:17 · Revelation 12:11</div>
+      </div>
+
+      <div class="module">
+        <div class="module-num">Module 08</div>
+        <div class="module-title">Breaking Soul Ties, Oaths &amp; Spiritual Contracts</div>
+        <p class="module-desc">Address the specific bondages created by sexual covenants, blood oaths, gang initiations, secret society memberships, and generational spiritual contracts — with guided prayers for severing every one through the authority of the name of Jesus.</p>
+        <ul class="module-topics"><li>What a soul tie is — and what it does spiritually to a bloodline</li><li>How to identify and sever every ungodly spiritual contract</li><li>Closing the last legal access points — sealing what has been broken</li></ul>
+        <div class="module-scrip">1 Corinthians 6:16-20 · Isaiah 54:17 · Matthew 16:19</div>
+      </div>
+
+      <div class="module">
+        <div class="module-num">Module 09</div>
+        <div class="module-title">Receiving the Abrahamic Blessing</div>
+        <p class="module-desc">Freedom from a curse is only half the journey. This module teaches you to actively receive the Abrahamic blessing that is now legally yours — in health, provision, fruitfulness, and favour — and to walk in it as your daily inheritance.</p>
+        <ul class="module-topics"><li>What the blessing of Abraham actually covers in full</li><li>How to confess, declare, and activate the blessing by faith</li><li>Maintaining your freedom — keeping the doors permanently closed</li></ul>
+        <div class="module-scrip">Galatians 3:14 · Deuteronomy 28:1-14 · Numbers 6:24-26</div>
+      </div>
+
+      <div class="module" style="border-color:rgba(201,168,76,.32);background:rgba(201,168,76,.05)">
+        <div class="module-num">Module 10 — Capstone</div>
+        <div class="module-title">Releasing the Blessing Forward — Generational Legacy</div>
+        <p class="module-desc">You are not the end of a curse — you are the beginning of a blessing. This final module commissions you to deliberately speak, declare, and release the Abrahamic blessing into every generation that follows you — making you a generational turning point in the truest sense.</p>
+        <ul class="module-topics"><li>Speaking blessing over your children and spiritual children</li><li>Building Kingdom culture as your family's new normal</li><li>Your commissioning prayer, legacy declaration, and certificate</li></ul>
+        <div class="module-scrip" style="background:rgba(201,168,76,.18);border-color:rgba(201,168,76,.45)">Jeremiah 29:11 · Numbers 6:24-26 · Isaiah 44:3</div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:2px;padding:2rem 2.2rem;background:var(--nm);border:.5px solid rgba(201,168,76,.24);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+      <div style="font-family:'Cinzel',serif;font-size:13px;color:#fff;letter-spacing:.04em">Total Course Content</div>
+      <div style="display:flex;gap:2.5rem;flex-wrap:wrap">
+        <div style="text-align:center"><div style="font-family:'Cinzel',serif;font-size:1.6rem;color:var(--gl)">10</div><div style="font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tm)">Modules</div></div>
+        <div style="text-align:center"><div style="font-family:'Cinzel',serif;font-size:1.6rem;color:var(--gl)">8+ hrs</div><div style="font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tm)">Teaching</div></div>
+        <div style="text-align:center"><div style="font-family:'Cinzel',serif;font-size:1.6rem;color:var(--gl)">Cert.</div><div style="font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tm)">Included</div></div>
+      </div>
+      <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="btn btn-g">Enrol Now — £167</a>
+    </div>
+  </div>
+</section>
+
+<!-- CCC DELIVERANCE FRAMEWORK (white) -->
+<section class="white-bg sec" id="framework">
+  <div class="wrap">
+    <div class="eyebrow dk reveal">CCC's Biblical Approach</div>
+    <h2 class="h2 dark reveal">Our four-pillar <em>deliverance framework</em></h2>
+    <div class="gold-rule dk reveal"></div>
+    <p class="body-t dark reveal" style="max-width:700px">At CCC we approach generational curses from a place of victory, not fear — grounded in four Biblical pillars that ensure everything we do is safe, sound, and producing real, lasting freedom.</p>
+    <div class="framework-grid">
+      <div class="framework-card reveal">
+        <div class="fw-icon">📖</div>
+        <div class="fw-title">Word-Based</div>
+        <p class="fw-desc">Every principle, prayer, and declaration is anchored in Scripture. We take the Bible as the final authority on curse, covenant, and freedom — no extra-Biblical additions.</p>
+      </div>
+      <div class="framework-card reveal">
+        <div class="fw-icon">✝️</div>
+        <div class="fw-title">Cross-Centred</div>
+        <p class="fw-desc">The cross of Christ is our only answer and our complete boast. Galatians 3:13 is not a possibility to pursue — it is a completed fact to enforce. We work from victory, never toward it.</p>
+      </div>
+      <div class="framework-card reveal">
+        <div class="fw-icon">🕊</div>
+        <div class="fw-title">Spirit-Led</div>
+        <p class="fw-desc">We invite the Holy Spirit into every step. Deliverance is not a formula — it is a Spirit-led process of revelation, repentance, and release. We create space for God to move.</p>
+      </div>
+      <div class="framework-card reveal">
+        <div class="fw-icon">🙏</div>
+        <div class="fw-title">Grace-Rooted</div>
+        <p class="fw-desc">There is no shame in this process — only grace. Your ancestors' decisions do not define you. The blood of Christ is immeasurably stronger than any curse spoken or inherited.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CCC HEALING JOURNEY -->
+<section class="healing-bg sec" id="healing">
+  <div class="wrap">
+    <div class="eyebrow reveal">The CCC Healing Process</div>
+    <h2 class="h2 light reveal">How CCC walks you <em>from curse to blessing</em></h2>
+    <div class="gold-rule reveal"></div>
+    <p class="body-t light reveal" style="max-width:700px">This is not a course you passively watch — it is a structured deliverance journey. Each phase is designed to move you from identification through repentance, into freedom, and finally into the reception and declaration of your Kingdom inheritance.</p>
+    <div class="journey-steps">
+      <div class="j-step reveal">
+        <div class="j-num">01</div>
+        <div class="j-icon">🔍</div>
+        <div class="j-title">Identify</div>
+        <p class="j-desc">Name the curse categories and the entry points active in your family line. You cannot close what you cannot find. We help you find it — specifically and without shame.</p>
+        <span class="j-scrip">Hosea 4:6</span>
+      </div>
+      <div class="j-step reveal">
+        <div class="j-num">02</div>
+        <div class="j-icon">📖</div>
+        <div class="j-title">Understand</div>
+        <p class="j-desc">Build the Biblical theology — why the curse has power, how it entered, and why the cross is the only complete answer. Understanding produces faith; faith produces results.</p>
+        <span class="j-scrip">Romans 10:17</span>
+      </div>
+      <div class="j-step reveal">
+        <div class="j-num">03</div>
+        <div class="j-icon">🙏</div>
+        <div class="j-title">Repent &amp; Renounce</div>
+        <p class="j-desc">Identificational repentance for ancestral sin. Renunciation of every occult tie, oath, and agreement. Revocation of every spoken curse over your bloodline. The doors close.</p>
+        <span class="j-scrip">Nehemiah 9:2</span>
+      </div>
+      <div class="j-step reveal">
+        <div class="j-num">04</div>
+        <div class="j-icon">✝️</div>
+        <div class="j-title">Apply the Cross</div>
+        <p class="j-desc">Pray the guided deliverance prayers. Declare Galatians 3:13 over every specific bondage. Plead the blood of Jesus over your family line. Receive your freedom in faith.</p>
+        <span class="j-scrip">Galatians 3:13</span>
+      </div>
+      <div class="j-step reveal">
+        <div class="j-num">05</div>
+        <div class="j-icon">🌟</div>
+        <div class="j-title">Receive &amp; Release</div>
+        <p class="j-desc">Actively receive the Abrahamic blessing. Declare it over yourself, your children, your descendants. You are the turning point — the beginning of blessing, not the end of a curse.</p>
+        <span class="j-scrip">Galatians 3:14</span>
+      </div>
+    </div>
+
+    <div class="companion-strip reveal">
+      <div>
+        <div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin-bottom:.4rem">Companion Course</div>
+        <div style="font-family:'Cinzel',serif;font-size:1.1rem;color:#fff;margin-bottom:.2rem">Breaking Generational Sin</div>
+        <div style="font-family:'EB Garamond',serif;font-size:15px;color:var(--tm)">The repeated sin patterns behind the curses — take both for the complete journey · £297 bundle</div>
+      </div>
+      <a href="generational-sin-course.html" class="btn btn-w">View Sin Course →</a>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDED -->
+<section class="included-bg sec">
+  <div class="wrap">
+    <div class="eyebrow reveal">Included With Enrolment</div>
+    <h2 class="h2 light reveal">Everything you need <em>for complete freedom</em></h2>
+    <div class="gold-rule reveal"></div>
+    <div class="features">
+      <div class="feature reveal"><div class="feature-icon">📖</div><h3>10 Teaching Modules</h3><p>Biblically grounded teaching on every dimension of generational curse — from identification through to the Abrahamic blessing.</p></div>
+      <div class="feature reveal"><div class="feature-icon">🙏</div><h3>Guided Deliverance Prayers</h3><p>Specific, Scripture-anchored deliverance prayer scripts for all seven curse categories — written to be prayed aloud with faith and authority.</p></div>
+      <div class="feature reveal"><div class="feature-icon">📋</div><h3>Open Door Audit Workbook</h3><p>A guided workbook to identify every entry point in your family line — occult involvement, word curses, soul ties, covenants — and track their closure.</p></div>
+      <div class="feature reveal"><div class="feature-icon">✨</div><h3>Blessing Declaration Guide</h3><p>A complete guide to declaring the Abrahamic blessing over yourself, your children, and every generation that follows — your new generational inheritance.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRIPTURE BAND -->
+<div class="scrip-band">
+  <blockquote>
+    "He redeemed us in order that the blessing given to Abraham might come to the Gentiles through Christ Jesus, so that by faith we might receive the promise of the Spirit."
+    <cite>Galatians 3:14</cite>
+  </blockquote>
+</div>
+
+<!-- WHO (white) -->
+<section class="who-bg sec" id="who">
+  <div class="wrap">
+    <div class="eyebrow dk reveal" style="justify-content:center">Who This Course Is For</div>
+    <h2 class="h2 dark reveal" style="text-align:center;max-width:600px;margin:0 auto">This is for you <em>if&hellip;</em></h2>
+    <div class="gold-rule dk reveal" style="margin-left:auto;margin-right:auto"></div>
+    <div class="who-grid">
+      <div class="who-card reveal"><div class="who-icon">⛓</div><div><div class="who-title">You Sense Spiritual Bondage</div><p class="who-desc">Something in your life feels bigger than circumstances — as if an unseen force is working against you at every turn. This course gives that feeling a Biblical name and solution.</p></div></div>
+      <div class="who-card reveal"><div class="who-icon">🔁</div><div><div class="who-title">The Pattern Won't Break</div><p class="who-desc">You have prayed, fasted, counselled, and confessed — yet the same patterns of poverty, sickness, or failure return. The root may be generational, not personal.</p></div></div>
+      <div class="who-card reveal"><div class="who-icon">🔮</div><div><div class="who-title">Occult Is in Your Background</div><p class="who-desc">Witchcraft, Freemasonry, ancestor worship, or secret society involvement appears in your family history — and you suspect there are open spiritual doors needing to be closed.</p></div></div>
+      <div class="who-card reveal"><div class="who-icon">🏥</div><div><div class="who-title">Sickness Follows Your Family</div><p class="who-desc">The same diseases appear at similar ages across your family line. You want to address the possible spiritual dimension alongside medical care.</p></div></div>
+      <div class="who-card reveal"><div class="who-icon">⛪</div><div><div class="who-title">Ministry Leaders</div><p class="who-desc">You minister to people experiencing unexplained bondage and want Biblically sound, structured tools to walk them toward complete freedom.</p></div></div>
+      <div class="who-card reveal"><div class="who-icon">👨‍👩‍👧</div><div><div class="who-title">You Want to Protect Your Children</div><p class="who-desc">Whatever entered your bloodline before you — you want it to stop with you. You want your children to receive blessing, not bondage, as their inheritance.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS (white) -->
+<section class="testi-bg sec" id="testimonials">
+  <div class="wrap">
+    <div class="eyebrow dk reveal" style="justify-content:center">Student Testimonials</div>
+    <h2 class="h2 dark reveal" style="text-align:center;max-width:580px;margin:0 auto">Real chains broken. <em>Real freedom walking.</em></h2>
+    <div class="gold-rule dk reveal" style="margin-left:auto;margin-right:auto"></div>
+    <div class="testi-grid">
+      <div class="tcard reveal"><p class="tcard-body">My grandfather was a Freemason. My father was a Freemason. The Module 6 renunciation prayers were the most important hour of my spiritual life. I prayed them with my wife beside me. Something left our home. Our children will not carry what we carried.</p><div class="tcard-name">Brother Andrew K.</div><div class="tcard-role">Student, Leeds</div></div>
+      <div class="tcard reveal"><p class="tcard-body">Cancer took my grandmother at 54, my mother at 56. At 48, I received my own diagnosis. I took this course and prayed through every module. I am now in full remission and three years clear. God is a curse-breaker and the cross is sufficient — I am living proof.</p><div class="tcard-name">Sister Patience A.</div><div class="tcard-role">Student, London</div></div>
+      <div class="tcard reveal"><p class="tcard-body">Poverty had chased every generation of my family without exception. We worked hard and nothing stayed. After completing Module 9 — receiving and declaring the Abrahamic blessing — my income has tripled in 18 months. I am the turning point. This course gave me that.</p><div class="tcard-name">Deacon Joseph M.</div><div class="tcard-role">Student, Birmingham</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ (white) -->
+<section class="faq-bg sec" id="faq">
+  <div class="wrap" style="max-width:800px">
+    <div class="eyebrow dk reveal" style="justify-content:center">Frequently Asked Questions</div>
+    <h2 class="h2 dark reveal" style="text-align:center">Everything you need <em>to know</em></h2>
+    <div class="gold-rule dk reveal" style="margin-left:auto;margin-right:auto"></div>
+    <div class="faq-list">
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-head"><span class="faq-q">Doesn't salvation automatically break all curses?</span><span class="faq-icon">+</span></div>
+        <div class="faq-body"><div class="faq-body-inner">Galatians 3:13 declares that Christ has legally redeemed us from the curse — past tense, accomplished fact. But as with all aspects of salvation, what is legally ours must be practically appropriated by faith. Just as we are legally healed by His stripes yet must receive healing in practice, we must actively enforce our freedom from generational curses. This course teaches you how to do exactly that — applying what is already legally yours through repentance, declaration, and faith.</div></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-head"><span class="faq-q">Is it dangerous to pray deliverance prayers?</span><span class="faq-icon">+</span></div>
+        <div class="faq-body"><div class="faq-body-inner">A believer standing in the authority of the name of Jesus, covered by the blood of Christ, and praying in accordance with Scripture is not in danger — they are exercising the authority Christ gave every believer in Luke 10:19. This course approaches deliverance from a position of victory, not fear. You are not going into battle to fight for victory — you are enforcing a victory already won at Calvary.</div></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-head"><span class="faq-q">What if I don't know about occult involvement in my family?</span><span class="faq-icon">+</span></div>
+        <div class="faq-body"><div class="faq-body-inner">Many people don't have full knowledge of their family history. The course addresses this specifically — you pray over what you know, ask the Holy Spirit to reveal what you don't, and make comprehensive declarations covering every occult involvement, named and unnamed, known and unknown. God honours faith-filled prayer even when your information is incomplete. He knows your full family line even when you don't.</div></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-head"><span class="faq-q">Can a born-again Christian still be under a generational curse?</span><span class="faq-icon">+</span></div>
+        <div class="faq-body"><div class="faq-body-inner">Yes — in the sense that the legal grounds for a curse may not have been specifically addressed even after salvation. A person can be genuinely born again and yet still experience the effects of generational bondage because the doors opened by their ancestors have not been identified and deliberately closed. This is not a reflection on their salvation — it is an invitation to a deeper dimension of freedom that is already available to them in Christ.</div></div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-head"><span class="faq-q">Should I take this with the Generational Sin course?</span><span class="faq-icon">+</span></div>
+        <div class="faq-body"><div class="faq-body-inner">We strongly recommend taking both. The Generational Sin course addresses the repeated behavioural patterns — the human dimension. This course addresses the spiritual bondages behind those patterns — the demonic dimension. Together they provide the most complete Biblical approach to generational freedom. The bundle price is £297 for both courses.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="enrol">
+  <div class="final-bg"></div>
+  <div class="final-over"></div>
+  <div class="final-glow"></div>
+  <div class="final-content reveal">
+    <div class="eyebrow" style="justify-content:center">Freedom Is Already Purchased</div>
+    <h2 class="h2 light" style="font-size:clamp(1.8rem,4vw,3rem)">The curse ends here.<br><em>The blessing begins now.</em></h2>
+    <div class="gold-rule" style="margin:1.5rem auto"></div>
+    <p style="font-family:'EB Garamond',serif;font-size:17px;color:var(--tl);max-width:540px;margin:0 auto 2.4rem;line-height:1.9;text-align:center">Christ became a curse so that you could receive the blessing. That is not theology — that is your testimony waiting to be written. This course walks you into it step by step, module by module, prayer by prayer.</p>
+    <div style="display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;background:rgba(201,168,76,.12);border:.5px solid rgba(201,168,76,.42);padding:1.8rem 3rem;margin-bottom:2.4rem">
+      <div style="font-family:'Cinzel',serif;font-size:2.2rem;font-weight:500;color:var(--gl)">£167</div>
+      <div style="font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--tm)">One-Time · Lifetime Access · Certificate Included</div>
+    </div>
+    <div class="br br-c" style="margin-bottom:1rem">
+      <a href="https://www.skool.com/ccc-kingdom-community" target="_blank" class="btn btn-g" style="font-size:11.5px;padding:17px 44px">Enrol Now — £167</a>
+      <a href="https://www.patreon.com/ChristsClimateChangers" target="_blank" class="btn btn-s" style="font-size:11.5px;padding:17px 36px"><span class="pdot"></span> Suddenly — Members</a>
+    </div>
+    <p class="final-scrip">"Christ redeemed us from the curse of the law by becoming a curse for us." — Galatians 3:13</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Christ's Climate Changers</div>
+  <div class="footer-links">
+    <a href="christs-climate-changers.html">Home</a>
+    <a href="generational-sin-course.html">Generational Sin Course</a>
+    <a href="bloodline-course.html">Bloodline Course</a>
+    <a href="index.html">All Courses</a>
+    <a href="https://www.skool.com/ccc-kingdom-community" target="_blank">Community</a>
+  </div>
+  <p class="footer-copy">&copy; 2025 Christ's Climate Changers. Advancing His Kingdom. All Rights Reserved.</p>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
+window.addEventListener('scroll',()=>{const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;document.getElementById('progressBar').style.width=pct+'%';},{passive:true});
+let mOpen=false;
+function toggleMenu(){mOpen=!mOpen;document.getElementById('mobMenu').classList.toggle('open',mOpen);document.getElementById('hamBtn').classList.toggle('open',mOpen);document.body.style.overflow=mOpen?'hidden':'';}
+function closeMenu(){mOpen=false;document.getElementById('mobMenu').classList.remove('open');document.getElementById('hamBtn').classList.remove('open');document.body.style.overflow='';}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const id=a.getAttribute('href').slice(1);const t=document.getElementById(id);if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});if(mOpen)closeMenu();}});});
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const sibs=e.target.parentElement.querySelectorAll('.reveal');const idx=Array.from(sibs).indexOf(e.target);setTimeout(()=>e.target.classList.add('vis'),Math.min(idx*80,420));ro.unobserve(e.target);}});},{threshold:.07,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+const sg=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){Array.from(e.target.children).forEach((c,i)=>{c.style.transitionDelay=(i*.07)+'s';});sg.unobserve(e.target);}});},{threshold:.04});
+document.querySelectorAll('.modules-grid,.features,.who-grid,.testi-grid,.highlights,.bible-grid,.signs-grid,.manifest-grid,.journey-steps,.framework-grid').forEach(el=>sg.observe(el));
+function toggleFaq(item){const was=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(f=>f.classList.remove('open'));if(!was)item.classList.add('open');}
+</script>
+</body>
+</html>
