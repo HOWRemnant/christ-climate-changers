@@ -946,6 +946,13 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
     padding-top: 15px;
     text-align: center;
 }
+
+.ccard-icon i {
+    width: 40px;      /* Adjust size */
+    height: 40px;
+    color: #2c3e50;   /* Matches your brand color */
+    stroke-width: 1.5; /* Makes the lines look thinner and more modern */
+}  
 </style>
 </head>
 <body>
@@ -1128,7 +1135,10 @@ footer{background:var(--navy);border-top:.5px solid rgba(201,168,76,.15);padding
 <!-- TRAUMA COURSE-->
 <a href="trauma-course.html" style="display: block; text-decoration: none; color: inherit;">
   <div class="ccard">
-    <div class="ccard-icon">🩹</div>
+    <!-- The emoji is replaced with a Lucide icon tag -->
+    <div class="ccard-icon">
+      <i data-lucide="heart-handshake"></i>
+    </div>
     <h3 class="ccard-title">Certificate in Trauma Recovery & Biblical Care</h3>
     <p class="ccard-desc">A Biblical Journey walking through pain, loss, and trauma through the lens of Scripture.</p>
     <div class="ccard-price">£150 <span>8 Modules</span></div>
@@ -1614,6 +1624,10 @@ function handleGuide(){
     email.value='';setTimeout(()=>{btn.textContent='Send My Guide';btn.style.background='';btn.style.color='';},3000);
   }else if(email){email.style.borderColor='rgba(255,80,80,.5)';setTimeout(()=>email.style.borderColor='',2000);}
 }
+
+<script>
+  lucide.createIcons();
+</script>  
 </script>
 </body>
 </html>
